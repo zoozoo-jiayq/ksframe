@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登录</title>
+<#include "./frame/import.htm">
+<style type="text/css">
+	body{background-color: #eee}
+	.container{margin:50px auto;width:300px;}
+	h2{width: 100%;text-align: center}
+</style>
+</head>
+<body>
+<div class="container">
+	<form class="pure-form pure-form-aligned " autocomplete="off" method="post" action="/login">
+	<h2>XXXX管理系统</h2>
+    <fieldset>
+        <div class="pure-control-group">
+            <input id="name" name="username"  type="text" class="pure-input-1 xlarge" placeholder="请输入手机号码" >
+        </div>
+
+        <div class="pure-control-group">
+            <input id="password" name="password" type="password" class="pure-input-1 xlarge"  placeholder="请输入密码">
+        </div>
+
+
+        <div class=" pure-g">
+            <button type="submit" class="pure-button pure-button-primary pure-u-1-1 xlarge">登录</button>
+        </div>
+    </fieldset>
+</form>
+</div>
+</body>
+</html>
