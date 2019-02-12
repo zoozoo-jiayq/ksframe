@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.google.gson.Gson;
 
-public class BaseController {
+public abstract class BaseController {
 	
 	private static Logger log = LoggerFactory.getLogger(BaseController.class);
 	
@@ -28,6 +28,14 @@ public class BaseController {
 	
 	@Resource
 	protected HttpServletResponse response;
+
+	public default abstract String list(ModelMap model);
+
+	public default abstract String form(ModelMap model);
+
+	public default abstract String doform(ModelMap model);
+
+	public default abstract String delete(ModelMap model);
 
 	@ExceptionHandler(value = Exception.class)
 	public String handleException(Exception e) throws ServletException, IOException{
@@ -42,6 +50,8 @@ public class BaseController {
 		}
 		return null;
 	}
+
+
 	
 	public Object SUCCESS(Object data){
 		Map<String,Object> result = new HashMap<String,Object>();
