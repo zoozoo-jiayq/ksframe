@@ -1,11 +1,12 @@
 package com.jiayq.ks.app.project;
 
-import java.persistence.Entity;
-import java.persisitence.Table;
-import com.jiayq.ks_frame.base.BaseModel;
+
+import javax.persistence.Entity;
+
+import com.jiayq.ks._frame.base.BaseModel;
 
 @Entity
-@Table(name="tb_project")
+@javax.persistence.Table(name="tb_project")
 public class Project extends BaseModel{
 
 	private String name;
@@ -21,7 +22,7 @@ public class Project extends BaseModel{
 	}
 
 	public void setAddr(String addr){
-		return this.addr;
+		this.addr = addr;
 	}
 
 	public String getAddr(){

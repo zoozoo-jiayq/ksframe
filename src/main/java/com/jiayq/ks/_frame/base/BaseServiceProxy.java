@@ -1,11 +1,16 @@
 package com.jiayq.ks._frame.base;
 
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.util.StringUtils;
+
+import com.jiayq.ks._frame.security.UserDetailsAdapter;
 
 public abstract class BaseServiceProxy<T extends BaseModel> implements PagingAndSortingRepository<T, Integer> {
 	
@@ -14,6 +19,13 @@ public abstract class BaseServiceProxy<T extends BaseModel> implements PagingAnd
 	@Override
 	public <S extends T> S save(S entity) {
 		// TODO Auto-generated method stub
+		if(entity.getInsertTime()==null) {
+			entity.setInsertTime(new Date());
+		}
+		if(StringUtils.isEmpty(entity.getInsertUserId())) {
+			UserDetailsAdapter uda =  (UserDetailsAdapter) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			entity.setInsertUserId(uda.getUser().getId());
+		}
 		return getBaseRepository().save(entity);
 	}
 
