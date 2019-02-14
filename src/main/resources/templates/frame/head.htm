@@ -1,1 +1,35 @@
-<div id="head">head</div>
+<div id="head">
+	<div class="left">
+		<h3>XXXX管理系统sfsfsfsfsfasfs</h3>
+	</div>
+	<div class="right">
+		<a href="/logout" class="pure-button"><i class="fa fa-hand-o-right"></i>退出登录</a>
+		<a href="/" class="pure-button">
+			<i class="fa fa-user-circle-o fa-lg"></i>
+			欢迎
+			<em>
+			<#if Session["login_user"]?exists>
+			    ${Session["login_user"].nickName}
+			</#if>
+			</em>
+			登录!
+		</a>
+		<a class="pure-button">
+			2019-02-14 星期三
+		</a>
+		<a class="pure-button" title="切换项目">
+			<i class="fa fa-refresh fa-lg"></i>
+			项目1
+			<i class="fa fa-angle-down"></i>
+		</a>
+       	<a href="#" class="pure-button" >
+       		<i class="fa fa-envelope-o fa-lg"></i>
+			<span class="tip button-warning">10</span>
+		</a>
+       	<a href="#" class="pure-button">
+       		<i class="fa fa-bell-o fa-lg"></i>
+			<span class="tip button-success">10</span>
+		</a>
+		
+	</div>
+</div>

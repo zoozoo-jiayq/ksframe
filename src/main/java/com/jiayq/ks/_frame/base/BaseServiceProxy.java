@@ -12,7 +12,7 @@ import org.springframework.util.StringUtils;
 
 import com.jiayq.ks._frame.security.UserDetailsAdapter;
 
-public abstract class BaseServiceProxy<T extends BaseModel> implements PagingAndSortingRepository<T, Integer> {
+public abstract class BaseServiceProxy<T extends BaseModel> implements PagingAndSortingRepository<T, String> {
 	
 	abstract protected BaseRepository<T> getBaseRepository();
 
@@ -36,13 +36,13 @@ public abstract class BaseServiceProxy<T extends BaseModel> implements PagingAnd
 	}
 
 	@Override
-	public Optional<T> findById(Integer id) {
+	public Optional<T> findById(String id) {
 		// TODO Auto-generated method stub
 		return getBaseRepository().findById(id);
 	}
 
 	@Override
-	public boolean existsById(Integer id) {
+	public boolean existsById(String id) {
 		// TODO Auto-generated method stub
 		return getBaseRepository().existsById(id);
 	}
@@ -54,7 +54,7 @@ public abstract class BaseServiceProxy<T extends BaseModel> implements PagingAnd
 	}
 
 	@Override
-	public Iterable<T> findAllById(Iterable<Integer> ids) {
+	public Iterable<T> findAllById(Iterable<String> ids) {
 		// TODO Auto-generated method stub
 		return getBaseRepository().findAllById(ids);
 	}
@@ -66,7 +66,7 @@ public abstract class BaseServiceProxy<T extends BaseModel> implements PagingAnd
 	}
 
 	@Override
-	public void deleteById(Integer id) {
+	public void deleteById(String id) {
 		// TODO Auto-generated method stub
 		getBaseRepository().deleteById(id);
 	}

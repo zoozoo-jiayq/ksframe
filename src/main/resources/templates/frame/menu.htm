@@ -1,12 +1,23 @@
 <div id="menu">
+	<div class="headimg">
+		<i class="fa fa-user-circle-o fa-3x"></i>
+		<div class="headinfo">
+			<span>
+			<#if Session["login_user"]?exists>
+			    ${Session["login_user"].nickName}
+			</#if>
+			</span>
+		</div>
+	</div>
 	<div class="pure-menu">
+	<span class="pure-menu-heading">项目1</span>
 	    <ul class="pure-menu-list">
 	        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-address-book"></i>Flickr</a></li>
-	        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Messenger</a></li>
-	        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sports</a></li>
-	        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Finance</a></li>
+	        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-address-book"></i>Messenger</a></li>
+	        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-address-book"></i>Sports</a></li>
+	        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-address-book"></i>Finance</a></li>
 	        <li class="pure-menu-item pure-menu-has-children">
-	            <a href="#" id="menuLink1" class="pure-menu-link">More</a>
+	            <a href="#" id="menuLink1" class="pure-menu-link"><i class="fa fa-address-book"></i>More</a>
 	            <ul class="pure-menu-children">
 	                <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-circle-o"></i>Autos</a></li>
 	                <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-circle-o"></i>Flickr</a></li>

@@ -10,6 +10,8 @@ import com.jiayq.ks._frame.base.BaseController;
 @Controller
 public class LoginController extends BaseController {
 	
+	private final String LOGIN_USER_KEY = "login_user";
+	
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String login(ModelMap model){
 		return "login";
@@ -18,6 +20,7 @@ public class LoginController extends BaseController {
 	
 	@RequestMapping("/")
 	public String home(ModelMap model){
+		request.getSession().setAttribute(LOGIN_USER_KEY, getCurrentUser());
 		return "index";
 	}
 	
