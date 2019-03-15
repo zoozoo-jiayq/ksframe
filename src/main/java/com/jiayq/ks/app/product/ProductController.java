@@ -1,20 +1,23 @@
 package com.jiayq.ks.app.product;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.jiayq.ks._frame.base.BaseController;
 import com.jiayq.ks._frame.utils.Variant;
+import com.jiayq.ks.app.Constant;
 import com.jiayq.ks.app.projectproduct.ProjectProduct;
 import com.jiayq.ks.app.projectproduct.ProjectProductService;
 
-@Controller
+@RestController
 @RequestMapping("/product")
 public class ProductController extends BaseController {
 
@@ -24,42 +27,79 @@ public class ProductController extends BaseController {
 	private ProjectProductService projectProductService;
 	
 	@RequestMapping("list")
-	@Override
-	public String list(Model model) {
+	public Object all(Model model) {
 		// TODO Auto-generated method stub
 		String search = Variant.valueOf(model.asMap().get("search")).stringValue("");
 		Page<Product> page = productService.findByName("%"+search+"%", getPage());
-		model.addAttribute("page", page);
-		return "product/list";
+		return SUCCESS_PAGE(page);
 	}
 	
-	@RequestMapping("/form")
-	@Override
-	public String form(Model model) {
-		// TODO Auto-generated method stub
-		model.addAttribute("product", new Product());
-		return "product/form";
-	}
-	
-	@RequestMapping(value = "/form",method = RequestMethod.POST)
-	public String doform(Product product) {
+	@RequestMapping(value="form",method = RequestMethod.POST)
+	public Object doform(Product product) {
 		productService.save(product);
-		return "redirect:/product/list";
+		return SUCCESS();
 	}
 	
-	@RequestMapping("/{projectId}/list")
-	public String mylist(Model model,@PathVariable("projectId")String projectId) {
-		Page<Product> page = productService.findMyProduct(projectId, getPage());
-		model.addAttribute("page", page);
-		return "product/mylist";
+	@RequestMapping("/belongProject")
+	public Object mylist() {
+		Page<Product> page = productService.findMyProduct(getCurrentUser().getProjectId(), getMaxPage());
+		List<Product> products = page.getContent();
+		return products;
 	}
 	
-	@RequestMapping(value="/{projectId}/form",method = RequestMethod.POST)
-	public String add(Model model,@PathVariable("projectId")String projectId,String productId) {
-		ProjectProduct pp = new ProjectProduct();
-		pp.setProjectId(projectId);
-		pp.setProductId(productId);
-		projectProductService.save(pp);
-		return "redirect:/product/"+projectId+"/list";
+	/**
+	 * 已选产品类型
+	 * @param model
+	 * @param projectId
+	 * @return
+	 */
+	@RequestMapping("/selectedlist")
+	public Object mylist(Model model) {
+		Page<Product> page = productService.findMyProduct(getCurrentUser().getProjectId(), getPage());
+		for(int i=0; i<page.getContent().size(); i++) {
+			Product p = page.getContent().get(i);
+			ProjectProduct pd = projectProductService.findByProjectIdAndProductId(getCurrentUser().getProjectId(), p.getId());
+			p.setStatus(pd.getStatus());
+		}
+		return SUCCESS_PAGE(page);
+	}
+	
+	@RequestMapping(value="/addToProject",method = RequestMethod.POST)
+	public Object add(String ids) {
+		String projectId = getCurrentUser().getProjectId();
+		if(ids!=null) {
+			String[] idlist = ids.split(",");
+			List<ProjectProduct> pflist = new ArrayList<>();
+			if(idlist!=null && idlist.length>0) {
+				Page<Product> selectedProductlist = productService.findMyProduct(projectId, getMaxPage());
+				for(int i=0; i<idlist.length; i++) {
+					if(!isExist(idlist[i], selectedProductlist.getContent())) {
+						ProjectProduct pp = new ProjectProduct();
+						pp.setProjectId(projectId);
+						pp.setProductId(idlist[i]);
+						pp.setStatus(Constant.STATUS_ENABLE);
+						pflist.add(pp);
+					}
+				}
+				projectProductService.saveAll(pflist);
+			}
+		}
+		return SUCCESS();
+	}
+	
+	@RequestMapping("start")
+	public Object start(String id) {
+		ProjectProduct pf = projectProductService.findByProjectIdAndProductId(getCurrentUser().getProjectId(), id);
+		pf.setStatus(Constant.STATUS_ENABLE);
+		projectProductService.save(pf);
+		return SUCCESS();
+	}
+	
+	@RequestMapping("stop")
+	public Object stop(String id) {
+		ProjectProduct pf = projectProductService.findByProjectIdAndProductId(getCurrentUser().getProjectId(), id);
+		pf.setStatus(Constant.STATUS_DISABLE);
+		projectProductService.save(pf);
+		return SUCCESS();
 	}
 }

@@ -1,0 +1,45 @@
+<#import "../frame/frame.htm" as f/>
+<@f.main>
+
+<ul id="breadcrumb">
+  <li><a href="#"><span class="fa fa-home"> </span></a></li>
+  <li><a href="#"><span class="fa fa-cog"> </span>项目设置</a></li>
+  <li><a href="#"><span class="fa fa-double-angle-right"></span> 基础设置</a></li>
+</ul>
+
+<div class="maincontent">
+<div class="easyui-panel " title="编辑项目基本属性" style="padding: 10px">
+<form class="easyui-form" action="form" id="ff"  method="post" data-options="novalidate:true">
+<input type="hidden" name="id" value="${project.id!''}"/>
+    	
+    	<div style="margin:20px 0">
+			<input class="easyui-textbox" name="name" style="width:100%" data-options="label:'项目名称:',required:true,missingMessage:'项目名称不能为空'" value="${project.name!''}">
+		</div>
+
+		<div style="margin:20px 0">
+			<input class="easyui-textbox" name="addr" style="width:100%" data-options="label:'项目地址:',required:false" value="${project.addr!''}">
+		</div>
+		
+		<div style="margin:20px 0">
+			<input class="easyui-textbox" name="remark" style="width:100%;height:100px" data-options="label:'备注:',multiline:true" value="${project.remark!''}">
+		</div>
+		
+</form>
+<div style="text-align:center;padding:5px 0">
+	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">确定</a>
+</div>
+</div>
+</div>
+</@f.main>
+<script>
+function submitForm(){
+	$('#ff').form('submit',{
+		onSubmit:function(){
+			return $(this).form('enableValidation').form('validate');
+		},
+		success:function(){
+			window.location.reload()
+		}
+	});
+}
+</script>

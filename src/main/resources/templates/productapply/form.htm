@@ -1,0 +1,53 @@
+<#import "../frame/frame.htm" as f/>
+<@f.main>
+<ul id="breadcrumb">
+  <li><a href="#"><span class="fa fa-home"> </span></a></li>
+  <li><a href="#"><span class="fa fa-cog"> </span>生产管理</a></li>
+  <li><a href="#"><span class="fa fa-file"></span> 产量申报</a></li>
+</ul>
+<div class="maincontent">
+<div class="easyui-panel " title="产量申报" style="padding: 10px">
+<form class="easyui-form" action="form" id="ff"  method="post" data-options="novalidate:true">
+			<input type="hidden" name="applyerId" value="${pa.applyerId}">
+			<input type="hidden" name="applyerName" value="${pa.applyerName}">
+		<div style="margin:20px 0">
+			<input class="easyui-textbox" disabled="disabled" style="width:100%" data-options="label:'申报人:',required:false" value="${pa.applyerName!''}">
+		</div>
+		<div style="margin:20px 0">
+			<input class="easyui-datebox" name="applyDate" style="width:100%"  data-options="label:'申报日期:',required:true,formatter:_.formatDate,parser:_.parseDate" >
+		</div>
+    	
+    	<div style="margin:20px 0">
+			<select class="easyui-combobox" name="productId" style="width:100%" data-options="label:'产品类型:',required:true,missingMessage:'产品类型不能为空'" >
+				<#list products as p>
+					<option value="${p.id}">${p.name}(${p.unit!'未知'})</option>
+				</#list>
+			</select>
+		</div>
+		<div style="margin:20px 0">
+			<input class="easyui-textbox" name="amount" style="width:100%"  data-options="label:'申报产量:',required:true,missingMessage:'申报产量不能为空'" >
+		</div>
+		
+</form>
+<div style="text-align:center;padding:5px 0">
+	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="product.submitForm()" style="width:80px">确定</a>
+</div>
+</div>
+</div>
+</@f.main>
+<script>
+var product = {
+		submitForm:function(){
+			$('#ff').form('submit',{
+				onSubmit:function(){
+					return $(this).form('enableValidation').form('validate');
+				},
+				success:function(){
+					$.messager.alert('消息','申报成功！','info',function(){
+						window.location.reload()
+					});
+				}
+			});
+		}
+}
+</script>

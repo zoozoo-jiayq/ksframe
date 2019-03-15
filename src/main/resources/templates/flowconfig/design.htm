@@ -1,0 +1,184 @@
+<#import "../frame/frame.htm" as f/>
+<@f.main>
+	<ul id="breadcrumb">
+	  <li><a href="#"><span class="fa fa-home"> </span></a></li>
+	  <li><a href="/flowconfig/index"><span class="fa fa-cog"> </span>流程设计</a></li>
+	  <li><a href="#"><span class="fa fa-double-angle-right"></span> 费用审批流程</a></li>
+	</ul>
+	
+	<div class="maincontent" style="width:70%">
+		<div style="display: flex;justify-content: space-around;">
+			<div style="background-color: #fff;width: 50px;border: 1px solid #3FAEE6;border-right:none;text-align: center">
+				<label style="display: block;border-bottom: 1px solid #ccc;font-size: 12px;padding: 10px 0">工具栏</label>
+				<a class="flowop" title="保存" onclick="flowop.tosave()"><img alt="" src="/app/imgs/flow-save.png" ></a>
+				<a class="flowop" style="border-bottom: 1px solid #eee" title="另存为" onclick="flowop.saveAs()"><img alt="" src="/app/imgs/flow-saveas.png" ></a>
+				<a class="flowop" title="开始节点" onclick="flowop.createStart()"><img alt="" src="/app/imgs/flow-start.png" ></a>
+				<a class="flowop" title="结束节点" onclick="flowop.createEnd()"><img alt="" src="/app/imgs/flow-end.png" ></a>
+				<a class="flowop" style="border-bottom: 1px solid #eee" title="任务节点" onclick="flowop.createtask(this)"><img alt="" src="/app/imgs/flow-node.png" ></a>
+				<a class="flowop" title="连线" onclick="flowop.changemode('line',this)" id="linea"><img alt="" src="/app/imgs/flow-line.png" ></a>
+				<a class="flowop" title="选择" onclick="flowop.changemode('select',this)" id="selecta"><img alt="" src="/app/imgs/flow-select.png" ></a>
+			</div>
+			<div id="flowconfig" style="width: 96%;height:calc(100vh - 250px);background-color: #fff;position: relative; border:1px solid #3FAEE6"></div>
+		</div>
+	</div>
+	
+	<!-- 编辑任务节点 -->
+	<div id="saveNode" class="easyui-dialog" title="编辑任务" style="width: 400px;padding:10px" data-options="closed:true,iconCls:'icon-add',buttons:'#createTaskNode'">
+		<form class="easyui-form" action="#" id="editNode"  method="post" data-options="novalidate:true">
+			<input type="hidden" name="nodeid" id="nodeid" />
+	    	<div style="margin:20px 0">
+				<input class="easyui-textbox" name="taskName" id="taskname" style="width:280px" data-options="label:'任务名称:',required:true,missingMessage:'任务名称不能为空'" >
+			</div>
+			<div style="margin:20px 0">
+				<input class="easyui-combobox" name="approverId" id="approverid" style="width:280px;" data-options="
+				label:'审批人:',
+				required:true,
+				url: '/user/comboxselect',
+				method: 'get',
+				valueField:'id',
+				textField:'nickName',
+				groupField:'role'
+			">
+			</div>
+		</form>
+	</div>
+	<div id="createTaskNode">
+		<a href="#" class="easyui-linkbutton" onclick="flowop.saveNode()">保存</a>
+		<a href="#" class="easyui-linkbutton" onclick="$('#saveNode').dialog('close')">关闭</a>
+	</div>
+	
+	<!-- 保存当前版本的流程 -->
+	<div id="saveVersion" class="easyui-dialog" title="保存流程信息" style="width: 400px;padding:10px" data-options="closed:true,iconCls:'icon-add',buttons:'#createVersion'">
+		<form class="easyui-form" action="/flowconfig/saveVersion" id="editVersion"  method="post" data-options="novalidate:true">
+			<input type="hidden" name="workflowId" id="workflowId" value="${workflowId!''}"/>
+			<input type="hidden" name="id" id="workflowVersionId" value="${versionId!''}"/>
+			<input type="hidden" name="config" id="config"/>
+	    	<div style="margin:20px 0">
+				<input class="easyui-textbox" name="version" id="version" style="width:280px" data-options="label:'版本号:',required:true,missingMessage:'版本号不能为空'" >
+			</div>
+			<div style="margin:20px 0">
+				<input class="easyui-textbox" name="remark" data-options="multiline:true,label:'备注:'" style="height:60px;width: 280px" ></input>
+			</div>
+			<div style="margin:20px 0">
+				<label style="display: inline-block;width: 80px">状态:</label>
+				<input class="easyui-radiobutton" name="status" data-options="labelWidth:'40px'" value="100" label="启用:">
+				<input class="easyui-radiobutton" name="status" data-options="labelWidth:'40px'" value="200" label="禁用:">
+			</div>
+		</form>
+	</div>
+	<div id="createVersion">
+		<a href="#" class="easyui-linkbutton" onclick="flowop.saveVersion()">保存</a>
+		<a href="#" class="easyui-linkbutton" onclick="$('#saveVersion').dialog('close')">关闭</a>
+	</div>
+	
+		
+	<script type="text/javascript">
+		var flowop = {
+				taskIndex:0,
+				changemode:function(mode,e){
+					this.mode = mode;
+					$(".flowop").removeClass("flowopselected");
+					$(e).addClass("flowopselected")
+				},
+				createtask:function(e){
+					this.changemode("select",$("#selecta"));
+					var task = flow.drawTask(300+this.taskIndex*50,150+this.taskIndex*50+5,"审批节点",null);
+					task.eles.parent.click(clickEvent);
+					this.taskIndex++;
+					
+				},
+				createStart:function(){
+					this.changemode("select",$("#selecta"));
+					var begin = flow.drawBegin(100,100);
+					begin.eles.parent.click(clickEvent);
+				},
+				createEnd:function(){
+					this.changemode("select",$("#selecta"));
+					var end = flow.drawEnd(100,300);
+					end.eles.parent.click(clickEvent);
+				},
+				saveNode:function(){
+					$('#editNode').form('submit',{
+						onSubmit:function(){
+							return $(this).form('enableValidation').form('validate');
+						},
+						success:function(){
+							flow.getById($("#nodeid").val()).data("textinfo",{
+								taskname:$("#taskname").val(),
+								approverid:$("#approverid").combobox('getValue'),
+								approvername:$("#approverid").combobox("getText")
+							})
+							flow.update($("#nodeid").val());
+							$("#saveNode").dialog("close");
+						}
+					});
+				},
+				tosave:function(){
+					var versionId = $("#workflowVersionId").val();
+					$("#saveVersion").dialog("open");
+					
+				},
+				saveAs:function(){
+					$("#workflowVersionId").val("");
+					var workflowId = $("#workflowId").val();
+					$.get('/flowconfig/versionInit?workflowId='+workflowId,function(data){						
+						$("#editVersion").form("load",data.data);
+						$("#saveVersion").dialog("open")
+					})
+				},
+				saveVersion:function(){
+					var result = JSON.stringify(flow.toString());
+					$("#config").val(result);
+					$("#editVersion").form("submit",{
+						onSubmit:function(){
+							return $(this).form('enableValidation').form('validate');
+						},
+						success:function(d){
+							d = JSON.parse(d);
+							var versionId = d.data.id;
+							window.location.href="/flowconfig/design?versionId="+versionId;
+							//$('#saveVersion').dialog('close');
+						}
+					})
+				}
+				
+		}
+		//点击连线
+		function clickEvent(e){
+			if(flowop.mode == 'line'){
+				if(!flowop.startNode){
+					flowop.startNode = flow.getById(e.target.raphaelid);					
+				}else{
+					flowop.endNode = flow.getById(e.target.raphaelid);
+					flow.line(flowop.startNode,flowop.endNode)
+					flowop.startNode = flowop.endNode;
+				}
+			}	
+		}
+		
+		(function init(){
+			//初始化画板
+			flow.init();
+			
+			//初始化为选择模式
+			flowop.changemode("select",$("#selecta"))
+			
+			//初始化表单
+			var workflowId = $("#workflowId").val();
+			var versionId = $("#workflowVersionId").val();
+			
+			//加载数据
+			$.get('/flowconfig/versionInit?workflowId='+workflowId+"&versionId="+versionId,function(data){
+				var r = data.data;
+				$('#editVersion').form('load', r);
+				flow.load(JSON.parse(r.config))
+			})
+			
+		})()
+		
+		
+		
+		
+		
+	</script>
+</@f.main>

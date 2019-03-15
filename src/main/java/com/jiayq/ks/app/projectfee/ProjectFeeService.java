@@ -21,4 +21,7 @@ public class ProjectFeeService extends BaseServiceProxy<ProjectFee> {
 		return projectFeeDao;
 	}
 
+	public ProjectFee findByProjectIdAndFeeId(String projectId,String feeId) {
+		return projectFeeDao.findOneByProjectIdAndFeeId(projectId, feeId);
+	}
 }

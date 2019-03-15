@@ -2,6 +2,7 @@ package com.jiayq.ks._frame.security;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.jiayq.ks._frame.base.BaseModel;
 
@@ -12,12 +13,41 @@ public class LoginUser extends BaseModel  {
 	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
-	private boolean accountNonExpired;
-	private boolean accountNonLocked;
-	private boolean credentialsNonExpired;
-	private boolean enabled;
+	private boolean accountNonExpired = true;
+	private boolean accountNonLocked = true;
+	private boolean credentialsNonExpired = true;
+	private boolean enabled = true;
 	private String nickName;
 	private String phone;
+	private String projectId;
+	private String projectName;
+	
+	@Transient
+	private String role;
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getProjectName() {
+		return projectName;
+	}
+
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+
+	public String getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(String projectId) {
+		this.projectId = projectId;
+	}
 
 	public String getPhone() {
 		return phone;

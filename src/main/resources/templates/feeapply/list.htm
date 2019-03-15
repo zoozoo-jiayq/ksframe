@@ -1,0 +1,55 @@
+<#import "../frame/frame.htm" as f/>
+<@f.main>
+<ul id="breadcrumb">
+  <li><a href="#"><span class="fa fa-home"> </span></a></li>
+  <li><a href="#"><span class="fa fa-cog"> </span>费用管理</a></li>
+  <li><a href="#"><span class="fa fa-list"></span>申请记录</a></li>
+</ul>
+
+<div class="maincontent">
+<table id="myapplylist" class="easyui-datagrid" title="" style="min-height: 400px;width: 100%;"
+			data-options="rownumbers:true,singleSelect:true,url:'/feeapply/myapply',method:'get',loadMsg:'加载中...',
+			nowrap:true,pagination:true,onLoadSuccess:function(data){
+				if(data.rows.length == 0){
+					var body = $(this).data().datagrid.dc.body2;
+					var width = body.width();
+					body.find('table tbody').append('<h5 style=\'width:700px;text-align:center;color:#aeaeae;font-size:12px\'>暂无数据!</h5>');
+				}
+			}">
+	<thead>
+		<tr>
+			<th data-options="field:'applyDate',width:110,align:'center'">申请日期</th>
+			<th data-options="field:'feeTypeName',align:'center',width:120">费用类型</th>
+			<th data-options="field:'money',align:'center',width:110">申请金额</th>
+			<th data-options="field:'remark',align:'center',width:220">备注</th>
+			<th data-options="field:'status',width:100,align:'center',formatter:fee.formatState">审批状态</th>
+			<th data-options="field:'workflowInstanceId',width:100,align:'center',formatter:fee.ops">操作</th>
+		</tr>
+	</thead>
+</table>
+</div>
+
+<script>
+var fee = {
+		formatState:function(val,index){
+			if(val == 100){
+				return "审批中";
+			}
+			if(val == 200){
+				return "审批通过";
+			}
+			if(val == 300){
+				return "拒绝申请";
+			}
+		},
+		ops:function(val,ele){
+			return "<a class='maincolor' style='cursor:pointer' onclick='fee.view(\""+val+"\")'>查看进度</a>"
+		},
+		view:function(val,ele){
+			console.log(val);
+		}
+
+}
+</script>
+	
+</@f.main>

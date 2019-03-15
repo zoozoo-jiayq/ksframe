@@ -1,0 +1,104 @@
+
+<div style="padding: 10px ">
+	<div style="padding: 20px;margin-bottom:20px;border-bottom: 1px solid #ccc">
+		<label>开始日期:</label>
+		<input class="easyui-datebox" id="begin" name="begin" value="${begin?string('yyyy-MM-dd')}" style="width:150px;height: 26px"   data-options="formatter:_.formatDate,parser:_.parseDate" >
+		<label>截止日期:</label>
+		<input class="easyui-datebox" id="end" name="end" style="width:150px;height: 26px" value="${.now?string('yyyy-MM-dd')}"  data-options="formatter:_.formatDate,parser:_.parseDate" >
+		<label>产出类型:</label>
+		<input class="easyui-combobox" id="productIds"   style="width: 350px;height: 26px" name="products" data-options="url:'/product/belongProject',method:'get',valueField:'id',textField:'name',multiple:true,panelHeight:'auto',editable:false" />
+		<a href="#" class="easyui-linkbutton" style="height: 26px" onclick="dayreport.searchByDay()" data-options="iconCls:'icon-search'">查询</a>
+	</div>
+	<div style="width: 1000px;height: 350px;margin-bottom: 10px" id="daychart"></div>
+</div>
+	
+<script type="text/javascript">
+	
+	jQuery(document).ready(function(){
+		dayreport.defaultSearchByDay();
+	})
+	
+	var dayreport = {
+		searchByDay:function(){
+			this.buildDayCharts();
+		},
+		defaultSearchByDay:function(){
+			var self = this;
+			$.get("/product/belongProject",function(data){
+				var productIds = [];
+				for(var i=0; i<data.length; i++){
+					productIds.push(data[i].id);
+				}
+				$("#productIds").combobox("setValues",productIds);
+				self.buildDayCharts(productIds.join(","));
+			})
+		},
+		buildDayCharts:function(){
+				var begin = $("#begin").val();
+				var end =  $("#end").val();
+				var productIds = $("#productIds").combobox("getValues");
+				$.get("/report/productDayAmount?begin="+begin+"&end="+end+"&productIds="+productIds,function(data){
+					var result = data.data.data;
+					var legends = [];
+					var series = [];
+					for(var k in result){
+						legends.push(k);
+						series.push({
+				            name:k,
+				            type:'line',
+				            data:result[k],
+				            markPoint : {
+				                data : [
+				                    {type : 'max', name: '最高产出'},
+				                    {type : 'min', name: '最低产出'}
+				                ]
+				            },
+				            markLine : {
+				                data : [
+				                    {type : 'average', name: '平均值'}
+				                ]
+				            }
+				        })
+					}
+					var xcategory = data.data.x;
+					var option = {
+						    title : {text: '日产量变化图',subtext: '以录入数据为准'},
+						    tooltip : { trigger: 'axis' },
+						    legend: {
+						        data:legends
+						    },
+						    toolbox: {
+						        show : true,
+						        feature : {
+						            mark : {show: true},
+						            dataView : {show: true, readOnly: false},
+						            magicType : {show: true, type: ['line', 'bar']},
+						            restore : {show: true},
+						            saveAsImage : {show: true}
+						        }
+						    },
+						    calculable : true,
+						    xAxis : [
+						        {
+						            type : 'category',
+						            boundaryGap : false,
+						            data : xcategory
+						        }
+						    ],
+						    yAxis : [
+						        {
+						            type : 'value',
+						            axisLabel : {
+						                formatter: '{value}'
+						            }
+						        }
+						    ],
+						    series : series
+						};
+					var myChart = echarts.init(document.getElementById('daychart'),"macarons");
+					myChart.setOption(option);
+				})
+		}
+	}
+
+</script>	

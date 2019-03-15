@@ -19,12 +19,14 @@ public abstract class BaseServiceProxy<T extends BaseModel> implements PagingAnd
 	@Override
 	public <S extends T> S save(S entity) {
 		// TODO Auto-generated method stub
-		if(entity.getInsertTime()==null) {
-			entity.setInsertTime(new Date());
+		if(entity.getInserttime()==null) {
+			entity.setInserttime(new Date());
 		}
 		if(StringUtils.isEmpty(entity.getInsertUserId())) {
-			UserDetailsAdapter uda =  (UserDetailsAdapter) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			entity.setInsertUserId(uda.getUser().getId());
+			if(SecurityContextHolder.getContext()!=null && SecurityContextHolder.getContext().getAuthentication()!=null && SecurityContextHolder.getContext().getAuthentication().getPrincipal()!=null) {
+				UserDetailsAdapter uda =  (UserDetailsAdapter) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+				entity.setInsertUserId(uda.getUser().getId());
+			}
 		}
 		return getBaseRepository().save(entity);
 	}

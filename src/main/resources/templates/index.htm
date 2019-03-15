@@ -1,4 +1,95 @@
 <#import "frame/frame.htm" as f/>
 <@f.main>
-	内容
+<ul id="breadcrumb">
+  <li><a href="#"><span class="fa fa-home"> </span></a></li>
+  <li><a href="#"><span class="fa fa-cog"> </span>控制面板</a></li>
+</ul>
+	<div class="maincontent" style="width:80%">
+		<div  class="easyui-panel"  style="width:100%;;padding:10px;margin-top:0px;">
+			<!-- 如果用户已经有项目，但是还是没有选择项目，提示选择一个项目 -->
+			<#if Session["my_projects"]?exists>
+				<h4 style="border-bottom: 1px solid #ccc;line-height: 30px;font-weight: normal;margin-bottom: 10px">选择项目</h4>
+				<ul style="display: flex;justify-content: flex-start;">
+					<li class="projects maincolor" ><a style="padding: 5px 0" href="/project/form"><i class="fa fa-plus" style="margin:0 2px"></i>创建项目</a></li>
+					<#list Session["my_projects"] as p>
+						<li class="projects" id="${p.id}" ><a  href="/project/select/${p.id}" style="padding: 5px 0"><i class="fa fa-truck" style="margin:0 5px"></i>${p.name}</a></li>
+					</#list>
+				</ul>
+			<#else>
+				<!-- 如果用户还没有任何项目，提示先建项目，然后配置项目 -->
+				<h4 style="width: 100%;text-align: center;"><span>您还没有项目，是否立即</span><a href="/project/form" class="maincolor" style="cursor: pointer;"><i class="fa fa-plus" style="margin:0 5px"></i>创建?</a></h4>
+			</#if>
+		</div>
+		<#if Session["login_user"].projectId?exists>
+			<div  class="easyui-panel"  style="width:100%;padding: 10px ;margin: 20px 0">
+				<h4 style="border-bottom: 1px solid #ccc;line-height: 30px;font-weight: normal;margin-bottom: 10px ">项目：${Session['login_user'].projectName}</h4>
+				<div class="configtainer">
+					<div class="config " ><a href="/project/form?projectId=${Session["login_user"].projectId}"><i class="fa fa-cog" style="padding: 0 5px"></i>基本配置</a></div>
+					<div class="configline"></div>
+					<div class="config" id="configfee"><a href="/"><i class="fa fa-rmb" style="padding: 0 5px"></i>费用配置</a></div>
+					<div class="configline"></div>
+					<div class="config" id="configproduct"><a><i class="fa fa-truck" style="padding: 0 5px"></i>产出配置</a></div>
+					<div class="configline"></div>
+					<div class="config" id="configuser"><a><i class="fa fa-user" style="padding: 0 5px"></i>人员配置</a></div>
+				</div>
+			</div>
+		</#if>
+		<div style="display: flex;justify-content: space-around;">
+		<div  class="easyui-panel"  title="费用申请记录" style="width:40%;;padding:10px;">
+			<!-- 我的申请，待审批 -->
+		</div>
+		<div  class="easyui-panel" title="产出申报记录"  style="width:40%;;padding:10px;">
+			<!-- 我的申请，待审批 -->
+			<table id="applyTable" class="easyui-datagrid " title="" style="min-height: 100px;max-height:200px;width: 100%;"
+			data-options="rownumbers:true,singleSelect:true,url:'/productapply/listdata',method:'get',toolbar:'',loadMsg:'加载中...',
+			nowrap:true,onLoadSuccess:function(data){
+				if(data.rows.length == 0){
+					var body = $(this).data().datagrid.dc.body2;
+					var width = body.width();
+					body.find('table tbody').append('<h5 style=\'width:700px;text-align:center;color:#aeaeae;font-size:12px\'>暂无数据!</h5>');
+				}
+			}">
+				<thead>
+					<tr>
+						<th data-options="field:'applyerName',width:100,align:'center'">申报人</th>
+						<th data-options="field:'applyDate',width:100,align:'center'">申报日期</th>
+						<th data-options="field:'productName',align:'center',width:100">生产类型</th>
+						<th data-options="field:'amount',align:'center',width:100,formatter:product.formatOps">申报产量</th>
+					</tr>
+				</thead>
+			</table>
+			<a href="/productapply/list" style="padding: 3px;cursor: pointer;float: right;" class="maincolor">查看更多...</a>
+		</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			$(".projects").each(function(index,e){
+				console.log(window.projectId)
+				if($(e).attr("id") == '${Session["login_user"].projectId}'){
+					$(e).children("a").addClass("selectedproject");
+				}
+			})
+			/*
+			$.get("/project/configinfo",function(data){
+				console.log(data);
+				var d = data.data;
+				if(d.fee>0){
+					$("#configfee").addClass("configignore");
+				}
+				if(d.product>0){
+					$("#configproduct").addClass("configignore")
+				}
+				if(d.user>1){
+					$("#configuser").addClass("configignore");
+				}
+			})
+			*/
+		})
+		var product = {
+			formatOps:function(val,index){
+				return val+"("+index.unit+")";
+			}
+		}
+	</script>
 </@f.main>

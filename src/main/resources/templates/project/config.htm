@@ -1,0 +1,21 @@
+<#import "../frame/frame.htm" as f/>
+<@f.main>
+<ul id="breadcrumb">
+  <li><a href="#"><span class="fa fa-home"> </span></a></li>
+  <li><a href="#"><span class="fa fa-cog"> </span>项目设置</a></li>
+  <li><a href="#"><span class="fa fa-double-angle-right"></span> 高级设置</a></li>
+</ul>
+
+<div id="tt" class="easyui-tabs maincontent" style="">
+	<div title="费用类型">
+		<#include "./config_fee.htm" />
+	</div>
+	<div title="产出类型">
+		<#include "./config_product.htm" />
+	</div>
+	<div title="人员管理">
+		<#include "./config_user.htm"/>
+	</div>
+</div>
+	
+</@f.main>

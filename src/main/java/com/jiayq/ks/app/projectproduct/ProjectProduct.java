@@ -16,6 +16,14 @@ public class ProjectProduct extends BaseModel{
 
 	private String projectId;
 	private String productId;
+	private int status;
+	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	public String getProjectId() {
 		return projectId;
 	}

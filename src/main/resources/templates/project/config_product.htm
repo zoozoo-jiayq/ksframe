@@ -1,0 +1,136 @@
+<!-- tab -->
+<table id="selectedProductTable" class="easyui-datagrid" title="" style="min-height: 400px;width: 100%;"
+			data-options="rownumbers:true,singleSelect:true,url:'/product/selectedlist',method:'get',toolbar:'#productdatagridtoolbar',loadMsg:'加载中...',
+			nowrap:true,pagination:true,onLoadSuccess:function(data){
+				if(data.rows.length == 0){
+					var body = $(this).data().datagrid.dc.body2;
+					var width = body.width();
+					body.find('table tbody').append('<h5 style=\'width:700px;text-align:center;color:#aeaeae;font-size:12px\'>暂无数据!</h5>');
+				}
+			}">
+	<thead>
+		<tr>
+			<th data-options="field:'name',width:100,align:'center'">产出类型</th>
+			<th data-options="field:'unit',width:100,align:'center'">计量单位</th>
+			<th data-options="field:'status',width:100,align:'center',formatter:product.formatState">状态</th>
+			<th data-options="field:'remark',align:'center',width:340">说明</th>
+			<th data-options="field:'id',align:'center',width:100,formatter:product.formatOps">操作</th>
+		</tr>
+	</thead>
+</table>
+
+<div id="productdatagridtoolbar">
+	<a href="#" class="easyui-linkbutton" onclick="$('#selectProductDialog').dialog('open')" data-options="iconCls:'icon-add'">添加</a>
+</div>
+
+<!-- 选择费用库对话框 -->
+<div id="selectProductDialog" class="easyui-dialog" title="选择产出类型" style="padding:10px"
+			data-options="
+				closed:true,
+				iconCls: 'icon-filter',
+				buttons: '#selectProductDialogButtons'
+			">
+	<table id="globalProductTable" class="easyui-datagrid" title="公共产出类型" style="min-height: 400px;width: 600px"
+			data-options="rownumbers:true,singleSelect:true,url:'/product/list',method:'get',toolbar:'#selectProductdialogtools',loadMsg:'加载中...',
+			nowrap:true,pagination:true,selectOnCheck:true,singleSelect:false,onLoadSuccess:function(data){
+				if(data.rows.length == 0){
+					var body = $(this).data().datagrid.dc.body2;
+					var width = body.width();
+					body.find('table tbody').append('<h5 >暂无数据!</h5>');
+				}
+			}">
+	<thead>
+		<tr>
+			<th data-options="field:'ck',checkbox:true"></th>
+			<th data-options="field:'name',width:150,align:'center'">产出类型</th>
+			<th data-options="field:'unit',width:150,align:'center'">计量单位</th>
+			<th data-options="field:'remark',align:'center',width:230">说明</th>
+		</tr>
+	</thead>
+</table>
+</div>
+<div id="selectProductDialogButtons">
+	<a href="#" class="easyui-linkbutton" onclick="product.select()">确定</a>
+	<a href="#" class="easyui-linkbutton" onclick="$('#selectProductDialog').dialog('close')">关闭</a>
+</div>
+<div id="selectProductdialogtools">
+	<a href="#" class="easyui-linkbutton" onclick="$('#createProductDialog').dialog('open')" data-options="iconCls:'icon-add'">新增</a>
+</div>
+
+<!-- 创建费用类型 -->
+<div id="createProductDialog" class="easyui-dialog" title="创建公共产出类型" style="width: 400px;padding:10px"
+		data-options="closed:true,iconCls:'icon-add',buttons:'#createProductDialogButtons'"
+	>
+	<form class="easyui-form" action="/product/form" id="productform"  method="post" data-options="novalidate:true">
+    	<div style="margin:20px 0">
+			<input class="easyui-textbox" name="name" style="width:100%" data-options="label:'产出类型:',required:true,missingMessage:'产出类型不能为空'" >
+		</div>
+		<div style="margin:20px 0">
+			<input class="easyui-textbox" name="unit" style="width:100%" data-options="label:'计量单位:',required:true,missingMessage:'计量单位不能为空'" >
+		</div>
+		<div style="margin:20px 0">
+			<input class="easyui-textbox" name="remark" style="width:100%;height: 100px" data-options="label:'说明:',multiline:true" >
+		</div>
+	</form>
+</div>
+<div id="createProductDialogButtons">
+	<a href="#" class="easyui-linkbutton" onclick="product.save()">保存</a>
+	<a href="#" class="easyui-linkbutton" onclick="$('#createProductDialog').dialog('close')">关闭</a>
+</div>
+
+<script>
+var product = {
+		save:function(){
+			$('#productform').form('submit',{
+				onSubmit:function(){
+					return $(this).form('enableValidation').form('validate');
+				},
+				success:function(){
+					$('#createProductDialog').dialog('close');
+					$("#globalProductTable").datagrid("load");
+				}
+			});
+			
+		},
+		formatState:function(val,index){
+			console.log(val);
+			if(val && val == 1){
+				return "启用";
+			}
+			return "<span style='color:red'>停用</span>"
+		},
+		formatOps:function(val,index){
+			if(index.status && index.status == 1){
+				return '<a class="maincolor" style="cursor:pointer" onclick="product.stop(\''+val+'\')">停用</a>'
+			}else{
+				return '<a class="maincolor" style="cursor:pointer" onclick="product.start(\''+val+'\')">启用</a>'
+			}
+		},
+		start:function(id){
+			$.get("/product/start?id="+id,function(){
+				$("#selectedProductTable").datagrid("reload");
+			})
+		},
+		stop:function(id){
+			$.get("/product/stop?id="+id,function(){
+				$("#selectedProductTable").datagrid("reload");
+			})
+		},
+		select:function(){
+			var selectedrows = $("#globalProductTable").datagrid("getSelections")
+			var ids = [];
+			for(var i=0; i<selectedrows.length; i++){
+				ids.push(selectedrows[i].id);
+			}
+			$.ajax({
+				url:'/product/addToProject',
+				type:"post",
+				data:{ids:ids.join(",")},
+				success:function(){
+					$("#selectProductDialog").dialog("close");
+					$("#selectedProductTable").datagrid("load");
+				}
+			})
+		}
+}
+</script>

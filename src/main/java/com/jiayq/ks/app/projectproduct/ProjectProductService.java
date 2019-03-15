@@ -21,4 +21,7 @@ public class ProjectProductService extends BaseServiceProxy<ProjectProduct> {
 		return projectProductDao;
 	}
 
+	public ProjectProduct findByProjectIdAndProductId(String projectId,String productId) {
+		return projectProductDao.findOneByProjectIdAndProductId(projectId, productId);
+	}
 }

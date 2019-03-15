@@ -7,4 +7,6 @@ import com.jiayq.ks._frame.base.BaseRepository;
 @Repository
 public interface ProjectProductDao extends BaseRepository<ProjectProduct> {
 
+	public ProjectProduct findOneByProjectIdAndProductId(String projectId,String productId);
+	
 }

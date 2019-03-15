@@ -1,0 +1,166 @@
+<!-- tab -->
+<table id="userTable" class="easyui-datagrid" title="" style="min-height: 400px;width: 100%;"
+			data-options="fitColumns:true,rownumbers:true,singleSelect:true,url:'/user/list',method:'get',toolbar:'#userdatagridtoolbar',loadMsg:'加载中...',
+			nowrap:true,pagination:true,onLoadSuccess:function(data){
+				if(data.rows.length == 0){
+					var body = $(this).data().datagrid.dc.body2;
+					var width = body.width();
+					body.find('table tbody').append('<h5 style=\'width:700px;text-align:center;color:#aeaeae;font-size:12px\'>暂无数据!</h5>');
+				}
+			}">
+	<thead>
+		<tr>
+			<th data-options="field:'username',width:100,align:'center'">登录名</th>
+			<th data-options="field:'nickName',width:120,align:'center'">昵称</th>
+			<th data-options="field:'phone',align:'center',width:120">手机号码</th>
+			<th data-options="field:'enabled',align:'center',width:100,formatter:user.formatEnabled">是否启用</th>
+			<th data-options="field:'role',align:'center',width:100">角色</th>
+			<th data-options="field:'id',align:'center',width:120,formatter:user.formatOps">操作</th>
+		</tr>
+	</thead>
+</table>
+
+<div id="userdatagridtoolbar">
+	<a href="#" class="easyui-linkbutton" onclick="user.toAdd" data-options="iconCls:'icon-add'">添加</a>
+</div>
+
+<!-- 创建用户 -->
+<div id="createUserDialog" class="easyui-dialog" title="编辑用户信息" style="width: 500px;padding:10px 50px"
+		data-options="closed:true,iconCls:'icon-add',buttons:'#createUserDialogButtons'"
+	>
+	<form class="easyui-form" action="/user/form" id="userform"  method="post" data-options="novalidate:true">
+	<input type="hidden" name="projectId" value='${Session["login_user"].projectId}'/>
+	<input type="hidden" name="id" />
+		<div style="margin:20px 0">
+			<input class="easyui-textbox" name="phone" style="width:100%" data-options="label:'手机号码:',required:true,missingMessage:'手机号码不能为空'" >
+		</div>
+    	<div style="margin:20px 0">
+			<input class="easyui-textbox" name="username" style="width:100%" placeholder="默认使用手机号码" data-options="label:'登录账号:',required:true,missingMessage:'登录账号不能为空'" >
+		</div>
+		<div style="margin:20px 0">
+			<input class="easyui-textbox" name="nickName" style="width:100%" data-options="label:'昵称:',required:true,missingMessage:'昵称不能为空'" >
+		</div>
+		<div style="margin:20px 0">
+			<select class="easyui-combobox" name="role" style="width: 100%" data-options="label:'角色:',required:true,missingMessage:'角色不能为空'">
+				<#list roles as r>
+				<option ${r.id}>${r.name}</option>
+				</#list>
+			</select>
+		</div>
+	</form>
+</div>
+<div id="createUserDialogButtons">
+	<a href="#" class="easyui-linkbutton" onclick="user.save()">保存</a>
+	<a href="#" class="easyui-linkbutton" onclick="$('#createUserDialog').dialog('close')">关闭</a>
+</div>
+
+<script>
+
+var user = {
+		formatOps:function(val,index){
+			return '<a href="#" class="maincolor" style="cursor:pointer;margin-right:10px" onclick="user.toUpdate(\''+val+'\')">修改</a><a href="#" style="cursor:pointer" class="maincolor" onclick="user.resetpwd(\''+val+'\')">重置密码</a>'
+		},
+		update:function(id){
+			
+		},
+		resetpwd:function(id){
+			
+		},
+		toAdd:function(){
+			$("#userform").form("load",{
+				phone:null,
+				username:null,
+				nickName:null,
+				id:null
+			});
+			$('#createUserDialog').dialog('open');
+		},
+		toUpdate:function(id){
+			$("#userform").form("load","/user/form?id="+id);
+			$('#createUserDialog').dialog('open');
+		},
+		save:function(){
+			$("#userform").form("submit",{
+				onSubmit:function(){
+					return $(this).form('enableValidation').form('validate');
+				},
+				success:function(){
+					$('#createUserDialog').dialog('close');
+					$("#userTable").datagrid("load");
+				}
+			})
+		},
+		formatEnabled:function(val,index){
+			if(val){
+				return "启用";
+			}else{
+				return "禁用";
+			}
+		},
+		resetpwd:function(id){
+			$.messager.confirm('重置密码', '确定重置密码?', function(r){
+				if (r){
+					$.get("/user/resetpwd?id="+id,function(){
+						$.messager.alert('消息','密码重置成功!','info');
+					})
+				}
+			});
+		}
+		
+}
+
+var fee = {
+		save:function(){
+			$('#feeform').form('submit',{
+				onSubmit:function(){
+					return $(this).form('enableValidation').form('validate');
+				},
+				success:function(){
+					$('#createFeeDialog').dialog('close');
+					$("#globalFeeTable").datagrid("load");
+				}
+			});
+			
+		},
+		formatState:function(val,index){
+			console.log(val);
+			if(val && val == 1){
+				return "启用";
+			}
+			return "<span style='color:red'>停用</span>"
+		},
+		formatOps:function(val,index){
+			if(index.status && index.status == 1){
+				return '<a class="maincolor" style="cursor:pointer" onclick="fee.stop(\''+val+'\')">停用</a>'
+			}else{
+				return '<a class="maincolor" style="cursor:pointer" onclick="fee.start(\''+val+'\')">启用</a>'
+			}
+		},
+		start:function(id){
+			$.get("/fee/start?id="+id,function(){
+				$("#selectedFeeTable").datagrid("reload");
+			})
+		},
+		stop:function(id){
+			$.get("/fee/stop?id="+id,function(){
+				$("#selectedFeeTable").datagrid("reload");
+			})
+		},
+		select:function(){
+			var selectedrows = $("#globalFeeTable").datagrid("getSelections")
+			var ids = [];
+			for(var i=0; i<selectedrows.length; i++){
+				ids.push(selectedrows[i].id);
+			}
+			$.ajax({
+				url:'/fee/addToProject',
+				type:"post",
+				data:{ids:ids.join(",")},
+				success:function(){
+					$("#selectFeeDialog").dialog("close");
+					$("#selectedFeeTable").datagrid("load");
+				}
+			})
+		}
+}
+</script>

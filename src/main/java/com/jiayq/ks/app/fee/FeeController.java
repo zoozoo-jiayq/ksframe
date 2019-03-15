@@ -1,22 +1,23 @@
 package com.jiayq.ks.app.fee;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.jiayq.ks._frame.base.BaseController;
 import com.jiayq.ks._frame.utils.Variant;
-import com.jiayq.ks.app.product.Product;
+import com.jiayq.ks.app.Constant;
 import com.jiayq.ks.app.projectfee.ProjectFee;
 import com.jiayq.ks.app.projectfee.ProjectFeeService;
-import com.jiayq.ks.app.projectproduct.ProjectProduct;
 
-@Controller
+@RestController
 @RequestMapping("/fee")
 public class FeeController extends BaseController {
 
@@ -26,43 +27,73 @@ public class FeeController extends BaseController {
 	private ProjectFeeService projectFeeService;
 	
 	@RequestMapping("list")
-	@Override
-	public String list(Model model) {
+	public Object all(Model model) {
 		// TODO Auto-generated method stub
 		String search = Variant.valueOf(model.asMap().get("search")).stringValue("");
-		Page<Fee> page = feeService.findByName("%search%", getPage());
-		model.addAttribute("page", page);
-		return "fee/list";
-	}
-	
-	@Override
-	@RequestMapping("form")
-	public String form(Model model) {
-		// TODO Auto-generated method stub
-		Fee fee = new Fee();
-		model.addAttribute("fee", fee);
-		return "fee/form";
+		Page<Fee> page = feeService.findByName("%"+search+"%", getPage());
+		return SUCCESS_PAGE(page);
 	}
 	
 	@RequestMapping(value="form",method = RequestMethod.POST)
-	public String doform(Fee fee) {
+	public Object doform(Fee fee) {
 		feeService.save(fee);
-		return "redirect:/fee/list";
+		return SUCCESS();
 	}
 	
-	@RequestMapping("/{projectId}/list")
-	public String mylist(Model model,@PathVariable("projectId")String projectId) {
-		Page<Fee> page = feeService.findMyFee(projectId, getPage());
-		model.addAttribute("page", page);
-		return "fee/mylist";
+	
+	/**
+	 * 已选费用类型
+	 * @param model
+	 * @param projectId
+	 * @return
+	 */
+	@RequestMapping("/selectedlist")
+	public Object mylist(Model model) {
+		Page<Fee> page = feeService.findMyFee(getCurrentUser().getProjectId(), getPage());
+		for(int i=0; i<page.getContent().size(); i++) {
+			Fee f = page.getContent().get(i);
+			ProjectFee pf = projectFeeService.findByProjectIdAndFeeId(getCurrentUser().getProjectId(), f.getId());
+			f.setStatus(pf.getStatus());
+		}
+		return SUCCESS_PAGE(page);
 	}
 	
-	@RequestMapping(value="/{projectId}/form",method = RequestMethod.POST)
-	public String add(Model model,@PathVariable("projectId")String projectId,String feeId) {
-		ProjectFee pp = new ProjectFee();
-		pp.setProjectId(projectId);
-		pp.setFeeId(feeId);;
-		projectFeeService.save(pp);
-		return "redirect:/fee/"+projectId+"/list";
+	@RequestMapping(value="/addToProject",method = RequestMethod.POST)
+	public Object add(String ids) {
+		String projectId = getCurrentUser().getProjectId();
+		if(ids!=null) {
+			String[] idlist = ids.split(",");
+			List<ProjectFee> pflist = new ArrayList<>();
+			if(idlist!=null && idlist.length>0) {
+				Page<Fee> selectedFeelist = feeService.findMyFee(projectId, getMaxPage());
+				for(int i=0; i<idlist.length; i++) {
+					if(!isExist(idlist[i], selectedFeelist.getContent())) {
+						ProjectFee pp = new ProjectFee();
+						pp.setProjectId(projectId);
+						pp.setFeeId(idlist[i]);
+						pp.setStatus(Constant.STATUS_ENABLE);
+						pflist.add(pp);
+					}
+				}
+				projectFeeService.saveAll(pflist);
+			}
+		}
+		return SUCCESS();
+	}
+	
+	@RequestMapping("start")
+	public Object start(String id) {
+		ProjectFee pf = projectFeeService.findByProjectIdAndFeeId(getCurrentUser().getProjectId(), id);
+		pf.setStatus(Constant.STATUS_ENABLE);
+		projectFeeService.save(pf);
+		return SUCCESS();
+	}
+	
+	@RequestMapping("stop")
+	public Object stop(String id) {
+		ProjectFee pf = projectFeeService.findByProjectIdAndFeeId(getCurrentUser().getProjectId(), id);
+		pf.setStatus(Constant.STATUS_DISABLE);
+		projectFeeService.save(pf);
+		return SUCCESS();
 	}
 }

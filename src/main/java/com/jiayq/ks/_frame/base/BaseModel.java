@@ -7,33 +7,40 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @MappedSuperclass
 public class BaseModel {
-
 	@Id
 	@GenericGenerator(name = "uuid", strategy = "uuid")
     @GeneratedValue(generator = "uuid")
 	private String id;
-	private Date insertTime;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd") 
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private Date inserttime;
+	
 	private String insertUserId;
+	
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public Date getInsertTime() {
-		return insertTime;
-	}
-	public void setInsertTime(Date insertTime) {
-		this.insertTime = insertTime;
-	}
 	public String getInsertUserId() {
 		return insertUserId;
 	}
 	public void setInsertUserId(String insertUserId) {
 		this.insertUserId = insertUserId;
+	}
+	public Date getInserttime() {
+		return inserttime;
+	}
+	public void setInserttime(Date inserttime) {
+		this.inserttime = inserttime;
 	}
 	
 }

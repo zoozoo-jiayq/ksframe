@@ -1,36 +1,65 @@
-<div id="menu">
-	<div class="headimg">
-		<i class="fa fa-user-circle-o fa-3x"></i>
-		<div class="headinfo">
-			<span>
-			<#if Session["login_user"]?exists>
-			    ${Session["login_user"].nickName}
-			</#if>
-			</span>
-		</div>
-	</div>
-	<div class="pure-menu">
-	<span class="pure-menu-heading">项目1</span>
-	    <ul class="pure-menu-list">
-	        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-address-book"></i>Flickr</a></li>
-	        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-address-book"></i>Messenger</a></li>
-	        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-address-book"></i>Sports</a></li>
-	        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-address-book"></i>Finance</a></li>
-	        <li class="pure-menu-item pure-menu-has-children">
-	            <a href="#" id="menuLink1" class="pure-menu-link"><i class="fa fa-address-book"></i>More</a>
-	            <ul class="pure-menu-children">
-	                <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-circle-o"></i>Autos</a></li>
-	                <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="fa fa-circle-o"></i>Flickr</a></li>
-	                <li class="pure-menu-item pure-menu-has-children">
-	                    <a href="#" id="menuLink1" class="pure-menu-link">Even More</a>
-	                    <ul class="pure-menu-children">
-	                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Foo</a></li>
-	                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Bar</a></li>
-	                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Baz</a></li>
-	                    </ul>
-	                </li>
-	            </ul>
-	        </li>
+<div id="leftmenu" >
+	    <ul class="menugroup">
+	    	<div class="haschildmenu">
+		    	<li class="menuitem" title="控制台"><i class="fa fa-dashboard fa-fw fa-lg"></i></li>
+		    	<ul class="menugroup" style="">
+		    		<li title="首页" class="menuitem"><a href="/"><i class="fa fa-home fa-fw fa-lg"></i>控制台</a></li>
+		    	</ul>
+	    	</div>
+	    	<div class="haschildmenu">
+		    	<li class="menuitem" title="费用管理"><i class="fa fa-rmb fa-fw fa-lg"></i></li>
+				<ul class="menugroup">
+					<li title="费用申请" class="menuitem"><a href="/feeapply/form"><i class="fa fa-file fa-fw fa-lg"></i>费用申请</a></li>
+					<li title="申请记录" class="menuitem"><a href="/feeapply/list"><i class="fa fa-check-circle-o fa-fw fa-lg"></i>申请记录</a></li>
+				</ul>	    	
+	    	</div>
+	    	<div class="haschildmenu">
+		    	<li class="menuitem" title="生产管理"><i class="fa fa-truck fa-fw fa-lg"></i></li>
+				<ul class="menugroup">
+					<li title="产量申报" class="menuitem"><a href='/productapply/form'><i class="fa fa-file fa-fw fa-lg"></i>产量申报</a></li>
+					<li title="申报记录" class="menuitem"><a href='/productapply/list'><i class="fa fa-list-ul fa-fw fa-lg"></i>申报记录</a></li>
+				</ul>	    	
+	    	</div>
+	    	
+	    	<div class="haschildmenu">
+		    	<li class="menuitem" title="统计报表"><i class="fa fa-line-chart fa-fw fa-lg"></i></li>
+				<ul class="menugroup">
+					<li title="产量报表" class='menuitem'><a href="/report/product">产量报表</a></li>
+					<li title="产量报表" class='menuitem'><a href="/report/fee">费用报表</a></li>
+				</ul>	    	
+	    	</div>
+	    	
+	    	<div class="haschildmenu">
+		    	<li class="menuitem" title="流程设置"><i class="fa fa-check fa-fw fa-lg"></i></li>
+				<ul class="menugroup">
+					<li title="费用审批流程" class='menuitem'><a href="/flowconfig/index">费用审批流程</a></li>
+				</ul>	    	
+	    	</div>
+	    	<div class="haschildmenu">
+	    		<li class="menuitem" title="项目设置"><i class="fa fa-cog fa-fw fa-lg"></i></li>
+	    		<ul class="menugroup">
+	    			<li title="基础设置" class="menuitem"><a href='/project/form?projectId=${Session["login_user"].projectId}'><i class="fa fa-cog fa-fw fa-lg"></i>基础设置</a></li>
+	    			<li title="高级设置" class="menuitem"><a href='/project/config'><i class="fa fa-pencil fa-fw fa-lg"></i>高级设置</a></li>
+	    		</ul>
+	    	</div>
 	    </ul>
-	</div>
 </div>
+
+<script>
+	jQuery(document).ready(function($){
+		$(".menuitem").hover(function(e){
+			//若果是一级菜单，隐藏其它菜单，只显示本身的子菜单
+			if(!$(this).parent().parent().hasClass("haschildmenu")){
+				$(".haschildmenu .menugroup").hide();
+			}
+			
+			//如果有子菜单，显示子菜单
+			if($(this).next(".menugroup")){
+				$(this).next(".menugroup").show();
+			}
+		})
+		$("body").hover(function(e){
+			$(".haschildmenu .menugroup").hide();
+		})
+	});
+</script>

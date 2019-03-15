@@ -1,0 +1,583 @@
+2019-03-14 14:58:59,812 [main] INFO  com.jiayq.ks.KsApplication 50 - Starting KsApplication on I142P6IZ9RBKIC5 with PID 8168 (E:\source\ks\ks-manager\target\classes started by Administrator in E:\source\ks\ks-manager)
+2019-03-14 14:58:59,816 [main] INFO  com.jiayq.ks.KsApplication 675 - No active profile set, falling back to default profiles: default
+2019-03-14 14:59:00,431 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-14 14:59:00,534 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 97ms. Found 15 repository interfaces.
+2019-03-14 14:59:00,827 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$eb6a46d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 14:59:01,174 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 90 - Tomcat initialized with port(s): 8080 (http)
+2019-03-14 14:59:01,186 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-03-14 14:59:01,193 [main] INFO  o.a.catalina.core.StandardService 173 - Starting service [Tomcat]
+2019-03-14 14:59:01,193 [main] INFO  o.a.catalina.core.StandardEngine 173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-14 14:59:01,199 [main] INFO  o.a.c.core.AprLifecycleListener 173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:/Program Files (x86)/java/bin/server;D:/Program Files (x86)/java/bin;D:/Program Files (x86)/java/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\cnpm\node_modules\npminstall\node-gyp-bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Users\Administrator\AppData\Local\Programs\Python\Python36;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Java\jdk1.8.0_144\bin;D:\Program Files (x86)\maven\apache-maven-3.5.2\bin;C:\Users\Administrator\AppData\Roaming\npm;d:\Users\Administrator\AppData\Local\Programs\Fiddler;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin;D:\ant\apache-ant-1.10.5-bin\apache-ant-1.10.5\bin;C:\Users\Administrator\go\bin;"C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools;C:\Users\Administrator\AppData\Local\Android\Sdk\tools";C:\Users\Administrator\AppData\Local\Programs\Python\Python36\Scripts;;D:\sts-3.9.1.RELEASE;;.]
+2019-03-14 14:59:01,359 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring embedded WebApplicationContext
+2019-03-14 14:59:01,359 [main] INFO  o.s.web.context.ContextLoader 296 - Root WebApplicationContext: initialization completed in 1507 ms
+2019-03-14 14:59:01,586 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-03-14 14:59:01,723 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-03-14 14:59:01,771 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-14 14:59:01,831 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-03-14 14:59:01,833 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-03-14 14:59:01,950 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-03-14 14:59:02,125 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-03-14 14:59:02,245 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-03-14 14:59:02,989 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 14:59:03,651 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-03-14 14:59:04,081 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-03-14 14:59:04,082 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-03-14 14:59:04,082 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-03-14 14:59:04,115 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6b7c4734, org.springframework.security.web.context.SecurityContextPersistenceFilter@5310e451, org.springframework.security.web.header.HeaderWriterFilter@3e01796a, org.springframework.security.web.authentication.logout.LogoutFilter@40738846, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@65ef9a0a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@74830d73, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4491eaeb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2f6e92ca, org.springframework.security.web.session.SessionManagementFilter@e91facf, org.springframework.security.web.access.ExceptionTranslationFilter@516c20de, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@42a05533]
+2019-03-14 14:59:04,325 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-14 14:59:04,363 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-03-14 14:59:04,666 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-03-14 14:59:04,762 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-03-14 14:59:04,926 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-03-14 14:59:04,995 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 204 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-03-14 14:59:04,997 [main] INFO  com.jiayq.ks.KsApplication 59 - Started KsApplication in 5.499 seconds (JVM running for 6.478)
+2019-03-14 14:59:08,350 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin 164 - Application shutdown requested.
+2019-03-14 14:59:08,353 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
+2019-03-14 14:59:08,354 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-14 14:59:08,359 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 14:59:08,362 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
+2019-03-14 14:59:08,376 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
+2019-03-14 16:31:19,657 [main] INFO  com.jiayq.ks.KsApplication 50 - Starting KsApplication on I142P6IZ9RBKIC5 with PID 8240 (E:\source\ks\ks-manager\target\classes started by Administrator in E:\source\ks\ks-manager)
+2019-03-14 16:31:19,659 [main] INFO  com.jiayq.ks.KsApplication 675 - No active profile set, falling back to default profiles: default
+2019-03-14 16:31:20,210 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-14 16:31:20,305 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 89ms. Found 15 repository interfaces.
+2019-03-14 16:31:20,590 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$1e0802f7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 16:31:20,926 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 90 - Tomcat initialized with port(s): 8080 (http)
+2019-03-14 16:31:20,937 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-03-14 16:31:20,946 [main] INFO  o.a.catalina.core.StandardService 173 - Starting service [Tomcat]
+2019-03-14 16:31:20,947 [main] INFO  o.a.catalina.core.StandardEngine 173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-14 16:31:20,952 [main] INFO  o.a.c.core.AprLifecycleListener 173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:/Program Files (x86)/java/bin/server;D:/Program Files (x86)/java/bin;D:/Program Files (x86)/java/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\cnpm\node_modules\npminstall\node-gyp-bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Users\Administrator\AppData\Local\Programs\Python\Python36;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Java\jdk1.8.0_144\bin;D:\Program Files (x86)\maven\apache-maven-3.5.2\bin;C:\Users\Administrator\AppData\Roaming\npm;d:\Users\Administrator\AppData\Local\Programs\Fiddler;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin;D:\ant\apache-ant-1.10.5-bin\apache-ant-1.10.5\bin;C:\Users\Administrator\go\bin;"C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools;C:\Users\Administrator\AppData\Local\Android\Sdk\tools";C:\Users\Administrator\AppData\Local\Programs\Python\Python36\Scripts;;D:\sts-3.9.1.RELEASE;;.]
+2019-03-14 16:31:21,109 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring embedded WebApplicationContext
+2019-03-14 16:31:21,109 [main] INFO  o.s.web.context.ContextLoader 296 - Root WebApplicationContext: initialization completed in 1415 ms
+2019-03-14 16:31:21,311 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-03-14 16:31:21,427 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-03-14 16:31:21,471 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-14 16:31:21,515 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-03-14 16:31:21,516 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-03-14 16:31:21,624 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-03-14 16:31:21,797 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-03-14 16:31:21,917 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-03-14 16:31:22,478 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 16:31:23,032 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-03-14 16:31:23,370 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-03-14 16:31:23,371 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-03-14 16:31:23,371 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-03-14 16:31:23,402 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2f6e92ca, org.springframework.security.web.context.SecurityContextPersistenceFilter@52d63b7e, org.springframework.security.web.header.HeaderWriterFilter@62ab5e63, org.springframework.security.web.authentication.logout.LogoutFilter@1255de25, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@25216999, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1827fc4e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@71262020, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@380fdcf2, org.springframework.security.web.session.SessionManagementFilter@5e8f0f98, org.springframework.security.web.access.ExceptionTranslationFilter@6906be0f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@17053b5]
+2019-03-14 16:31:23,586 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-14 16:31:23,620 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-03-14 16:31:23,908 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-03-14 16:31:23,992 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-03-14 16:31:24,113 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-03-14 16:31:24,151 [main] ERROR o.apache.catalina.util.LifecycleBase 175 - Failed to start component [Connector[HTTP/1.1-8080]]
+org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1004)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:226)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:259)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:197)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.startWebServer(ServletWebServerApplicationContext.java:311)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:164)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at com.jiayq.ks.KsApplication.main(KsApplication.java:14)
+Caused by: java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:236)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210)
+	at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1085)
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1171)
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:568)
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1001)
+	... 14 common frames omitted
+2019-03-14 16:31:24,156 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Pausing ProtocolHandler ["http-nio-8080"]
+2019-03-14 16:31:24,156 [main] INFO  o.a.catalina.core.StandardService 173 - Stopping service [Tomcat]
+2019-03-14 16:31:24,160 [main] INFO  o.apache.catalina.util.LifecycleBase 173 - The stop() method was called on component [StandardServer[-1]] after stop() had already been called. The second call will be ignored.
+2019-03-14 16:31:24,160 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Stopping ProtocolHandler ["http-nio-8080"]
+2019-03-14 16:31:24,160 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Destroying ProtocolHandler ["http-nio-8080"]
+2019-03-14 16:31:24,163 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener 142 - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-03-14 16:31:24,166 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter 42 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8080, or configure this application to listen on another port.
+
+2019-03-14 16:31:24,168 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
+2019-03-14 16:31:24,169 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-14 16:31:24,172 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 16:31:24,174 [main] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
+2019-03-14 16:31:24,176 [main] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
+2019-03-14 16:31:35,695 [main] INFO  com.jiayq.ks.KsApplication 50 - Starting KsApplication on I142P6IZ9RBKIC5 with PID 10448 (E:\source\ks\ks-manager\target\classes started by Administrator in E:\source\ks\ks-manager)
+2019-03-14 16:31:35,697 [main] INFO  com.jiayq.ks.KsApplication 675 - No active profile set, falling back to default profiles: default
+2019-03-14 16:31:36,258 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-14 16:31:36,353 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 90ms. Found 15 repository interfaces.
+2019-03-14 16:31:36,648 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9c3a0766] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 16:31:36,988 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 90 - Tomcat initialized with port(s): 8080 (http)
+2019-03-14 16:31:36,999 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-03-14 16:31:37,008 [main] INFO  o.a.catalina.core.StandardService 173 - Starting service [Tomcat]
+2019-03-14 16:31:37,008 [main] INFO  o.a.catalina.core.StandardEngine 173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-14 16:31:37,014 [main] INFO  o.a.c.core.AprLifecycleListener 173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:/Program Files (x86)/java/bin/server;D:/Program Files (x86)/java/bin;D:/Program Files (x86)/java/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\cnpm\node_modules\npminstall\node-gyp-bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Users\Administrator\AppData\Local\Programs\Python\Python36;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Java\jdk1.8.0_144\bin;D:\Program Files (x86)\maven\apache-maven-3.5.2\bin;C:\Users\Administrator\AppData\Roaming\npm;d:\Users\Administrator\AppData\Local\Programs\Fiddler;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin;D:\ant\apache-ant-1.10.5-bin\apache-ant-1.10.5\bin;C:\Users\Administrator\go\bin;"C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools;C:\Users\Administrator\AppData\Local\Android\Sdk\tools";C:\Users\Administrator\AppData\Local\Programs\Python\Python36\Scripts;;D:\sts-3.9.1.RELEASE;;.]
+2019-03-14 16:31:37,173 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring embedded WebApplicationContext
+2019-03-14 16:31:37,174 [main] INFO  o.s.web.context.ContextLoader 296 - Root WebApplicationContext: initialization completed in 1445 ms
+2019-03-14 16:31:37,365 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-03-14 16:31:37,477 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-03-14 16:31:37,522 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-14 16:31:37,567 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-03-14 16:31:37,568 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-03-14 16:31:37,676 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-03-14 16:31:37,848 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-03-14 16:31:37,969 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-03-14 16:31:38,504 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 16:31:39,034 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-03-14 16:31:39,359 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-03-14 16:31:39,359 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-03-14 16:31:39,359 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-03-14 16:31:39,393 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@30a01dd8, org.springframework.security.web.context.SecurityContextPersistenceFilter@336d28a1, org.springframework.security.web.header.HeaderWriterFilter@6ac9b66b, org.springframework.security.web.authentication.logout.LogoutFilter@498e41a4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4a890fdd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@42e202d7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@192f5f39, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1f68e4e8, org.springframework.security.web.session.SessionManagementFilter@71262020, org.springframework.security.web.access.ExceptionTranslationFilter@43ab0659, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@45bf93bb]
+2019-03-14 16:31:39,574 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-14 16:31:39,610 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-03-14 16:31:39,905 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-03-14 16:31:39,995 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-03-14 16:31:40,115 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-03-14 16:31:40,126 [main] ERROR o.apache.catalina.util.LifecycleBase 175 - Failed to start component [Connector[HTTP/1.1-8080]]
+org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1004)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:226)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:259)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:197)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.startWebServer(ServletWebServerApplicationContext.java:311)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.finishRefresh(ServletWebServerApplicationContext.java:164)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248)
+	at com.jiayq.ks.KsApplication.main(KsApplication.java:14)
+Caused by: java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:236)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210)
+	at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1085)
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1171)
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:568)
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1001)
+	... 14 common frames omitted
+2019-03-14 16:31:40,131 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Pausing ProtocolHandler ["http-nio-8080"]
+2019-03-14 16:31:40,132 [main] INFO  o.a.catalina.core.StandardService 173 - Stopping service [Tomcat]
+2019-03-14 16:31:40,136 [main] INFO  o.apache.catalina.util.LifecycleBase 173 - The stop() method was called on component [StandardServer[-1]] after stop() had already been called. The second call will be ignored.
+2019-03-14 16:31:40,137 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Stopping ProtocolHandler ["http-nio-8080"]
+2019-03-14 16:31:40,137 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Destroying ProtocolHandler ["http-nio-8080"]
+2019-03-14 16:31:40,139 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener 142 - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-03-14 16:31:40,143 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter 42 - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8080, or configure this application to listen on another port.
+
+2019-03-14 16:31:40,145 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
+2019-03-14 16:31:40,145 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-14 16:31:40,148 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 16:31:40,150 [main] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
+2019-03-14 16:31:40,153 [main] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
+2019-03-14 16:32:08,699 [main] INFO  com.jiayq.ks.KsApplication 50 - Starting KsApplication on I142P6IZ9RBKIC5 with PID 15076 (E:\source\ks\ks-manager\target\classes started by Administrator in E:\source\ks\ks-manager)
+2019-03-14 16:32:08,701 [main] INFO  com.jiayq.ks.KsApplication 675 - No active profile set, falling back to default profiles: default
+2019-03-14 16:32:09,293 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-14 16:32:09,394 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 95ms. Found 15 repository interfaces.
+2019-03-14 16:32:09,699 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a34b7b4d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 16:32:10,061 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 90 - Tomcat initialized with port(s): 8080 (http)
+2019-03-14 16:32:10,080 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-03-14 16:32:10,097 [main] INFO  o.a.catalina.core.StandardService 173 - Starting service [Tomcat]
+2019-03-14 16:32:10,097 [main] INFO  o.a.catalina.core.StandardEngine 173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-14 16:32:10,106 [main] INFO  o.a.c.core.AprLifecycleListener 173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:/Program Files (x86)/java/bin/server;D:/Program Files (x86)/java/bin;D:/Program Files (x86)/java/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\cnpm\node_modules\npminstall\node-gyp-bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Users\Administrator\AppData\Local\Programs\Python\Python36;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Java\jdk1.8.0_144\bin;D:\Program Files (x86)\maven\apache-maven-3.5.2\bin;C:\Users\Administrator\AppData\Roaming\npm;d:\Users\Administrator\AppData\Local\Programs\Fiddler;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin;D:\ant\apache-ant-1.10.5-bin\apache-ant-1.10.5\bin;C:\Users\Administrator\go\bin;"C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools;C:\Users\Administrator\AppData\Local\Android\Sdk\tools";C:\Users\Administrator\AppData\Local\Programs\Python\Python36\Scripts;;D:\sts-3.9.1.RELEASE;;.]
+2019-03-14 16:32:10,278 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring embedded WebApplicationContext
+2019-03-14 16:32:10,279 [main] INFO  o.s.web.context.ContextLoader 296 - Root WebApplicationContext: initialization completed in 1546 ms
+2019-03-14 16:32:10,481 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-03-14 16:32:10,598 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-03-14 16:32:10,645 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-14 16:32:10,692 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-03-14 16:32:10,693 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-03-14 16:32:10,807 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-03-14 16:32:10,980 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-03-14 16:32:11,101 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-03-14 16:32:11,666 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 16:32:12,232 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-03-14 16:32:12,598 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-03-14 16:32:12,598 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-03-14 16:32:12,598 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-03-14 16:32:12,632 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@45bf93bb, org.springframework.security.web.context.SecurityContextPersistenceFilter@6bf0f70a, org.springframework.security.web.header.HeaderWriterFilter@edbc2bf, org.springframework.security.web.authentication.logout.LogoutFilter@62158991, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7bda01da, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@52d63b7e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6ac9b66b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6b7c4734, org.springframework.security.web.session.SessionManagementFilter@62ab5e63, org.springframework.security.web.access.ExceptionTranslationFilter@16fc5622, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2328ec73]
+2019-03-14 16:32:12,831 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-14 16:32:12,867 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-03-14 16:32:12,946 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-03-14 16:32:13,246 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-03-14 16:32:13,367 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-03-14 16:32:13,390 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 204 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-03-14 16:32:13,392 [main] INFO  com.jiayq.ks.KsApplication 59 - Started KsApplication in 5.011 seconds (JVM running for 5.977)
+2019-03-14 16:32:18,135 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-03-14 16:32:18,135 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet 524 - Initializing Servlet 'dispatcherServlet'
+2019-03-14 16:32:18,145 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet 546 - Completed initialization in 10 ms
+2019-03-14 17:05:43,046 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin 164 - Application shutdown requested.
+2019-03-14 17:05:43,048 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
+2019-03-14 17:05:43,049 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-14 17:05:43,052 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 17:05:43,055 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
+2019-03-14 17:05:43,059 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
+2019-03-14 17:05:54,583 [main] INFO  com.jiayq.ks.app.flow.FlowTest 50 - Starting FlowTest on I142P6IZ9RBKIC5 with PID 17340 (started by Administrator in E:\source\ks\ks-manager)
+2019-03-14 17:05:54,585 [main] INFO  com.jiayq.ks.app.flow.FlowTest 675 - No active profile set, falling back to default profiles: default
+2019-03-14 17:05:55,462 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-14 17:05:55,608 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 137ms. Found 15 repository interfaces.
+2019-03-14 17:05:56,196 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4f08f9e9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 17:05:56,654 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-03-14 17:05:56,865 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-03-14 17:05:56,951 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-14 17:05:57,023 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-03-14 17:05:57,025 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-03-14 17:05:57,191 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-03-14 17:05:57,687 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-03-14 17:05:57,869 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-03-14 17:05:58,599 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 17:05:59,666 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-03-14 17:06:00,553 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-03-14 17:06:00,553 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-03-14 17:06:00,554 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-03-14 17:06:00,667 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@31e3c34, org.springframework.security.web.context.SecurityContextPersistenceFilter@70805849, org.springframework.security.web.header.HeaderWriterFilter@8ce3f27, org.springframework.security.web.authentication.logout.LogoutFilter@76eadc5a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@79273a4f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4a41caed, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2567c091, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@b4d83ac, org.springframework.security.web.session.SessionManagementFilter@6802d023, org.springframework.security.web.access.ExceptionTranslationFilter@2e0163cb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@256a5df0]
+2019-03-14 17:06:01,289 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-14 17:06:01,364 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-03-14 17:06:01,538 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-03-14 17:06:01,901 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-03-14 17:06:02,090 [main] INFO  com.jiayq.ks.app.flow.FlowTest 59 - Started FlowTest in 7.839 seconds (JVM running for 8.887)
+2019-03-14 17:06:02,253 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
+2019-03-14 17:06:02,254 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-14 17:06:02,260 [Thread-2] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 17:06:02,263 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
+2019-03-14 17:06:02,268 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
+2019-03-14 17:07:55,554 [main] INFO  com.jiayq.ks.app.flow.FlowTest 50 - Starting FlowTest on I142P6IZ9RBKIC5 with PID 15868 (started by Administrator in E:\source\ks\ks-manager)
+2019-03-14 17:07:55,556 [main] INFO  com.jiayq.ks.app.flow.FlowTest 675 - No active profile set, falling back to default profiles: default
+2019-03-14 17:07:56,432 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-14 17:07:56,598 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 158ms. Found 15 repository interfaces.
+2019-03-14 17:07:57,134 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$86035fa5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 17:07:57,551 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-03-14 17:07:57,741 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-03-14 17:07:57,827 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-14 17:07:57,898 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-03-14 17:07:57,900 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-03-14 17:07:58,064 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-03-14 17:07:58,564 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-03-14 17:07:58,738 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-03-14 17:07:59,403 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 17:08:00,406 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-03-14 17:08:01,281 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-03-14 17:08:01,281 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-03-14 17:08:01,282 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-03-14 17:08:01,410 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@66944c7c, org.springframework.security.web.context.SecurityContextPersistenceFilter@6b4fd7d, org.springframework.security.web.header.HeaderWriterFilter@e895e3e, org.springframework.security.web.authentication.logout.LogoutFilter@615c4ea4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@39342614, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@12723c5d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@74bfdd66, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@14993306, org.springframework.security.web.session.SessionManagementFilter@70805849, org.springframework.security.web.access.ExceptionTranslationFilter@38c55a8a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@45790cb]
+2019-03-14 17:08:02,092 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-14 17:08:02,168 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-03-14 17:08:02,357 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-03-14 17:08:02,743 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-03-14 17:08:02,938 [main] INFO  com.jiayq.ks.app.flow.FlowTest 59 - Started FlowTest in 7.715 seconds (JVM running for 8.657)
+2019-03-14 17:08:03,092 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper 137 - SQL Error: 1406, SQLState: 22001
+2019-03-14 17:08:03,092 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper 142 - Data truncation: Data too long for column 'config' at row 1
+2019-03-14 17:08:03,094 [main] ERROR o.h.i.ExceptionMapperStandardImpl 39 - HHH000346: Error during managed flush [org.hibernate.exception.DataException: could not execute statement]
+2019-03-14 17:08:03,119 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper 137 - SQL Error: 1406, SQLState: 22001
+2019-03-14 17:08:03,120 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper 142 - Data truncation: Data too long for column 'config' at row 1
+2019-03-14 17:08:03,120 [main] ERROR o.h.i.ExceptionMapperStandardImpl 39 - HHH000346: Error during managed flush [org.hibernate.exception.DataException: could not execute statement]
+2019-03-14 17:08:03,129 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
+2019-03-14 17:08:03,131 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-14 17:08:03,139 [Thread-2] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 17:08:03,143 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
+2019-03-14 17:08:03,149 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
+2019-03-14 17:09:49,049 [main] INFO  com.jiayq.ks.app.flow.FlowTest 50 - Starting FlowTest on I142P6IZ9RBKIC5 with PID 16676 (started by Administrator in E:\source\ks\ks-manager)
+2019-03-14 17:09:49,051 [main] INFO  com.jiayq.ks.app.flow.FlowTest 675 - No active profile set, falling back to default profiles: default
+2019-03-14 17:09:49,929 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-14 17:09:50,092 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 154ms. Found 15 repository interfaces.
+2019-03-14 17:09:50,634 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$86035fa5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 17:09:51,053 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-03-14 17:09:51,237 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-03-14 17:09:51,334 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-14 17:09:51,435 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-03-14 17:09:51,437 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-03-14 17:09:51,606 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-03-14 17:09:52,115 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-03-14 17:09:52,312 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-03-14 17:09:53,067 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 17:09:54,093 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-03-14 17:09:55,036 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-03-14 17:09:55,037 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-03-14 17:09:55,038 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-03-14 17:09:55,189 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@66944c7c, org.springframework.security.web.context.SecurityContextPersistenceFilter@6b4fd7d, org.springframework.security.web.header.HeaderWriterFilter@e895e3e, org.springframework.security.web.authentication.logout.LogoutFilter@615c4ea4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@39342614, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@12723c5d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@74bfdd66, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@14993306, org.springframework.security.web.session.SessionManagementFilter@70805849, org.springframework.security.web.access.ExceptionTranslationFilter@38c55a8a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@45790cb]
+2019-03-14 17:09:55,973 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-14 17:09:56,045 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-03-14 17:09:56,244 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-03-14 17:09:56,662 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-03-14 17:09:56,906 [main] INFO  com.jiayq.ks.app.flow.FlowTest 59 - Started FlowTest in 8.193 seconds (JVM running for 9.128)
+2019-03-14 17:09:57,144 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
+2019-03-14 17:09:57,146 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-14 17:09:57,157 [Thread-2] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 17:09:57,160 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
+2019-03-14 17:09:57,165 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
+2019-03-14 17:10:44,731 [main] INFO  com.jiayq.ks.app.flow.FlowTest 50 - Starting FlowTest on I142P6IZ9RBKIC5 with PID 11152 (started by Administrator in E:\source\ks\ks-manager)
+2019-03-14 17:10:44,733 [main] INFO  com.jiayq.ks.app.flow.FlowTest 675 - No active profile set, falling back to default profiles: default
+2019-03-14 17:10:45,817 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-14 17:10:46,058 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 229ms. Found 15 repository interfaces.
+2019-03-14 17:10:46,962 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c3ef1185] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 17:10:47,513 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-03-14 17:10:47,722 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-03-14 17:10:47,832 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-14 17:10:47,940 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-03-14 17:10:47,943 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-03-14 17:10:48,160 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-03-14 17:10:48,742 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-03-14 17:10:48,974 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-03-14 17:10:50,007 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 17:10:51,504 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-03-14 17:10:52,654 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-03-14 17:10:52,655 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-03-14 17:10:52,656 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-03-14 17:10:52,863 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@439b0198, org.springframework.security.web.context.SecurityContextPersistenceFilter@73476e2d, org.springframework.security.web.header.HeaderWriterFilter@193c810, org.springframework.security.web.authentication.logout.LogoutFilter@21457b14, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@44103266, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6ab6ec33, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@14764fdd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@c2dab10, org.springframework.security.web.session.SessionManagementFilter@57edfa89, org.springframework.security.web.access.ExceptionTranslationFilter@23e1f610, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@604e8a6]
+2019-03-14 17:10:53,867 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-14 17:10:53,985 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-03-14 17:10:54,262 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-03-14 17:10:54,834 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-03-14 17:10:55,132 [main] INFO  com.jiayq.ks.app.flow.FlowTest 59 - Started FlowTest in 10.816 seconds (JVM running for 12.418)
+2019-03-14 17:16:40,701 [main] INFO  com.jiayq.ks.app.flow.FlowTest 50 - Starting FlowTest on I142P6IZ9RBKIC5 with PID 4856 (started by Administrator in E:\source\ks\ks-manager)
+2019-03-14 17:16:40,702 [main] INFO  com.jiayq.ks.app.flow.FlowTest 675 - No active profile set, falling back to default profiles: default
+2019-03-14 17:16:41,613 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-14 17:16:41,762 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 140ms. Found 15 repository interfaces.
+2019-03-14 17:16:42,293 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$77ed1540] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 17:16:42,710 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-03-14 17:16:42,884 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-03-14 17:16:42,974 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-14 17:16:43,067 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-03-14 17:16:43,069 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-03-14 17:16:43,258 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-03-14 17:16:43,752 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-03-14 17:16:43,926 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-03-14 17:16:44,692 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 17:16:45,807 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-03-14 17:16:46,649 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-03-14 17:16:46,650 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-03-14 17:16:46,650 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-03-14 17:16:46,766 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7109b603, org.springframework.security.web.context.SecurityContextPersistenceFilter@26f480c6, org.springframework.security.web.header.HeaderWriterFilter@6b4fd7d, org.springframework.security.web.authentication.logout.LogoutFilter@7e76a66f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@66944c7c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7747cc1b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@76eadc5a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@76b642aa, org.springframework.security.web.session.SessionManagementFilter@12723c5d, org.springframework.security.web.access.ExceptionTranslationFilter@3e8afc2d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@612ac38b]
+2019-03-14 17:16:47,397 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-14 17:16:47,470 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-03-14 17:16:47,640 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-03-14 17:16:47,973 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-03-14 17:16:48,196 [main] INFO  com.jiayq.ks.app.flow.FlowTest 59 - Started FlowTest in 7.819 seconds (JVM running for 8.789)
+2019-03-14 17:16:48,486 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
+2019-03-14 17:16:48,489 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-14 17:16:48,501 [Thread-2] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 17:16:48,504 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
+2019-03-14 17:16:48,509 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
+2019-03-14 17:17:41,073 [main] INFO  com.jiayq.ks.app.flow.FlowTest 50 - Starting FlowTest on I142P6IZ9RBKIC5 with PID 10528 (started by Administrator in E:\source\ks\ks-manager)
+2019-03-14 17:17:41,075 [main] INFO  com.jiayq.ks.app.flow.FlowTest 675 - No active profile set, falling back to default profiles: default
+2019-03-14 17:17:41,961 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-14 17:17:42,131 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 160ms. Found 15 repository interfaces.
+2019-03-14 17:17:42,710 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$86035fa5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 17:17:43,156 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-03-14 17:17:43,367 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-03-14 17:17:43,453 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-14 17:17:43,543 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-03-14 17:17:43,545 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-03-14 17:17:43,712 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-03-14 17:17:44,231 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-03-14 17:17:44,412 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-03-14 17:17:45,099 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 17:17:46,180 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-03-14 17:17:47,208 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-03-14 17:17:47,209 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-03-14 17:17:47,209 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-03-14 17:17:47,345 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@26712838, org.springframework.security.web.context.SecurityContextPersistenceFilter@2820b369, org.springframework.security.web.header.HeaderWriterFilter@14ca88bc, org.springframework.security.web.authentication.logout.LogoutFilter@3e998033, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@17ec5e2a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@476c137b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4f6ff62, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@249a45fd, org.springframework.security.web.session.SessionManagementFilter@85cd413, org.springframework.security.web.access.ExceptionTranslationFilter@34070bd2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@b144175]
+2019-03-14 17:17:48,043 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-14 17:17:48,116 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-03-14 17:17:48,300 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-03-14 17:17:48,679 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-03-14 17:17:48,883 [main] INFO  com.jiayq.ks.app.flow.FlowTest 59 - Started FlowTest in 8.15 seconds (JVM running for 9.077)
+2019-03-14 17:17:49,312 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
+2019-03-14 17:17:49,313 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-14 17:17:49,319 [Thread-2] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 17:17:49,322 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
+2019-03-14 17:17:49,328 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
+2019-03-14 17:58:27,981 [main] INFO  com.jiayq.ks.app.flow.FlowTest 50 - Starting FlowTest on I142P6IZ9RBKIC5 with PID 14516 (started by Administrator in E:\source\ks\ks-manager)
+2019-03-14 17:58:27,983 [main] INFO  com.jiayq.ks.app.flow.FlowTest 675 - No active profile set, falling back to default profiles: default
+2019-03-14 17:58:28,857 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-14 17:58:29,015 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 149ms. Found 15 repository interfaces.
+2019-03-14 17:58:29,565 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4f08f9e9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 17:58:29,974 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-03-14 17:58:30,157 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-03-14 17:58:30,247 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-14 17:58:30,331 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-03-14 17:58:30,334 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-03-14 17:58:30,500 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-03-14 17:58:31,016 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-03-14 17:58:31,196 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-03-14 17:58:31,877 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 17:58:32,962 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-03-14 17:58:33,864 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-03-14 17:58:33,865 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-03-14 17:58:33,865 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-03-14 17:58:34,010 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@17ec5e2a, org.springframework.security.web.context.SecurityContextPersistenceFilter@14ca88bc, org.springframework.security.web.header.HeaderWriterFilter@23f8036d, org.springframework.security.web.authentication.logout.LogoutFilter@433ae0b0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@608b906d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@85cd413, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@540212be, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@52290e63, org.springframework.security.web.session.SessionManagementFilter@1e3566e, org.springframework.security.web.access.ExceptionTranslationFilter@76eadc5a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@687e561b]
+2019-03-14 17:58:34,689 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-14 17:58:34,762 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-03-14 17:58:34,953 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-03-14 17:58:35,338 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-03-14 17:58:35,547 [main] INFO  com.jiayq.ks.app.flow.FlowTest 59 - Started FlowTest in 7.91 seconds (JVM running for 8.863)
+2019-03-14 17:58:35,936 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
+2019-03-14 17:58:35,938 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-14 17:58:35,946 [Thread-2] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 17:58:35,949 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
+2019-03-14 17:58:35,955 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
+2019-03-14 18:00:03,803 [main] INFO  com.jiayq.ks.app.flow.FlowTest 50 - Starting FlowTest on I142P6IZ9RBKIC5 with PID 10500 (started by Administrator in E:\source\ks\ks-manager)
+2019-03-14 18:00:03,805 [main] INFO  com.jiayq.ks.app.flow.FlowTest 675 - No active profile set, falling back to default profiles: default
+2019-03-14 18:00:04,720 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-14 18:00:04,890 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 161ms. Found 15 repository interfaces.
+2019-03-14 18:00:05,487 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2af0af5d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 18:00:05,896 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-03-14 18:00:06,066 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-03-14 18:00:06,152 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-14 18:00:06,222 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-03-14 18:00:06,224 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-03-14 18:00:06,391 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-03-14 18:00:06,909 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-03-14 18:00:07,089 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-03-14 18:00:07,839 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 18:00:08,931 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-03-14 18:00:09,863 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-03-14 18:00:09,864 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-03-14 18:00:09,864 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-03-14 18:00:09,995 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@11978f52, org.springframework.security.web.context.SecurityContextPersistenceFilter@79144d0e, org.springframework.security.web.header.HeaderWriterFilter@688d2a5d, org.springframework.security.web.authentication.logout.LogoutFilter@407b41e6, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@49d979c4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2579d8a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@433ae0b0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3e0855b0, org.springframework.security.web.session.SessionManagementFilter@2820b369, org.springframework.security.web.access.ExceptionTranslationFilter@7e76a66f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@fee7ca]
+2019-03-14 18:00:10,597 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-14 18:00:10,663 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-03-14 18:00:10,845 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-03-14 18:00:11,262 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-03-14 18:00:11,465 [main] INFO  com.jiayq.ks.app.flow.FlowTest 59 - Started FlowTest in 8.004 seconds (JVM running for 9.016)
+2019-03-14 18:00:11,804 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
+2019-03-14 18:00:11,807 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-14 18:00:11,815 [Thread-2] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 18:00:11,819 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
+2019-03-14 18:00:11,824 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
+2019-03-14 18:01:14,173 [main] INFO  com.jiayq.ks.app.flow.FlowTest 50 - Starting FlowTest on I142P6IZ9RBKIC5 with PID 2784 (started by Administrator in E:\source\ks\ks-manager)
+2019-03-14 18:01:14,174 [main] INFO  com.jiayq.ks.app.flow.FlowTest 675 - No active profile set, falling back to default profiles: default
+2019-03-14 18:01:15,058 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-14 18:01:15,204 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 136ms. Found 15 repository interfaces.
+2019-03-14 18:01:15,715 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2af0af5d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 18:01:16,123 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-03-14 18:01:16,316 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-03-14 18:01:16,416 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-14 18:01:16,499 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-03-14 18:01:16,502 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-03-14 18:01:16,687 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-03-14 18:01:17,215 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-03-14 18:01:17,395 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-03-14 18:01:18,111 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 18:01:19,163 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-03-14 18:01:20,065 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-03-14 18:01:20,065 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-03-14 18:01:20,066 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-03-14 18:01:20,184 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@11978f52, org.springframework.security.web.context.SecurityContextPersistenceFilter@79144d0e, org.springframework.security.web.header.HeaderWriterFilter@688d2a5d, org.springframework.security.web.authentication.logout.LogoutFilter@407b41e6, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@49d979c4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2579d8a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@433ae0b0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3e0855b0, org.springframework.security.web.session.SessionManagementFilter@2820b369, org.springframework.security.web.access.ExceptionTranslationFilter@7e76a66f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@fee7ca]
+2019-03-14 18:01:20,829 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-14 18:01:20,901 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-03-14 18:01:21,101 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-03-14 18:01:21,490 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-03-14 18:01:21,710 [main] INFO  com.jiayq.ks.app.flow.FlowTest 59 - Started FlowTest in 7.873 seconds (JVM running for 8.822)
+2019-03-14 18:01:21,968 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
+2019-03-14 18:01:21,970 [Thread-2] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-03-14 18:01:21,977 [Thread-2] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 18:01:21,981 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
+2019-03-14 18:01:21,987 [Thread-2] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
+2019-03-14 18:19:57,735 [main] INFO  com.jiayq.ks.KsApplication 50 - Starting KsApplication on I142P6IZ9RBKIC5 with PID 18708 (E:\source\ks\ks-manager\target\classes started by Administrator in E:\source\ks\ks-manager)
+2019-03-14 18:19:57,739 [main] INFO  com.jiayq.ks.KsApplication 675 - No active profile set, falling back to default profiles: default
+2019-03-14 18:19:58,751 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-03-14 18:19:58,919 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 157ms. Found 15 repository interfaces.
+2019-03-14 18:19:59,419 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a7b5932c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-14 18:19:59,881 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 90 - Tomcat initialized with port(s): 8080 (http)
+2019-03-14 18:19:59,896 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-03-14 18:19:59,907 [main] INFO  o.a.catalina.core.StandardService 173 - Starting service [Tomcat]
+2019-03-14 18:19:59,907 [main] INFO  o.a.catalina.core.StandardEngine 173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-03-14 18:19:59,913 [main] INFO  o.a.c.core.AprLifecycleListener 173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:/Program Files (x86)/java/bin/server;D:/Program Files (x86)/java/bin;D:/Program Files (x86)/java/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\cnpm\node_modules\npminstall\node-gyp-bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Users\Administrator\AppData\Local\Programs\Python\Python36;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Java\jdk1.8.0_144\bin;D:\Program Files (x86)\maven\apache-maven-3.5.2\bin;C:\Users\Administrator\AppData\Roaming\npm;d:\Users\Administrator\AppData\Local\Programs\Fiddler;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin;D:\ant\apache-ant-1.10.5-bin\apache-ant-1.10.5\bin;C:\Users\Administrator\go\bin;"C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools;C:\Users\Administrator\AppData\Local\Android\Sdk\tools";C:\Users\Administrator\AppData\Local\Programs\Python\Python36\Scripts;;D:\sts-3.9.1.RELEASE;;.]
+2019-03-14 18:20:00,127 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring embedded WebApplicationContext
+2019-03-14 18:20:00,128 [main] INFO  o.s.web.context.ContextLoader 296 - Root WebApplicationContext: initialization completed in 2344 ms
+2019-03-14 18:20:00,321 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-03-14 18:20:00,677 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-03-14 18:20:00,765 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-14 18:20:00,822 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-03-14 18:20:00,824 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-03-14 18:20:00,979 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-03-14 18:20:01,512 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-03-14 18:20:01,714 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-03-14 18:20:02,516 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-14 18:20:03,388 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-03-14 18:20:03,900 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-03-14 18:20:03,900 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-03-14 18:20:03,900 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-03-14 18:20:04,004 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7fcc3745, org.springframework.security.web.context.SecurityContextPersistenceFilter@ca2be53, org.springframework.security.web.header.HeaderWriterFilter@498e41a4, org.springframework.security.web.authentication.logout.LogoutFilter@17df689e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@287ad0da, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@70697478, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@eb1d475, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6d35ff7b, org.springframework.security.web.session.SessionManagementFilter@1f5d7fd5, org.springframework.security.web.access.ExceptionTranslationFilter@32c0fecc, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1bc6c20d]
+2019-03-14 18:20:04,289 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-14 18:20:04,333 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-03-14 18:20:04,470 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-03-14 18:20:04,605 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-03-14 18:20:04,920 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-03-14 18:20:04,946 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 204 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-03-14 18:20:04,948 [main] INFO  com.jiayq.ks.KsApplication 59 - Started KsApplication in 7.681 seconds (JVM running for 8.868)
+2019-03-14 18:20:25,162 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-03-14 18:20:25,162 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet 524 - Initializing Servlet 'dispatcherServlet'
+2019-03-14 18:20:25,172 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet 546 - Completed initialization in 9 ms

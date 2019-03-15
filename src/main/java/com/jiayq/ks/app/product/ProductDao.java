@@ -10,7 +10,8 @@ import com.jiayq.ks._frame.base.BaseRepository;
 
 @Repository
 public interface ProductDao extends BaseRepository<Product> {
-	public Page<Product> findByNameLike(String name,Pageable page);
+	@Query("select p from Product p where name like :name")
+	public Page<Product> findByNameLike(@Param("name")String name,Pageable page);
 	
 	@Query(value="select d.* from tb_product d left join tb_project_product pp on d.id = pp.product_id where pp.project_id =:projectId ",nativeQuery = true)
 	public Page<Product> findMyProduct(@Param("projectId")String projectId,Pageable page);

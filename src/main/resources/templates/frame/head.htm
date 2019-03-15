@@ -1,35 +1,85 @@
-<div id="head">
+<div id="head" class="mainbg">
 	<div class="left">
 		<h3>XXXX管理系统sfsfsfsfsfasfs</h3>
 	</div>
 	<div class="right">
-		<a href="/logout" class="pure-button"><i class="fa fa-hand-o-right"></i>退出登录</a>
-		<a href="/" class="pure-button">
+		<a href="/logout" ><i class="fa fa-hand-o-right fa-lg"></i>退出登录</a>
+		<a href="/" >
 			<i class="fa fa-user-circle-o fa-lg"></i>
 			欢迎
-			<em>
 			<#if Session["login_user"]?exists>
 			    ${Session["login_user"].nickName}
 			</#if>
-			</em>
 			登录!
 		</a>
-		<a class="pure-button">
+		<a>
 			2019-02-14 星期三
 		</a>
-		<a class="pure-button" title="切换项目">
-			<i class="fa fa-refresh fa-lg"></i>
-			项目1
-			<i class="fa fa-angle-down"></i>
+		<#if Session["my_projects"]?exists>
+			<div class="haschildmenu">
+				<a  title="切换项目">
+					<i class="fa fa-refresh fa-lg"></i>
+					${Session["login_user"].projectName!'暂无项目'}
+					<i class="fa fa-angle-down"></i>
+				</a>
+				<ul class="dropdownmenu mainbg">
+					<#list Session['my_projects'] as p>
+						<li><a>${p.name}</a></li>
+					</#list>
+					<li><a href="/project/form" ><i class="fa fa-plus-square-o fa-lg"></i>创建项目</a></li>
+				</ul>
+			</div>
+		<#else>
+			<a href="/project/form" ><i class="fa fa-plus-square-o fa-lg"></i>创建项目</a>
 		</a>
+		</#if>
        	<a href="#" class="pure-button" >
-       		<i class="fa fa-envelope-o fa-lg"></i>
-			<span class="tip button-warning">10</span>
+       		<i class="fa fa-envelope-o"></i>
+			<span class="tip successbg">10</span>
 		</a>
        	<a href="#" class="pure-button">
-       		<i class="fa fa-bell-o fa-lg"></i>
-			<span class="tip button-success">10</span>
+       		<i class="fa fa-bell-o"></i>
+			<span class="tip errorbg">10</span>
 		</a>
-		
 	</div>
 </div>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		(function(window,document){
+			$(".haschildmenu").hover(function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				var childmenu = $(this).children(".dropdownmenu");
+				childmenu.show();
+			});
+			$("body").hover(function(ee){
+				ee.preventDefault();
+				ee.stopPropagation();
+				$(".haschildmenu .dropdownmenu").hide();
+			})
+		}(this,this.document));
+		
+	})
+	window._ = {
+			formatDate:function(date){
+				var y = date.getFullYear(); 
+				var m = date.getMonth() + 1; 
+				var d = date.getDate(); 
+				return y + "-" + (m < 10 ? ("0" + m) : m) + "-" + (d < 10 ? ("0" + d) : d); 
+			},
+			parseDate:function(s) { 
+				if (!s) return new Date(); 
+				var year= s.substr(0,4); 
+				var month= s.substr(5,2) 
+				var date = s.substr(8,2) 
+				var y = parseInt(year,10); 
+				var m = parseInt(month,10); 
+				var d = parseInt(date,10); 
+				if (!isNaN(y) && !isNaN(m) && !isNaN(d)){ 
+					return new Date(y,m-1,d); 
+				} else { 
+					return new Date(); 
+				} 
+			}
+	}
+</script>
