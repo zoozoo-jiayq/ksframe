@@ -46,7 +46,7 @@ var fee = {
 			return "<a class='maincolor' style='cursor:pointer' onclick='fee.view(\""+val+"\")'>查看进度</a>"
 		},
 		view:function(val,ele){
-			console.log(val);
+			window.location.href = "/flowapp/todetail?instanceId="+val;
 		}
 
 }

@@ -44,14 +44,14 @@ public class FlowConfigController extends BaseController {
 	@ResponseBody
 	@RequestMapping(value="list")
 	public Object list() {
-		return SUCCESS_PAGE(workflowService.findByProjectId(getCurrentUser().getProjectId(), getPage()));
+		return SUCCESS_GRID(workflowService.findByProjectId(getCurrentUser().getProjectId(), getPage()));
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="versionlist")
 	public Object versionlist(String workflowId) {
 		Page<WorkFlowVersion> vertions = versionService.findByWorkflowId(workflowId,getPage());
-		return SUCCESS_PAGE(vertions);
+		return SUCCESS_GRID(vertions);
 	}
 	
 	@RequestMapping("design")

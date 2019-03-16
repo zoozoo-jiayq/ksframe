@@ -1,5 +1,7 @@
 package com.jiayq.ks.app.flowconfig;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -18,7 +20,30 @@ public class WorkflowTask extends BaseModel {
 	private String workflowInstanceId;
 	private String applyerId; //处理人
 	private String applyerName; //处理人姓名
+	private String taskName;
+	private Date processDate;//处理时间
 	private int status;
+	private String remark;
+	
+	
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	public Date getProcessDate() {
+		return processDate;
+	}
+	public void setProcessDate(Date processDate) {
+		this.processDate = processDate;
+	}
+	public String getTaskName() {
+		return taskName;
+	}
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
+	}
 	
 	public String getProjectId() {
 		return projectId;

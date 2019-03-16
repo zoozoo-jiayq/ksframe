@@ -1,0 +1,33 @@
+<!-- tab -->
+<table id="selectedFeeTable" class="easyui-datagrid" title="" style="min-height: 400px;width: 100%;"
+			data-options="rownumbers:true,singleSelect:true,url:'/flowapp/waitapprove',method:'get',loadMsg:'加载中...',
+			nowrap:true,pagination:true,onLoadSuccess:function(data){
+				if(data.rows.length == 0){
+					var body = $(this).data().datagrid.dc.body2;
+					var width = body.width();
+					body.find('table tbody').append('<h5 style=\'width:700px;text-align:center;color:#aeaeae;font-size:12px\'>暂无数据!</h5>');
+				}
+			}">
+	<thead>
+		<tr>
+			<th data-options="field:'workflowName',width:150,align:'center'">流程名称</th>
+			<th data-options="field:'applyerName',width:150,align:'center'">申请人</th>
+			<th data-options="field:'applyDate',align:'center',width:150">申请日期</th>
+			<th data-options="field:'wait',align:'center',width:150">等待时长(小时)</th>
+			<th data-options="field:'instanceId',align:'center',width:150,formatter:flow.formatOps">操作</th>
+		</tr>
+	</thead>
+</table>
+
+
+<script>
+var flow = {
+		formatOps:function(val,ele){
+			
+			return '<a class="maincolor" style="cursor:pointer" onclick="flow.approve(\''+val+'\',\''+ele.taskId+'\')">审批</a>'
+		},
+		approve:function(instanceId,taskId){
+			window.location.href= '/flowapp/todetail?instanceId='+instanceId+"&taskId="+taskId;
+		}
+}
+</script>

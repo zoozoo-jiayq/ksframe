@@ -46,7 +46,7 @@ public class UserController extends BaseController {
 				lu.setRole("未知");
 			}
 		}
-		return SUCCESS_PAGE(users);
+		return SUCCESS_GRID(users);
 	}
 	
 	@RequestMapping("comboxselect")

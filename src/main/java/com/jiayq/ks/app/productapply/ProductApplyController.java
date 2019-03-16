@@ -66,7 +66,7 @@ public class ProductApplyController extends BaseController {
 	@ResponseBody
 	public Object listdata() {
 		Page<ProductApply> page = productApplyService.findMyApply(getCurrentUser().getId(), getCurrentUser().getProjectId(), getPage());
-		return  SUCCESS_PAGE(page);
+		return  SUCCESS_GRID(page);
 	}
 	
 	

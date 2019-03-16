@@ -31,7 +31,7 @@ public class ProductController extends BaseController {
 		// TODO Auto-generated method stub
 		String search = Variant.valueOf(model.asMap().get("search")).stringValue("");
 		Page<Product> page = productService.findByName("%"+search+"%", getPage());
-		return SUCCESS_PAGE(page);
+		return SUCCESS_GRID(page);
 	}
 	
 	@RequestMapping(value="form",method = RequestMethod.POST)
@@ -61,7 +61,7 @@ public class ProductController extends BaseController {
 			ProjectProduct pd = projectProductService.findByProjectIdAndProductId(getCurrentUser().getProjectId(), p.getId());
 			p.setStatus(pd.getStatus());
 		}
-		return SUCCESS_PAGE(page);
+		return SUCCESS_GRID(page);
 	}
 	
 	@RequestMapping(value="/addToProject",method = RequestMethod.POST)

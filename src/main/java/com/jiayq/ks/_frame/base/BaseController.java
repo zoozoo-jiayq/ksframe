@@ -42,7 +42,7 @@ private static Logger log = LoggerFactory.getLogger(BaseController.class);
 	private final String PAGE_SIZE = "rows";//每页多少条记录,默认10
 	private final int DEFAULT_PAGE_SIZE = 10;
 	private final int DEFAULT_PAGE_NUMBER = 1;
-	private final String DEFAULT_SORT_PROPERTY = "inserttime";
+	protected final String DEFAULT_SORT_PROPERTY = "inserttime";
 	
 	@Resource
 	protected HttpServletRequest request;
@@ -123,6 +123,11 @@ private static Logger log = LoggerFactory.getLogger(BaseController.class);
 	}
 
 	
+	/**
+	 * 自定义的数据格式
+	 * @param data
+	 * @return
+	 */
 	public Object SUCCESS(Object data){
 		Map<String,Object> result = new HashMap<String,Object>();
 		result.put("result", "success");
@@ -130,10 +135,19 @@ private static Logger log = LoggerFactory.getLogger(BaseController.class);
 		return result;
 	}
 	
+	/**
+	 * 自定义的数据格式
+	 * @return
+	 */
 	public Object SUCCESS(){
 		return SUCCESS(null);
 	}
 	
+	/**
+	 * 自定义的数据格式
+	 * @param desc
+	 * @return
+	 */
 	public Object ERROR(String desc){
 		Map<String,Object> result = new HashMap<String,Object>();
 		result.put("result", "fail");
@@ -141,10 +155,23 @@ private static Logger log = LoggerFactory.getLogger(BaseController.class);
 		return result;
 	}
 	
-	public <T extends BaseModel> Object SUCCESS_PAGE(Page<T> page) {
+	/**
+	 * jquery easyUI支持的数据格式
+	 * @param page
+	 * @return
+	 */
+	public <T extends BaseModel> Object SUCCESS_GRID(Page<T> page) {
 		Map<String,Object> r = new HashMap<>();
 		r.put("total", page.getTotalElements());
 		r.put("rows", page.getContent());
 		return r;
 	}
+	
+	public Object SUCCESS_GRID(long total,List rows) {
+		Map<String,Object> r = new HashMap<>();
+		r.put("total", total);
+		r.put("rows", rows);
+		return r;
+	}
+	
 }

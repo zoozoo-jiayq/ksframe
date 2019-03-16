@@ -20,6 +20,12 @@
 					<li title="申报记录" class="menuitem"><a href='/productapply/list'><i class="fa fa-list-ul fa-fw fa-lg"></i>申报记录</a></li>
 				</ul>	    	
 	    	</div>
+	    	<div class="haschildmenu">
+		    	<li class="menuitem" title="待我审批"><i class="fa fa-check fa-fw fa-lg"></i></li>
+				<ul class="menugroup">
+					<li title="产量报表" class='menuitem'><a href="/flowapp/list">待我审批</a></li>
+				</ul>	    	
+	    	</div>
 	    	
 	    	<div class="haschildmenu">
 		    	<li class="menuitem" title="统计报表"><i class="fa fa-line-chart fa-fw fa-lg"></i></li>
@@ -30,16 +36,11 @@
 	    	</div>
 	    	
 	    	<div class="haschildmenu">
-		    	<li class="menuitem" title="流程设置"><i class="fa fa-check fa-fw fa-lg"></i></li>
-				<ul class="menugroup">
-					<li title="费用审批流程" class='menuitem'><a href="/flowconfig/index">费用审批流程</a></li>
-				</ul>	    	
-	    	</div>
-	    	<div class="haschildmenu">
 	    		<li class="menuitem" title="项目设置"><i class="fa fa-cog fa-fw fa-lg"></i></li>
 	    		<ul class="menugroup">
 	    			<li title="基础设置" class="menuitem"><a href='/project/form?projectId=${Session["login_user"].projectId}'><i class="fa fa-cog fa-fw fa-lg"></i>基础设置</a></li>
 	    			<li title="高级设置" class="menuitem"><a href='/project/config'><i class="fa fa-pencil fa-fw fa-lg"></i>高级设置</a></li>
+					<li title="流程设置" class='menuitem'><a href="/flowconfig/index"><i class="fa fa-check fa-fw fa-lg"></i>流程设置</a></li>
 	    		</ul>
 	    	</div>
 	    </ul>

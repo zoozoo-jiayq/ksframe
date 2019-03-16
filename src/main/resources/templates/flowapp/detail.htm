@@ -1,0 +1,100 @@
+<#import "../frame/frame.htm" as f/>
+<@f.main>
+<ul id="breadcrumb">
+  <li><a href="#"><span class="fa fa-home"> </span></a></li>
+  <li><a href="#"><span class="fa fa-cog"> </span>工作流</a></li>
+  <li><a href="#"><span class="fa fa-file"></span>进度详情</a></li>
+</ul>
+<div class="maincontent">
+	<div id="p" class="easyui-panel" title="基本属性" style="width:100%;padding:10px;">
+		<table class="detailtable">
+			<tbody>
+				<tr>
+					<td>流程名称</td><td>${instance.workflowName}</td><td>版本号</td><td>${instance.version}</td>
+				</tr>
+				<tr>
+					<td>申请日期</td><td>${apply.applyDate}</td><td>申请人</td><td>${apply.applyerName}</td>
+				</tr>
+				<tr>
+					<td>费用类型</td><td>${apply.feeTypeName}</td><td>申请金额</td><td>${apply.money}</td>
+				</tr>
+				<tr>
+					<td>备注信息</td><td colspan="3">${apply.remark}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div style="height: 10px"></div>
+	<div id="pA" class="easyui-panel" title="审批进度" style="width:100%;padding:10px;">
+		<div class="detailrecord">
+			<h5>发起申请</h5>
+			<div class="detailcontainer">
+				<div class="detailinfo"><label>申请人：</label><em>${apply.applyerName}</em></div>
+				<div class="detailinfo"><label>申请时间：</label><em>${apply.applyDate}</em></div>
+			</div>	
+		</div>
+		<#list tasks as t>
+		<div class="detailrecord">
+			<h5>领导审批</h5>
+			<div class="detailcontainer">
+				<div class="detailinfo"><label>审批人：</label><em>${t.applyerName}</em></div>
+				<div class="detailinfo"><label>审批时间：</label><em><#if t.processDate??>${t.processDate?string('yyyy-MM-dd')}<#else>---</#if></em></div>
+				<div class="detailinfo"><label>审批状态：</label>
+					<em>
+						<#if t.status==100>
+							处理中
+						<#elseif t.status==200>
+							结束
+						<#elseif t.status ==300>
+							驳回
+						<#else>
+						</#if>
+					</em>
+				</div>
+			</div>
+			<div class="detailremark">审批意见：${t.remark!'---'}</div>	
+		</div>
+		</#list>
+	</div>
+	<#if taskId??>
+	<div id="pAaa" class="easyui-panel" title="审批" style="width:100%;padding:10px;">
+		<form id="ff" class="easyui-form" style="width: 400px"  method="post" action="/flowapp/approve" data-options="novalidate:true">
+			   <input type="hidden" name="taskId" value="${taskId}"/>
+	    	<div style="margin:20px 0">
+				<input label="通过" labelWidth="30px" class="easyui-radiobutton" name="approve" checked="checked" value="200"/>
+				<input label="拒绝" labelWidth="30px" class="easyui-radiobutton" name="approve" value="300"/>
+			</div>
+	
+	        <div style="margin:20px 0">
+	            <input class="easyui-textbox" name="remark" data-options="multiline:true,label:'审批意见'" style="height:60px;width: 100%"></input>
+	        </div>
+			
+			</form>
+		
+	</div>
+	<div style="padding: 5px 0;text-align: center">
+		<a href="#" class="easyui-linkbutton" style="margin-right:10px" onclick="history.go(-1)">返回</a>
+		<a href="#" class="easyui-linkbutton" onclick="approve()" >审批</a>
+	</div>
+	<#else>
+	<div style="padding: 5px 0;text-align: center">
+		<a href="#" class="easyui-linkbutton" style="margin-right:10px" onclick="history.go(-1);">返回</a>
+	</div>
+	</#if>
+</div>
+<script type="text/javascript">
+function approve(){
+	$('#ff').form('submit',{
+		onSubmit:function(){
+			return $(this).form('enableValidation').form('validate');
+		},
+		success:function(data){
+			var data = eval('(' + data + ')'); 
+			if(data.result == 'success'){
+				window.location.href='/flowapp/list';
+			}
+		}
+	});
+}
+</script>
+</@f.main>

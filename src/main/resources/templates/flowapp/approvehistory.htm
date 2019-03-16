@@ -1,0 +1,33 @@
+<!-- tab -->
+<table id="historytable" class="easyui-datagrid" title="" style="min-height: 400px;width: 100%;"
+			data-options="rownumbers:true,singleSelect:true,url:'/flowapp/approvehistory',method:'get',loadMsg:'加载中...',
+			nowrap:true,pagination:true,onLoadSuccess:function(data){
+				if(data.rows.length == 0){
+					var body = $(this).data().datagrid.dc.body2;
+					var width = body.width();
+					body.find('table tbody').append('<h5 style=\'width:700px;text-align:center;color:#aeaeae;font-size:12px\'>暂无数据!</h5>');
+				}
+			}">
+	<thead>
+		<tr>
+			<th data-options="field:'workflowName',width:150,align:'center'">流程名称</th>
+			<th data-options="field:'applyerName',width:150,align:'center'">申请人</th>
+			<th data-options="field:'applyDate',align:'center',width:150">申请日期</th>
+			<th data-options="field:'processDate',align:'center',width:150">处理日期</th>
+			<th data-options="field:'instanceId',align:'center',width:150,formatter:flowhis.formatOps">操作</th>
+		</tr>
+	</thead>
+</table>
+
+
+<script>
+var flowhis = {
+		formatOps:function(val,ele){
+			
+			return '<a class="maincolor" style="cursor:pointer" onclick="flowhis.approve(\''+val+'\')">详情</a>'
+		},
+		approve:function(instanceId,taskId){
+			window.location.href= '/flowapp/todetail?instanceId='+instanceId;
+		}
+}
+</script>

@@ -31,7 +31,7 @@ public class FeeController extends BaseController {
 		// TODO Auto-generated method stub
 		String search = Variant.valueOf(model.asMap().get("search")).stringValue("");
 		Page<Fee> page = feeService.findByName("%"+search+"%", getPage());
-		return SUCCESS_PAGE(page);
+		return SUCCESS_GRID(page);
 	}
 	
 	@RequestMapping(value="form",method = RequestMethod.POST)
@@ -55,7 +55,7 @@ public class FeeController extends BaseController {
 			ProjectFee pf = projectFeeService.findByProjectIdAndFeeId(getCurrentUser().getProjectId(), f.getId());
 			f.setStatus(pf.getStatus());
 		}
-		return SUCCESS_PAGE(page);
+		return SUCCESS_GRID(page);
 	}
 	
 	@RequestMapping(value="/addToProject",method = RequestMethod.POST)

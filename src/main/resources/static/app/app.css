@@ -70,3 +70,13 @@ h4{margin:0;paddding:0}
 
 /*列表自定义操作按钮样式*/
 .datagrid-row-selected a{color: #fff}
+
+/*自定义表格*/
+.detailtable{border-collapse: collapse;width: 100%;font-size: 12px;line-height: 30px;text-align: center}
+.detailtable tr td{border-bottom: 1px solid #eee;border-right:1px solid #eee;}
+.detailtable tr>td:last-child{border-right: none}
+.detailrecord{border-left: 1px solid #aeaeae;padding: 10px;border-bottom: 1px solid #aeaeae;}
+.detailrecord h5{margin:0;padding: 5px 0}
+.detailinfo{display: inline-block;width: 150px}
+.detailcontainer{border-top: 1px solid #eee;font-size: 10px;line-height: 16px;padding: 10px 0}
+.detailremark{border-top:1px solid #eee;padding: 10px 0}

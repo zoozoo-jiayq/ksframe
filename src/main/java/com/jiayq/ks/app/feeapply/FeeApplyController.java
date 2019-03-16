@@ -76,6 +76,6 @@ public class FeeApplyController extends BaseController {
 			WorkflowInstance instance = instanceService.findById(fa.getWorkflowInstanceId()).get();
 			fa.setStatus(instance.getStatus());
 		});
-		return SUCCESS_PAGE(page);
+		return SUCCESS_GRID(page);
 	}
 }

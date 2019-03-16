@@ -1,0 +1,17 @@
+<#import "../frame/frame.htm" as f/>
+<@f.main>
+<ul id="breadcrumb">
+  <li><a href="#"><span class="fa fa-home"> </span></a></li>
+  <li><a href="#"><span class="fa fa-cog"> </span>工作流</a></li>
+</ul>
+
+<div id="tt" class="easyui-tabs maincontent" style="">
+	<div title="待我审批">
+		<#include "./waitapprove.htm" />
+	</div>
+	<div title="审批历史">
+		<#include "./approvehistory.htm" />
+	</div>
+</div>
+	
+</@f.main>

@@ -1,6 +1,7 @@
 package com.jiayq.ks.app.flowconfig;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -36,10 +37,11 @@ public class FlowAPI {
 	 * 拒绝
 	 * @param taskId
 	 */
-	public void reject(String taskId) {
+	public void reject(String taskId,String remark) {
 		WorkflowTask task = taskService.findById(taskId).get();
 		if(task.getStatus() == WorkflowTask.TASK_STATUS_ACTIVE) {
 			task.setStatus(WorkflowTask.TASK_STATUS_ROLLBACK);
+			task.setRemark(remark);
 			taskService.save(task);
 			endInstance(task.getWorkflowInstanceId(),WorkflowInstance.INSTANCE_STATUS_REJECT);
 		}else {
@@ -51,10 +53,12 @@ public class FlowAPI {
 	 * 审批当前任务，并发起下一个任务
 	 * @param taskId
 	 */
-	public void passTask(String taskId) {
+	public void passTask(String taskId,String remark) {
 		WorkflowTask task = taskService.findById(taskId).get();
 		if(task.getStatus() == WorkflowTask.TASK_STATUS_ACTIVE) {
 			task.setStatus(WorkflowTask.TASK_STATUS_END);
+			task.setProcessDate(new Date());
+			task.setRemark(remark);
 			taskService.save(task);
 			WorkflowTask nt = next(task.getWorkflowInstanceId());
 			if(nt == null) {
@@ -126,6 +130,7 @@ public class FlowAPI {
 				task.setApplyerName(taskTemplte.getApprovername());
 				task.setStatus(WorkflowTask.TASK_STATUS_ACTIVE);
 				task.setProjectId(instance.getProjectId());
+				task.setTaskName(taskTemplte.getTaskname());
 				task = taskService.save(task);
 				return task;
 			}
