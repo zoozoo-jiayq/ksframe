@@ -1,5 +1,7 @@
 package com.jiayq.ks._frame.security;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
@@ -24,5 +26,17 @@ public class LoginUserService extends BaseServiceProxy<LoginUser> {
 
 	public Page<LoginUser> findByProjectId(String projectId,Pageable page){
 		return loginUserDao.findByProjectId(projectId,page);
+	}
+	
+	public List<LoginUser> findByPhone(String phone){
+		return loginUserDao.findByPhone(phone);
+	}
+	
+	public List<LoginUser> findByNickName(String nickName){
+		return loginUserDao.findByNickName(nickName);
+	}
+	
+	public List<LoginUser> findByUsername(String username){
+		return loginUserDao.findByUsername(username);
 	}
 }

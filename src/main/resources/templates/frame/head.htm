@@ -22,9 +22,9 @@
 					${Session["login_user"].projectName!'暂无项目'}
 					<i class="fa fa-angle-down"></i>
 				</a>
-				<ul class="dropdownmenu mainbg">
+				<ul class="dropdownmenu mainbg" style="z-index: 1">
 					<#list Session['my_projects'] as p>
-						<li><a>${p.name}</a></li>
+						<li onclick="javascript:window.location.href='/project/select/${p.id}'" style="border-bottom: 1px solid #eee"><a>${p.name}</a></li>
 					</#list>
 					<li><a href="/project/form" ><i class="fa fa-plus-square-o fa-lg"></i>创建项目</a></li>
 				</ul>

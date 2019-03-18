@@ -21,7 +21,7 @@ public class SpringStartedListener implements ApplicationListener<ContextRefresh
 		roleService.initRoleInfo();
 		
 		Iterable<Role> roles = roleService.findAll();
-		SimpleCache.cacheRole(roles);
+		RoleCache.cacheRole(roles);
 	}
 
 }

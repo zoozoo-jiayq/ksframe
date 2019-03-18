@@ -42,6 +42,8 @@ public class LoginListener implements ApplicationListener<LoginedEvent> {
 			});
 			s.setAttribute(MY_PROJECTS, projects);
 		}
+		
+		s.setAttribute("roles", RoleCache.getRole());
 	}
 	
 

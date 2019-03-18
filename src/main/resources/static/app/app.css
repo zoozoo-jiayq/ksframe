@@ -21,6 +21,7 @@ h4{margin:0;paddding:0}
 .haschildmenu{position: relative;}
 .dropdownmenu{;position: absolute;color:#fff;top:30px;width: 160px;display: none}
 .dropdownmenu li{padding: 10px 0}
+.dropdownmenu li:hover{background-color: #3FAEE6}
 
 #leftmenu{position: absolute;top:50px;left:0;width: 50px;height:calc(100vh - 50px);padding-top: 100px; background-color: #222D32;}
 .menugroup{background-color: #222D32;text-align: center;color:#fff}

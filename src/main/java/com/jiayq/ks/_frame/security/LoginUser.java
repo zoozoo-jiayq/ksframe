@@ -24,6 +24,17 @@ public class LoginUser extends BaseModel  {
 	
 	@Transient
 	private String role;
+	@Transient
+	private boolean existInProject;
+
+
+	public boolean isExistInProject() {
+		return existInProject;
+	}
+
+	public void setExistInProject(boolean existInProject) {
+		this.existInProject = existInProject;
+	}
 
 	public String getRole() {
 		return role;

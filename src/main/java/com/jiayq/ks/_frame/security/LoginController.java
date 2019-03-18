@@ -14,6 +14,7 @@ public class LoginController extends BaseController {
 	
 	public static final String LOGIN_USER_KEY = "login_user";
 	
+	
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String login(ModelMap model){
 		return "login";
@@ -32,5 +33,6 @@ public class LoginController extends BaseController {
 		
 		return "index";
 	}
+	
 	
 }

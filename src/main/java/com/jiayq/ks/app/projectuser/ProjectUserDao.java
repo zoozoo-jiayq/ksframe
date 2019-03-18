@@ -7,4 +7,5 @@ import com.jiayq.ks._frame.base.BaseRepository;
 @Repository
 public interface ProjectUserDao extends BaseRepository<ProjectUser> {
 
+	public ProjectUser findOneByProjectIdAndUserId(String projectId,String userId);
 }

@@ -21,5 +21,8 @@ public class ProjectUserService extends BaseServiceProxy<ProjectUser> {
 		return projectUserDao;
 	}
 	
+	public ProjectUser findByProjectIdAndUserId(String projectId,String userId) {
+		return projectUserDao.findOneByProjectIdAndUserId(projectId, userId);
+	}
 
 }

@@ -1,5 +1,8 @@
 package com.jiayq.ks.app.feeapply;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
@@ -29,5 +32,9 @@ public class FeeApplyService extends BaseServiceProxy<FeeApply> {
 	
 	public FeeApply findByInstanceId(String instanceId) {
 		return feeApplyDao.findOneByWorkflowInstanceId(instanceId);
+	}
+	
+	public List<FeeApply> findApprovedHistory(String projectId,Date begin,Date end){
+		return feeApplyDao.findApprovedHistory(projectId, begin, end);
 	}
 }

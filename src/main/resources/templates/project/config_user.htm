@@ -12,16 +12,34 @@
 		<tr>
 			<th data-options="field:'username',width:100,align:'center'">登录名</th>
 			<th data-options="field:'nickName',width:120,align:'center'">昵称</th>
-			<th data-options="field:'phone',align:'center',width:120">手机号码</th>
+			<th data-options="field:'phone',align:'center',width:100">手机号码</th>
 			<th data-options="field:'enabled',align:'center',width:100,formatter:user.formatEnabled">是否启用</th>
 			<th data-options="field:'role',align:'center',width:100">角色</th>
-			<th data-options="field:'id',align:'center',width:120,formatter:user.formatOps">操作</th>
+			<th data-options="field:'id',align:'center',width:100,formatter:user.formatOps">操作</th>
 		</tr>
 	</thead>
 </table>
 
 <div id="userdatagridtoolbar">
-	<a href="#" class="easyui-linkbutton" onclick="user.toAdd" data-options="iconCls:'icon-add'">添加</a>
+	<a href="#" class="easyui-linkbutton" onclick="user.add()" data-options="iconCls:'icon-add'">添加</a>
+</div>
+
+<!-- 查询用户 -->
+<div id="searchuserDialog" class="easyui-dialog" title="添加用户" style="width: 500px;min-height:300px;padding: 10px" data-options="closed:true,buttons:'#searchuserDialogBtns'">
+	<div style="padding: 5px 0;border-bottom: 1px solid #eee;text-align: center">
+		<input class="easyui-searchbox" id="searchphone" data-options="prompt:'请输入用户手机号码',searcher:user.doSearch" style="width:300px"></input>
+	</div>
+	<div style="text-align: center;padding:20px 5px 0 5px" >
+		<span class="searchresult" id="defaultcontent" style="display: inline-block;color: #ccc">请在搜索框输入用户的手机号码查询!</span>
+		<span class="searchresult" id="emptycontent" style="display: inline-block;color: #ccc;display: none">无法查找到用户<em style="color:#666" id="createphone"></em>的信息,是否<a onclick="user.toAdd()" class="maincolor" style="cursor: pointer">立即创建?</a></span>
+		<div class="searchresult" id="searchuserlist">
+			<table id="searchusers" title="查询结果"></table>
+		</div>
+	</div>
+	
+</div>
+<div id="searchuserDialogBtns">
+	<a href="#" class="easyui-linkbutton" onclick="$('#searchuserDialog').dialog('close')">关闭</a>
 </div>
 
 <!-- 创建用户 -->
@@ -41,10 +59,7 @@
 			<input class="easyui-textbox" name="nickName" style="width:100%" data-options="label:'昵称:',required:true,missingMessage:'昵称不能为空'" >
 		</div>
 		<div style="margin:20px 0">
-			<select class="easyui-combobox" name="role" style="width: 100%" data-options="label:'角色:',required:true,missingMessage:'角色不能为空'">
-				<#list roles as r>
-				<option ${r.id}>${r.name}</option>
-				</#list>
+			<select class="easyui-combobox" name="role" style="width: 100%" data-options="label:'角色:',required:true,missingMessage:'角色不能为空',valueField: 'id',textField: 'name',url: '/role/list'">
 			</select>
 		</div>
 	</form>
@@ -58,7 +73,8 @@
 
 var user = {
 		formatOps:function(val,index){
-			return '<a href="#" class="maincolor" style="cursor:pointer;margin-right:10px" onclick="user.toUpdate(\''+val+'\')">修改</a><a href="#" style="cursor:pointer" class="maincolor" onclick="user.resetpwd(\''+val+'\')">重置密码</a>'
+			//return '<a href="#" class="maincolor" style="cursor:pointer;margin-right:10px" onclick="user.toUpdate(\''+val+'\')">修改</a><a href="#" style="cursor:pointer" class="maincolor" onclick="user.resetpwd(\''+val+'\')">重置密码</a>'
+			return '<a href="#" style="cursor:pointer;margin-right:5px" class="maincolor" onclick="user.resetpwd(\''+val+'\')">重置密码</a><a href="#" style="cursor:pointer" class="maincolor" onclick="user.changerole(\''+val+'\')">变更角色</a>'
 		},
 		update:function(id){
 			
@@ -66,14 +82,72 @@ var user = {
 		resetpwd:function(id){
 			
 		},
+		changerole:function(id){
+			$.messager.prompt('角色变更', '请选择角色:', function(r){
+				if(r){
+					$.get("/user/updaterole?userId="+id+"&roleId="+r,function(){
+						$("#userTable").datagrid("load");
+					})
+				}
+			});
+			
+			//将prompt的input换成select
+			$(".messager-input").parent().append('<select id="roleId" style="border: 1px solid #ccc;padding: 5px;width: 150px;font-size: 12px;"><option value="">-请选择-</option><#list Session["roles"] as r><option value="${r.id}">${r.name}</option></#list></select>'); 
+       	 	$(".messager-input").hide();
+       	   	$(".messager-input").val('false')
+       	 	$('#roleId').change(function() { 
+				$(".messager-input").val($(this).val())
+			});
+			
+		},
+		doSearch:function(val){
+			$.get("/user/search?phone="+val,function(data){
+				$(".searchresult").hide();
+				if(data.data.length == 0 ){
+					$("#emptycontent").show();
+					$("#createphone").text(val);
+				}else{
+					$("#searchuserlist").show()
+					$('#searchusers').datagrid({
+					    data:data.data,
+					    columns:[[
+							{field:'username',title:'登陆账号',width:80},
+							{field:'nickName',title:'昵称',width:80},
+							{field:'phone',title:'手机号码',width:110},
+							{field:'existInProject',title:'状态',width:80,formatter:function(exist){
+								if(exist){
+									return "已加入项目";
+								}else{
+									return "未加入项目";
+								}
+							}},
+							{field:"id",title:'操作',width:100,formatter:function(id,e){
+								if(!e.existInProject){
+									return "<a class='maincolor' style='cursor:pointer' onclick='user.addToProject(\""+id+"\")'>加入项目</a>";
+								}
+							}}
+					    ]]
+					});
+				}
+			})
+		},
+		add:function(){
+			$(".searchresult").hide();
+			$("#defaultcontent").show();
+			$('#searchphone').searchbox('setValue',"");
+			$("#searchuserDialog").dialog("open")
+			
+		},
 		toAdd:function(){
+			var phone = $('#searchphone').searchbox('getValue');
 			$("#userform").form("load",{
-				phone:null,
-				username:null,
+				phone:phone,
+				username:phone,
 				nickName:null,
 				id:null
 			});
 			$('#createUserDialog').dialog('open');
+			
 		},
 		toUpdate:function(id){
 			$("#userform").form("load","/user/form?id="+id);
@@ -87,6 +161,7 @@ var user = {
 				success:function(){
 					$('#createUserDialog').dialog('close');
 					$("#userTable").datagrid("load");
+					$("#searchuserDialog").dialog("close");
 				}
 			})
 		},
@@ -105,6 +180,12 @@ var user = {
 					})
 				}
 			});
+		},
+		addToProject:function(userId){
+			$.get("/user/addToProject?userId="+userId,function(){
+				$("#userTable").datagrid("load");
+				$("#searchuserDialog").dialog("close");
+			})
 		}
 		
 }
@@ -123,7 +204,6 @@ var fee = {
 			
 		},
 		formatState:function(val,index){
-			console.log(val);
 			if(val && val == 1){
 				return "启用";
 			}

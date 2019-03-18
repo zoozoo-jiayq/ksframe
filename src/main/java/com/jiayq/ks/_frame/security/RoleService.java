@@ -55,7 +55,7 @@ public class RoleService extends BaseServiceProxy<Role> {
 		if(bus == null) {
 			bus = new Role();
 			bus.setCode(Role.BUSINESSER);
-			bus.setName("业务经理");
+			bus.setName("员工");
 			roleDao.save(bus);
 		}
 	}

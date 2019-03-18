@@ -5,8 +5,8 @@
 		<input class="easyui-datebox" id="begin" name="begin" value="${begin?string('yyyy-MM-dd')}" style="width:150px;height: 26px"   data-options="formatter:_.formatDate,parser:_.parseDate" >
 		<label>截止日期:</label>
 		<input class="easyui-datebox" id="end" name="end" style="width:150px;height: 26px" value="${.now?string('yyyy-MM-dd')}"  data-options="formatter:_.formatDate,parser:_.parseDate" >
-		<label>产出类型:</label>
-		<input class="easyui-combobox" id="productIds"   style="width: 350px;height: 26px" name="products" data-options="url:'/product/belongProject',method:'get',valueField:'id',textField:'name',multiple:true,panelHeight:'auto',editable:false" />
+		<label>费用类型:</label>
+		<input class="easyui-combobox" id="feeIds"   style="width: 350px;height: 26px" name="products" data-options="url:'/fee/belongProject',method:'get',valueField:'id',textField:'name',multiple:true,panelHeight:'auto',editable:false" />
 		<a href="#" class="easyui-linkbutton" style="height: 26px" onclick="dayreport.searchByDay()" data-options="iconCls:'icon-search'">查询</a>
 	</div>
 	<div style="width: 1000px;height: 350px;margin-bottom: 10px" id="daychart"></div>
@@ -24,20 +24,20 @@
 		},
 		defaultSearchByDay:function(){
 			var self = this;
-			$.get("/product/belongProject",function(data){
-				var productIds = [];
+			$.get("/fee/belongProject",function(data){
+				var feeIds = [];
 				for(var i=0; i<data.length; i++){
-					productIds.push(data[i].id);
+					feeIds.push(data[i].id);
 				}
-				$("#productIds").combobox("setValues",productIds);
+				$("#feeIds").combobox("setValues",feeIds);
 				self.buildDayCharts();
 			})
 		},
 		buildDayCharts:function(){
 				var begin = $("#begin").val();
 				var end =  $("#end").val();
-				var productIds = $("#productIds").combobox("getValues");
-				$.get("/report/productDayAmount?begin="+begin+"&end="+end+"&productIds="+productIds,function(data){
+				var feeIds = $("#feeIds").combobox("getValues");
+				$.get("/report/feeDayAmount?begin="+begin+"&end="+end+"&feeIds="+feeIds,function(data){
 					var result = data.data.data;
 					var legends = [];
 					var series = [];
@@ -49,8 +49,8 @@
 				            data:result[k],
 				            markPoint : {
 				                data : [
-				                    {type : 'max', name: '最高产出'},
-				                    {type : 'min', name: '最低产出'}
+				                    {type : 'max', name: '最高费用'},
+				                    {type : 'min', name: '最低费用'}
 				                ]
 				            },
 				            markLine : {
@@ -62,7 +62,7 @@
 					}
 					var xcategory = data.data.x;
 					var option = {
-						    title : {text: '日产量变化图',subtext: '以录入数据为准'},
+						    title : {text: '日费用变化图',subtext: '以录入数据为准'},
 						    tooltip : { trigger: 'axis' },
 						    legend: {
 						        data:legends

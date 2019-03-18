@@ -52,6 +52,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/frame/**","/app/**","/jquery-easyui-1.7.0/**");
+		web.ignoring().antMatchers("/frame/**","/app/**","/jquery-easyui-1.7.0/**","/register/**");
 	}
 }

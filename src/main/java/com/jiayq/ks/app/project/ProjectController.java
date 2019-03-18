@@ -61,11 +61,11 @@ public class ProjectController extends BaseController{
 			dest = model;
 		}
 		
-		projectService.createProject(u, dest);
-		u.setProjectId(dest.getId());
-		u.setProjectName(dest.getName());
+		Project np = projectService.createProject(u, dest);
+		u.setProjectId(np.getId());
+		u.setProjectName(np.getName());
 		super.updateCurrentUser(u);
-		return SUCCESS();
+		return SUCCESS(np);
 	}
 	
 	@RequestMapping("/select/{id}")
@@ -81,7 +81,6 @@ public class ProjectController extends BaseController{
 	@Menu("config")
 	@RequestMapping("config")
 	public String fee(Model model) {
-		model.addAttribute("roles",roleService.findAll());
 		return "project/config";
 	}
 	

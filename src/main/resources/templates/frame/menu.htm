@@ -38,7 +38,7 @@
 	    	<div class="haschildmenu">
 	    		<li class="menuitem" title="项目设置"><i class="fa fa-cog fa-fw fa-lg"></i></li>
 	    		<ul class="menugroup">
-	    			<li title="基础设置" class="menuitem"><a href='/project/form?projectId=${Session["login_user"].projectId}'><i class="fa fa-cog fa-fw fa-lg"></i>基础设置</a></li>
+	    			<li title="基础设置" class="menuitem"><a href='/project/form?projectId=${Session["login_user"].projectId!''}'><i class="fa fa-cog fa-fw fa-lg"></i>基础设置</a></li>
 	    			<li title="高级设置" class="menuitem"><a href='/project/config'><i class="fa fa-pencil fa-fw fa-lg"></i>高级设置</a></li>
 					<li title="流程设置" class='menuitem'><a href="/flowconfig/index"><i class="fa fa-check fa-fw fa-lg"></i>流程设置</a></li>
 	    		</ul>

@@ -1,0 +1,161 @@
+
+<div style="padding: 10px ">
+	<div style="padding: 20px;margin-bottom:20px;border-bottom: 1px solid #ccc">
+		<label>开始月份:</label>
+		<select class="easyui-combobox" style="width: 80px;height: 26px" name="beginyear" id="beginyear">
+			<option value="2019">2019</option>
+			<option value="2020">2020</option>
+			<option value="2021">2021</option>
+			<option value="2022">2022</option>
+			<option value="2023">2023</option>
+			<option value="2024">2024</option>
+			<option value="2025">2025</option>
+			<option value="2026">2026</option>
+			<option value="2027">2027</option>
+			<option value="2028">2028</option>
+		</select>
+		<select class="easyui-combobox" style="width: 60px;height: 26px" name="beginmonth" id="beginmonth">
+			<option value="1">1月</option>
+			<option value="2">2月</option>
+			<option value="3">3月</option>
+			<option value="4">4月</option>
+			<option value="5">5月</option>
+			<option value="6">6月</option>
+			<option value="7">7月</option>
+			<option value="8">8月</option>
+			<option value="9">9月</option>
+			<option value="10">10月</option>
+			<option value="11">11月</option>
+			<option value="12">12月</option>
+		</select>
+		<label>截止月份:</label>
+		<select class="easyui-combobox" style="width: 80px;height: 26px" name="endyear" id="endyear">
+			<option value="2019">2019</option>
+			<option value="2020">2020</option>
+			<option value="2021">2021</option>
+			<option value="2022">2022</option>
+			<option value="2023">2023</option>
+			<option value="2024">2024</option>
+			<option value="2025">2025</option>
+			<option value="2026">2026</option>
+			<option value="2027">2027</option>
+			<option value="2028">2028</option>
+		</select>
+		<select class="easyui-combobox" style="width: 60px;height: 26px" name="endmonth" id="endmonth">
+			<option value="1">1月</option>
+			<option value="2">2月</option>
+			<option value="3">3月</option>
+			<option value="4">4月</option>
+			<option value="5">5月</option>
+			<option value="6">6月</option>
+			<option value="7">7月</option>
+			<option value="8">8月</option>
+			<option value="9">9月</option>
+			<option value="10">10月</option>
+			<option value="11">11月</option>
+			<option value="12">12月</option>
+		</select>
+		<label>费用类型:</label>
+		<input class="easyui-combobox" id="feeIds1"   style="width: 300px;height: 26px" name="fees" data-options="url:'/fee/belongProject',method:'get',valueField:'id',textField:'name',multiple:true,panelHeight:'auto',editable:false" />
+		<a href="#" class="easyui-linkbutton" style="height: 26px" onclick="monthreport.searchByMonth()" data-options="iconCls:'icon-search'">查询</a>
+	</div>
+	<div style="width: 1000px;height: 350px;margin-bottom: 10px" id="monthchart"></div>
+</div>
+	
+<script type="text/javascript">
+	
+	jQuery(document).ready(function(){
+		monthreport.defaultSearchByMonth();
+	})
+	
+	var monthreport = {
+		searchByMonth:function(){
+			this.buildMonthCharts();
+		},
+		defaultSearchByMonth:function(){
+			$("#beginyear").combobox("setValue",new Date().getFullYear());
+			$("#beginmonth").combobox("setValue",1);
+			$("#endyear").combobox("setValue",new Date().getFullYear());
+			$("#endmonth").combobox("setValue",new Date().getMonth()+1);
+			
+			var self = this;
+			$.get("/fee/belongProject",function(data){
+				var feeIds = [];
+				for(var i=0; i<data.length; i++){
+					feeIds.push(data[i].id);
+				}
+				$("#feeIds1").combobox("setValues",feeIds);
+				self.buildMonthCharts();
+			})
+		},
+		buildMonthCharts:function(){
+				var beginyear = $("#beginyear").val();
+				var beginmonth = $("#beginmonth").val();
+				var endyear =  $("#endyear").val();
+				var endmonth = $("#endmonth").val();
+				var feeIds = $("#feeIds1").combobox("getValues");
+				$.get("/report/feeMonthAmount?beginyear="+beginyear+"&beginmonth="+beginmonth+"&endyear="+endyear+"&endmonth="+endmonth+"&feeIds="+feeIds,function(data){
+					var result = data.data.data;
+					var legends = [];
+					var series = [];
+					for(var k in result){
+						legends.push(k);
+						series.push({
+				            name:k,
+				            type:'line',
+				            data:result[k],
+				            markPoint : {
+				                data : [
+				                    {type : 'max', name: '最高费用'},
+				                    {type : 'min', name: '最低费用'}
+				                ]
+				            },
+				            markLine : {
+				                data : [
+				                    {type : 'average', name: '平均值'}
+				                ]
+				            }
+				        })
+					}
+					var xcategory = data.data.x;
+					var option = {
+						    title : {text: '月费用变化图',subtext: '以录入数据为准'},
+						    tooltip : { trigger: 'axis' },
+						    legend: {
+						        data:legends
+						    },
+						    toolbox: {
+						        show : true,
+						        feature : {
+						            mark : {show: true},
+						            dataView : {show: true, readOnly: false},
+						            magicType : {show: true, type: ['line', 'bar']},
+						            restore : {show: true},
+						            saveAsImage : {show: true}
+						        }
+						    },
+						    calculable : true,
+						    xAxis : [
+						        {
+						            type : 'category',
+						            boundaryGap : false,
+						            data : xcategory
+						        }
+						    ],
+						    yAxis : [
+						        {
+						            type : 'value',
+						            axisLabel : {
+						                formatter: '{value}'
+						            }
+						        }
+						    ],
+						    series : series
+						};
+					var myChart = echarts.init(document.getElementById('monthchart'),"macarons");
+					myChart.setOption(option);
+				})
+		}
+	}
+
+</script>	

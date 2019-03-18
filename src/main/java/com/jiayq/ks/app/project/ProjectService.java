@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.jiayq.ks._frame.base.BaseServiceProxy;
-import com.jiayq.ks._frame.listener.SimpleCache;
+import com.jiayq.ks._frame.listener.RoleCache;
 import com.jiayq.ks._frame.security.LoginUser;
 import com.jiayq.ks._frame.security.LoginUserService;
 import com.jiayq.ks._frame.security.Role;
@@ -47,23 +47,24 @@ public class ProjectService extends BaseServiceProxy<Project>{
 		return projectDao.findMyProject(userId);
 	}
 	
-	public void createProject(LoginUser u,Project p) {
-		if(StringUtils.isNotEmpty(p.getId())) {
-			projectDao.save(p);
+	public Project createProject(LoginUser u,Project project) {
+		if(StringUtils.isNotEmpty(project.getId())) {
+			return projectDao.save(project);
 		}else {
-			p = projectDao.save(p);
+			Project np = projectDao.save(project);
 
 			ProjectUser pu = new ProjectUser();
-			pu.setProjectId(p.getId());
+			pu.setProjectId(np.getId());
 			pu.setUserId(u.getId());
 			projectUserService.save(pu);
 			
 			ProjectUserRole pur = new ProjectUserRole();
-			pur.setProjectId(p.getId());
+			pur.setProjectId(np.getId());
 			pur.setUserId(u.getId());
-			Role r = SimpleCache.getRoleByCode(Role.ADMIN);
+			Role r = RoleCache.getRoleByCode(Role.ADMIN);
 			pur.setRoleId(r.getId());
 			projectUserRoleService.save(pur);
+			return np;
 		}
 		
 	}

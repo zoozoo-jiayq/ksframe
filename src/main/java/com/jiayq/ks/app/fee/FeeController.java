@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jiayq.ks._frame.base.BaseController;
 import com.jiayq.ks._frame.utils.Variant;
 import com.jiayq.ks.app.Constant;
+import com.jiayq.ks.app.product.Product;
 import com.jiayq.ks.app.projectfee.ProjectFee;
 import com.jiayq.ks.app.projectfee.ProjectFeeService;
 
@@ -95,5 +96,12 @@ public class FeeController extends BaseController {
 		pf.setStatus(Constant.STATUS_DISABLE);
 		projectFeeService.save(pf);
 		return SUCCESS();
+	}
+	
+	@RequestMapping("/belongProject")
+	public Object mylist() {
+		Page<Fee> page = feeService.findMyFee(getCurrentUser().getProjectId(), getMaxPage());
+		List<Fee> fees = page.getContent();
+		return fees;
 	}
 }
