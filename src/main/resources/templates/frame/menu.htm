@@ -27,6 +27,7 @@
 				</ul>	    	
 	    	</div>
 	    	
+	    	<@auth role="admin,pm">
 	    	<div class="haschildmenu">
 		    	<li class="menuitem" title="统计报表"><i class="fa fa-line-chart fa-fw fa-lg"></i></li>
 				<ul class="menugroup">
@@ -34,7 +35,9 @@
 					<li title="产量报表" class='menuitem'><a href="/report/fee">费用报表</a></li>
 				</ul>	    	
 	    	</div>
+	    	</@auth>
 	    	
+	    	<@auth role="admin">
 	    	<div class="haschildmenu">
 	    		<li class="menuitem" title="项目设置"><i class="fa fa-cog fa-fw fa-lg"></i></li>
 	    		<ul class="menugroup">
@@ -43,6 +46,7 @@
 					<li title="流程设置" class='menuitem'><a href="/flowconfig/index"><i class="fa fa-check fa-fw fa-lg"></i>流程设置</a></li>
 	    		</ul>
 	    	</div>
+	    	</@auth>
 	    </ul>
 </div>
 

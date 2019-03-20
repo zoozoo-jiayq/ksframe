@@ -28,6 +28,13 @@ public class LoginController extends BaseController {
 		return SUCCESS();
 	}
 	
+	@ResponseBody
+	@RequestMapping("loginerror")
+	public Object loginerror() {
+		
+		return SUCCESS("loginerror");
+	}
+	
 	@RequestMapping("/")
 	public String home(ModelMap model){
 		

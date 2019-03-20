@@ -11,10 +11,10 @@ public class FreemarkerConfig {
 	@Resource
 	private freemarker.template.Configuration configuration;
 	@Resource
-	private TagFrame frame;
+	private AuthCtlDirective auth;
 	
 	@PostConstruct
 	public void init() {
-		configuration.setSharedVariable("frame", frame);
+		configuration.setSharedVariable("auth", auth);
 	}
 }

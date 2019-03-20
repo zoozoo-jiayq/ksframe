@@ -21,16 +21,18 @@
 			</#if>
 		</div>
 		<#if Session["login_user"].projectId?exists>
+			<@auth role="admin">
 			<div  class="easyui-panel"  style="width:100%;padding: 10px ;margin: 20px 0">
 				<h4 style="border-bottom: 1px solid #ccc;line-height: 30px;font-weight: normal;margin-bottom: 10px ">项目：${Session['login_user'].projectName!''}</h4>
 				<div class="configtainer">
-					<div class="config " ><a href="/project/form?projectId=${Session["login_user"].projectId}"><i class="fa fa-cog" style="padding: 0 5px"></i>基本配置</a></div>
+					<div class="config " ><a href="/project/form?projectId=${Session["login_user"].projectId}">1.<i class="fa fa-cog" style="padding: 0 5px"></i>基本配置</a></div>
 					<div class="configline"></div>
-					<div class="config" id="configfee"><a href="/project/config"><i class="fa fa-rmb" style="padding: 0 5px"></i>高级配置</a></div>
+					<div class="config" id="configfee"><a href="/project/config">2.<i class="fa fa-rmb" style="padding: 0 5px"></i>高级配置</a></div>
 					<div class="configline"></div>
-					<div class="config" id="configproduct"><a href="/flowconfig/index"><i class="fa fa-truck" style="padding: 0 5px"></i>流程配置</a></div>
+					<div class="config" id="configproduct"><a href="/flowconfig/index">3.<i class="fa fa-truck" style="padding: 0 5px"></i>流程配置</a></div>
 				</div>
 			</div>
+			</@auth>
 		</#if>
 		<div style="margin-bottom: 10px"></div>
 		<div style="display: flex;justify-content: space-between;">

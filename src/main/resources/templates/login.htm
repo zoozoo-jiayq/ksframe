@@ -24,6 +24,9 @@
 			        <div style="margin:20px 0 10px 0">
 			            <input id="password" prompt="请输入密码" name="password" type="password" class="easyui-passwordbox" style="width:100%" data-options="label:'密码:',required:true,missingMessage:'密码不能为空'" >
 			        </div>
+			        <div style="margin:0 0 10px 0">
+			        	<span id="showerror" style="color: red;font-size: 12px;display: none">用户名或者密码不正确!</span>
+			        </div>
 			</form>
 			<div style="text-align:center;padding:5px 0;text-align: right">
 				<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">登录</a>
@@ -39,7 +42,9 @@
 			},
 			success:function(data){
 				var data = eval('(' + data + ')'); 
-				if(data.result == 'success'){
+				if(data.data == 'loginerror'){
+					$("#showerror").show();
+				}else{
 					window.location.href="/";
 				}
 			}
