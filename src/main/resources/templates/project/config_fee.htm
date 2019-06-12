@@ -52,16 +52,16 @@
 	<a href="#" class="easyui-linkbutton" onclick="$('#selectFeeDialog').dialog('close')">关闭</a>
 </div>
 <div id="selectFeedialogtools">
-	<a href="#" class="easyui-linkbutton" onclick="$('#createFeeDialog').dialog('open')" data-options="iconCls:'icon-add'">新增</a>
+	<a href="#" class="easyui-linkbutton" onclick="$('#createFeeDialog').dialog('open');$('#feeform').form('reset');" data-options="iconCls:'icon-add'">新增</a>
 </div>
 
 <!-- 创建费用类型 -->
 <div id="createFeeDialog" class="easyui-dialog" title="创建公共费用类型" style="width: 400px;padding:10px"
 		data-options="closed:true,iconCls:'icon-add',buttons:'#createFeeDialogButtons'"
 	>
-	<form class="easyui-form" action="/fee/form" id="feeform"  method="post" data-options="novalidate:true">
+	<form class="easyui-form" action="/fee/form" id="feeform"  method="post" >
     	<div style="margin:20px 0">
-			<input class="easyui-textbox" name="name" style="width:100%" data-options="label:'费用类型:',required:true,missingMessage:'费用类型不能为空'" >
+			<input class="easyui-textbox" name="name" style="width:100%" data-options="label:'费用类型:',required:true,missingMessage:'费用类型不能为空',invalidMessage:'费用类型不能重复',validType:'remote[\'/fee/checkname\',\'name\']'" >
 		</div>
 		<div style="margin:20px 0">
 			<input class="easyui-textbox" name="remark" style="width:100%;height: 100px" data-options="label:'说明:',multiline:true" >

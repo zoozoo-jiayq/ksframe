@@ -1,7 +1,6 @@
 package com.jiayq.ks.app.role;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jiayq.ks._frame.base.BaseController;

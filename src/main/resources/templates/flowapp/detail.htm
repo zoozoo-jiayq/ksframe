@@ -13,11 +13,18 @@
 					<td>流程名称</td><td>${instance.workflowName}</td><td>版本号</td><td>${instance.version}</td>
 				</tr>
 				<tr>
-					<td>申请日期</td><td>${apply.applyDate}</td><td>申请人</td><td>${apply.applyerName}</td>
+					<td>申请日期</td><td>${apply.applyDate?string('yyyy-MM-dd')}</td><td>申请人</td><td>${apply.applyerName}</td>
 				</tr>
-				<tr>
-					<td>费用类型</td><td>${apply.feeTypeName}</td><td>申请金额</td><td>${apply.money}</td>
-				</tr>
+				<#if instance.workflowType=='fee'>
+					<tr>
+						<td>费用类型</td><td>${apply.feeTypeName}</td><td>申请金额</td><td>${apply.money}</td>
+					</tr>
+				</#if>
+				<#if instance.workflowType=='consu'>
+					<tr>
+						<td>耗材类型</td><td>${apply.consuTypeName}</td><td>申请数量</td><td>${apply.nums}</td>
+					</tr>
+				</#if>
 				<tr>
 					<td>备注信息</td><td colspan="3">${apply.remark}</td>
 				</tr>
@@ -30,7 +37,7 @@
 			<h5>发起申请</h5>
 			<div class="detailcontainer">
 				<div class="detailinfo"><label>申请人：</label><em>${apply.applyerName}</em></div>
-				<div class="detailinfo"><label>申请时间：</label><em>${apply.applyDate}</em></div>
+				<div class="detailinfo"><label>提交时间：</label><em>${apply.inserttime}</em></div>
 			</div>	
 		</div>
 		<#list tasks as t>
@@ -38,7 +45,7 @@
 			<h5>领导审批</h5>
 			<div class="detailcontainer">
 				<div class="detailinfo"><label>审批人：</label><em>${t.applyerName}</em></div>
-				<div class="detailinfo"><label>审批时间：</label><em><#if t.processDate??>${t.processDate?string('yyyy-MM-dd')}<#else>---</#if></em></div>
+				<div class="detailinfo"><label>审批时间：</label><em><#if t.processDate??>${t.processDate?string('yyyy-MM-dd HH:mm:ss')}<#else>---</#if></em></div>
 				<div class="detailinfo"><label>审批状态：</label>
 					<em>
 						<#if t.status==100>
@@ -74,7 +81,7 @@
 	</div>
 	<div style="padding: 5px 0;text-align: center">
 		<a href="#" class="easyui-linkbutton" style="margin-right:10px" onclick="history.go(-1)">返回</a>
-		<a href="#" class="easyui-linkbutton" onclick="approve()" >审批</a>
+		<a href="#" class="easyui-linkbutton" onclick="approve()" data-options="iconCls:'icon-ok'">审批</a>
 	</div>
 	<#else>
 	<div style="padding: 5px 0;text-align: center">

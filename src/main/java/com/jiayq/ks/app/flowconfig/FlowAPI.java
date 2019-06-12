@@ -13,6 +13,8 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Component;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.jiayq.ks._frame.security.LoginUserService;
 
 @Component
 public class FlowAPI {
@@ -20,14 +22,14 @@ public class FlowAPI {
 	@Resource
 	private WorkflowInstanceService instanceService;
 	@Resource
-	private WorkflowService workflowService;
-	@Resource
 	private WorkflowVersionService versionService;
 	@Resource
 	private WorkflowTaskService taskService;
+	@Resource
+	private LoginUserService loginUserService;
 	
 	//发起审批
-	public WorkflowTask start(String projectId,int type) {
+	public WorkflowTask start(String projectId,String type) {
 		WorkflowInstance instance = this.createInstance(projectId, type);
 		return next(instance.getId());
 	}
@@ -42,6 +44,7 @@ public class FlowAPI {
 		if(task.getStatus() == WorkflowTask.TASK_STATUS_ACTIVE) {
 			task.setStatus(WorkflowTask.TASK_STATUS_ROLLBACK);
 			task.setRemark(remark);
+			task.setProcessDate(new Date());
 			taskService.save(task);
 			endInstance(task.getWorkflowInstanceId(),WorkflowInstance.INSTANCE_STATUS_REJECT);
 		}else {
@@ -110,30 +113,31 @@ public class FlowAPI {
 	 */
 	private WorkflowTask next(String instanceId) {
 		WorkflowInstance instance = instanceService.findById(instanceId).get();
-		Task first = loadFromConfig(instance.getConfig());
-		Task[] currents = new Task[] {first};
-		List<WorkflowTask> wfts = loadFromDb(instanceId);
-		for(int i=0; i<wfts.size(); i++) {
-			WorkflowTask wft = wfts.get(i);
-			for(Task t:currents) {
-				if(wft.getApplyerId().equals(t.getApproverid()) && wft.getStatus() == WorkflowTask.TASK_STATUS_END) {
-					currents = t.getNexts().toArray(new Task[0]);
+		List<Node> templates = loadFromConfig(instance.getConfig());
+		WorkflowTask task = taskService.findLastTask(instanceId);
+		int nextNode = 0 ;
+		if(task!=null) {
+			for(int j=0; j<templates.size(); j++) {
+				Node t = templates.get(j);
+				if(task.getApplyerId().equals(t.getUserid()) ) {
+					nextNode = j+1;
+					break;
 				}
 			}
 		}
-		if(currents.length >0) {
-			Task taskTemplte = currents[0];
-			if(taskTemplte.getType().equals("task")) {
-				WorkflowTask task = new WorkflowTask();
-				task.setWorkflowInstanceId(instanceId);
-				task.setApplyerId(taskTemplte.getApproverid());
-				task.setApplyerName(taskTemplte.getApprovername());
-				task.setStatus(WorkflowTask.TASK_STATUS_ACTIVE);
-				task.setProjectId(instance.getProjectId());
-				task.setTaskName(taskTemplte.getTaskname());
-				task = taskService.save(task);
-				return task;
-			}
+		if(nextNode>=templates.size()) {
+			endInstance(instanceId, WorkflowInstance.INSTANCE_STATUS_END);
+		}else {
+			Node n = templates.get(nextNode);
+			WorkflowTask nt = new WorkflowTask();
+			nt.setWorkflowInstanceId(instanceId);
+			nt.setApplyerId(n.getUserid());
+			nt.setApplyerName(n.getUsername());
+			nt.setStatus(WorkflowTask.TASK_STATUS_ACTIVE);
+			nt.setProjectId(instance.getProjectId());
+			nt.setTaskName(n.getUsername());
+			nt = taskService.save(nt);
+			return nt;
 		}
 		return null;
 	}
@@ -144,23 +148,18 @@ public class FlowAPI {
 	 * @param config
 	 * @return
 	 */
-	private Task loadFromConfig(String config){
+	private List<Node> loadFromConfig(String config){
 		Gson gson = new Gson();
-		Config c = gson.fromJson(config, Config.class);
-		List<Task> tasks = c.getNodes();
-		List<TaskSort> sorts = c.getLines();
-		for(int i=0; i<sorts.size(); i++) {
-			TaskSort ts = sorts.get(i);
-			Task from = searchById(tasks, ts.getFrom());
-			Task to = searchById(tasks, ts.getTo());
-			to.setBefore(from);
+		List<Node> c = gson.fromJson(config,new TypeToken<List<Node>>() {}.getType());
+		if(c!=null && c.size()>0) {
+			c.sort((a,b)->{
+				if(a.getIdx() > b.getIdx()) return 1;
+				if(a.getIdx() == b.getIdx()) return 0;
+				if(a.getIdx() < b.getIdx()) return -1;
+				return 0;
+			});
 		}
-		for(int i=0; i<tasks.size(); i++) {
-			if(tasks.get(i).getType().equals("begin")) {
-				return tasks.get(i).getNexts().get(0);
-			}
-		}
-		return null;
+		return c;
 	}
 	
 	private Task searchById(List<Task> tasks,String id) {
@@ -183,41 +182,50 @@ public class FlowAPI {
 	}
 	
 	//创建流程实例
-	private WorkflowInstance createInstance(String projectId,int type) {
-		Workflow flows = workflowService.findByType(projectId, type);
-		WorkFlowVersion version = versionService.findActiveFlow(flows.getId());
+	private WorkflowInstance createInstance(String projectId,String type) {
+		WorkFlowVersion version = versionService.findActiveFlow(projectId,type);
 		
 		WorkflowInstance instance = new WorkflowInstance();
-		instance.setWorkflowId(flows.getId());
-		instance.setWorkflowName(flows.getName());
 		instance.setWorkflowVersionId(version.getId());
 		instance.setVersion(version.getVersion());
 		instance.setConfig(version.getConfig());
 		instance.setStatus(WorkflowInstance.INSTANCE_STATUS_ACTIVE);
 		instance.setProjectId(projectId);
-		instance.setWorkflowType(flows.getType());
+		instance.setWorkflowType(type);
+		if(type.equals( WorkFlowVersion.TYPE_FEE)) {
+			instance.setWorkflowName("费用申请流程");
+		}else if(type.equals( WorkFlowVersion.TYPE_CONSU)) {
+			instance.setWorkflowName("耗材申请流程");
+		}
 		instance = instanceService.save(instance);
 		return instance;
 	}
 	
-	//{"nodes":[{"type":"begin","id":"e31ov","position":{"x":100,"y":100}},{"type":"end","id":"lq2o3","position":{"x":645,"y":133}},{"taskname":"财务审批11","approverid":"4028be81690a750f01690a781e9d0002","approvername":"贾永强","id":"ea7i1","type":"task","position":{"x":300,"y":155}}],"lines":[{"from":"e31ov","to":"ea7i1"},{"from":"ea7i1","to":"lq2o3"}]}
-	class Config{
-		private List<Task> nodes;
-		private List<TaskSort> lines;
-		public List<Task> getNodes() {
-			return nodes;
+	class Node{
+		private int idx;
+		private String userid;
+		private String username;
+		public int getIdx() {
+			return idx;
 		}
-		public void setNodes(List<Task> nodes) {
-			this.nodes = nodes;
+		public void setIdx(int idx) {
+			this.idx = idx;
 		}
-		public List<TaskSort> getLines() {
-			return lines;
+		public String getUserid() {
+			return userid;
 		}
-		public void setLines(List<TaskSort> lines) {
-			this.lines = lines;
+		public void setUserid(String userid) {
+			this.userid = userid;
+		}
+		public String getUsername() {
+			return username;
+		}
+		public void setUsername(String username) {
+			this.username = username;
 		}
 		
 	}
+	
 	class Task{
 		private String id;
 		private String taskname;
@@ -273,54 +281,8 @@ public class FlowAPI {
 		public void setType(String type) {
 			this.type = type;
 		}
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + getOuterType().hashCode();
-			result = prime * result + ((id == null) ? 0 : id.hashCode());
-			return result;
-		}
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			Task other = (Task) obj;
-			if (!getOuterType().equals(other.getOuterType()))
-				return false;
-			if (id == null) {
-				if (other.id != null)
-					return false;
-			} else if (!id.equals(other.id))
-				return false;
-			return true;
-		}
-		private FlowAPI getOuterType() {
-			return FlowAPI.this;
-		}
 		
 	}
 	
-	class TaskSort{
-		private String from;
-		private String to;
-		public String getFrom() {
-			return from;
-		}
-		public void setFrom(String from) {
-			this.from = from;
-		}
-		public String getTo() {
-			return to;
-		}
-		public void setTo(String to) {
-			this.to = to;
-		}
-		
-	}
 	
 }

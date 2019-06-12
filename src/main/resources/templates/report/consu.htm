@@ -1,0 +1,21 @@
+<#import "../frame/frame.htm" as f/>
+<@f.main>
+<ul id="breadcrumb">
+  <li><a href="/"><span class="fa fa-home"> </span></a></li>
+  <li><a href="#"><span class="fa fa-cog"> </span>报表统计</a></li>
+  <li><a href="#"><span class="fa fa-file"></span> 耗材使用报表</a></li>
+</ul>
+
+<div class="maincontent" style="width: 1100px">
+
+	<div class="easyui-tabs" style="">
+			<div title=耗材使用日报表 style="padding:10px">
+				<#include "./consu_days.htm">
+			</div>
+			<div title=耗材使用月报表 style="padding:10px">
+				<#include "./consu_month.htm">
+			</div>
+	</div>
+	
+</div>
+</@f.main>

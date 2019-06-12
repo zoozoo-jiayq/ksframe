@@ -1,6 +1,6 @@
 <#import "frame/frame.htm" as f/>
 <@f.main>
-<ul id="breadcrumb">
+<ul id="breadcrumb" style="display: none">
   <li><a href="#"><span class="fa fa-home"> </span></a></li>
   <li><a href="#"><span class="fa fa-cog"> </span>控制面板</a></li>
 </ul>
@@ -35,49 +35,71 @@
 			</@auth>
 		</#if>
 		<div style="margin-bottom: 10px"></div>
-		<div style="display: flex;justify-content: space-between;">
-		<div  class="easyui-panel"  title="费用申请记录" style="width:45%;;padding:10px;">
-			<table id="feeTable" class="easyui-datagrid " title="" style="min-height: 100px;max-height:200px;width: 100%;"
-			data-options="rownumbers:true,singleSelect:true,url:'/feeapply/myapply',method:'get',toolbar:'',loadMsg:'加载中...',
-			nowrap:true,onLoadSuccess:function(data){
-				if(data.rows.length == 0){
-					var body = $(this).data().datagrid.dc.body2;
-					var width = body.width();
-					body.find('table tbody').append('<h5 style=\'width:400px;text-align:center;color:#aeaeae;font-size:12px\'>暂无数据!</h5>');
-				}
-			}">
-				<thead>
-					<tr>
-						<th data-options="field:'applyerName',width:'25%',align:'center'">申请人</th>
-						<th data-options="field:'applyDate',width:'25%',align:'center'">申请日期</th>
-						<th data-options="field:'feeTypeName',align:'center',width:'25%'">费用类型</th>
-						<th data-options="field:'money',align:'center',width:'25%'">申请金额</th>
-					</tr>
-				</thead>
-			</table>
-			<a href="/feeapply/list" style="padding: 3px;cursor: pointer;float: right;" class="maincolor">查看更多...</a>
-		</div>
-		<div  class="easyui-panel" title="产出申报记录"  style="width:45%;;padding:10px;">
-			<table id="applyTable" class="easyui-datagrid " title="" style="min-height: 100px;max-height:200px;width: 100%;"
-			data-options="rownumbers:true,singleSelect:true,url:'/productapply/listdata',method:'get',toolbar:'',loadMsg:'加载中...',
-			nowrap:true,onLoadSuccess:function(data){
-				if(data.rows.length == 0){
-					var body = $(this).data().datagrid.dc.body2;
-					var width = body.width();
-					body.find('table tbody').append('<h5 style=\'width:400px;text-align:center;color:#aeaeae;font-size:12px\'>暂无数据!</h5>');
-				}
-			}">
-				<thead>
-					<tr>
-						<th data-options="field:'applyerName',width:'25%',align:'center'">申报人</th>
-						<th data-options="field:'applyDate',width:'25%',align:'center'">申报日期</th>
-						<th data-options="field:'productName',align:'center',width:'25%'">生产类型</th>
-						<th data-options="field:'amount',align:'center',width:'25%',formatter:product.formatOps">申报产量</th>
-					</tr>
-				</thead>
-			</table>
-			<a href="/productapply/list" style="padding: 3px;cursor: pointer;float: right;" class="maincolor">查看更多...</a>
-		</div>
+		<div style="display: flex;justify-content: space-between;flex-wrap: wrap;">
+			<div  class="easyui-panel"  title="费用申请记录" style="width:48%;;padding:10px;">
+				<table id="feeTable" class="easyui-datagrid " title="" style="min-height: 100px;max-height:200px;width: 100%;"
+				data-options="rownumbers:true,singleSelect:true,url:'/feeapply/myapply',method:'get',toolbar:'',loadMsg:'加载中...',
+				nowrap:true,onLoadSuccess:function(data){
+					if(data.rows.length == 0){
+						var body = $(this).data().datagrid.dc.body2;
+						var width = body.width();
+						body.find('table tbody').append('<h5 style=\'width:400px;text-align:center;color:#aeaeae;font-size:12px\'>暂无数据!</h5>');
+					}
+				}">
+					<thead>
+						<tr>
+							<th data-options="field:'applyerName',width:'25%',align:'center'">申请人</th>
+							<th data-options="field:'applyDate',width:'25%',align:'center'">申请日期</th>
+							<th data-options="field:'feeTypeName',align:'center',width:'25%'">费用类型</th>
+							<th data-options="field:'money',align:'center',width:'25%'">申请金额</th>
+						</tr>
+					</thead>
+				</table>
+				<a href="/feeapply/list" style="padding: 3px;cursor: pointer;float: right;" class="maincolor">查看更多...</a>
+			</div>
+			<div  class="easyui-panel" title="产出申报记录"  style="width:48%;;padding:10px;">
+				<table id="applyTable" class="easyui-datagrid " title="" style="min-height: 100px;max-height:200px;width: 100%;"
+				data-options="rownumbers:true,singleSelect:true,url:'/productapply/listdata',method:'get',toolbar:'',loadMsg:'加载中...',
+				nowrap:true,onLoadSuccess:function(data){
+					if(data.rows.length == 0){
+						var body = $(this).data().datagrid.dc.body2;
+						var width = body.width();
+						body.find('table tbody').append('<h5 style=\'width:400px;text-align:center;color:#aeaeae;font-size:12px\'>暂无数据!</h5>');
+					}
+				}">
+					<thead>
+						<tr>
+							<th data-options="field:'applyerName',width:'25%',align:'center'">申报人</th>
+							<th data-options="field:'applyDate',width:'25%',align:'center'">申报日期</th>
+							<th data-options="field:'productName',align:'center',width:'25%'">生产类型</th>
+							<th data-options="field:'amount',align:'center',width:'25%',formatter:product.formatOps">申报产量</th>
+						</tr>
+					</thead>
+				</table>
+				<a href="/productapply/list" style="padding: 3px;cursor: pointer;float: right;" class="maincolor">查看更多...</a>
+			</div>
+		
+			<div  class="easyui-panel" title="耗材申请记录"  style="width:48%;;padding:10px;">
+				<table id="consuTable" class="easyui-datagrid " title="" style="min-height: 100px;max-height:200px;width: 100%;"
+				data-options="rownumbers:true,singleSelect:true,url:'/consuapply/myapply',method:'get',toolbar:'',loadMsg:'加载中...',
+				nowrap:true,onLoadSuccess:function(data){
+					if(data.rows.length == 0){
+						var body = $(this).data().datagrid.dc.body2;
+						var width = body.width();
+						body.find('table tbody').append('<h5 style=\'width:400px;text-align:center;color:#aeaeae;font-size:12px\'>暂无数据!</h5>');
+					}
+				}">
+					<thead>
+						<tr>
+							<th data-options="field:'applyerName',width:'25%',align:'center'">申报人</th>
+							<th data-options="field:'applyDate',width:'25%',align:'center'">申报日期</th>
+							<th data-options="field:'consuTypeName',align:'center',width:'25%'">耗材类型</th>
+							<th data-options="field:'nums',align:'center',width:'25%',formatter:product.formatOps">申报产量</th>
+						</tr>
+					</thead>
+				</table>
+				<a href="/consuapply/list" style="padding: 3px;cursor: pointer;float: right;" class="maincolor">查看更多...</a>
+			</div>
 		</div>
 	</div>
 	<script type="text/javascript">

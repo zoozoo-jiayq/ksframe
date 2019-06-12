@@ -1,4 +1,4 @@
-package com.jiayq.ks.app.product;
+package com.jiayq.ks.app.consu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,36 +14,36 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jiayq.ks._frame.base.BaseController;
 import com.jiayq.ks._frame.utils.Variant;
 import com.jiayq.ks.app.Constant;
-import com.jiayq.ks.app.projectproduct.ProjectProduct;
-import com.jiayq.ks.app.projectproduct.ProjectProductService;
+import com.jiayq.ks.app.projectconsu.ProjectConsu;
+import com.jiayq.ks.app.projectconsu.ProjectConsuService;
 
 @RestController
-@RequestMapping("/product")
-public class ProductController extends BaseController {
+@RequestMapping("/consu")
+public class ConsuController extends BaseController {
 
 	@Resource
-	private ProductService productService;
+	private ConsuService consuService;
 	@Resource
-	private ProjectProductService projectProductService;
+	private ProjectConsuService projectConsuService;
 	
 	@RequestMapping("list")
 	public Object all(Model model) {
 		// TODO Auto-generated method stub
 		String search = Variant.valueOf(model.asMap().get("search")).stringValue("");
-		Page<Product> page = productService.findByName("%"+search+"%", getPage());
+		Page<Consu> page = consuService.findByName("%"+search+"%", getPage());
 		return SUCCESS_GRID(page);
 	}
 	
 	@RequestMapping(value="form",method = RequestMethod.POST)
-	public Object doform(Product product) {
-		productService.save(product);
+	public Object doform(Consu consu) {
+		consuService.save(consu);
 		return SUCCESS();
 	}
 	
-	@RequestMapping("checkname")
+	@RequestMapping("/checkname")
 	public Object checkname(String name) {
-		List<Product> plist = productService.findByName(name);
-		if(plist!=null && plist.size()>0) {
+		List<Consu> list = consuService.findByName(name);
+		if(list!=null && list.size()>0) {
 			return false;
 		}
 		return true;
@@ -51,8 +51,8 @@ public class ProductController extends BaseController {
 	
 	@RequestMapping("/belongProject")
 	public Object mylist() {
-		Page<Product> page = productService.findMyProduct(getCurrentUser().getProjectId(), getMaxPage());
-		List<Product> products = page.getContent();
+		Page<Consu> page = consuService.findMyConsu(getCurrentUser().getProjectId(), getMaxPage());
+		List<Consu> products = page.getContent();
 		return products;
 	}
 	
@@ -64,10 +64,10 @@ public class ProductController extends BaseController {
 	 */
 	@RequestMapping("/selectedlist")
 	public Object mylist(Model model) {
-		Page<Product> page = productService.findMyProduct(getCurrentUser().getProjectId(), getPage());
+		Page<Consu> page = consuService.findMyConsu(getCurrentUser().getProjectId(), getPage());
 		for(int i=0; i<page.getContent().size(); i++) {
-			Product p = page.getContent().get(i);
-			ProjectProduct pd = projectProductService.findByProjectIdAndProductId(getCurrentUser().getProjectId(), p.getId());
+			Consu p = page.getContent().get(i);
+			ProjectConsu pd = projectConsuService.findByProjectIdAndConsuId(getCurrentUser().getProjectId(), p.getId());
 			p.setStatus(pd.getStatus());
 		}
 		return SUCCESS_GRID(page);
@@ -78,19 +78,19 @@ public class ProductController extends BaseController {
 		String projectId = getCurrentUser().getProjectId();
 		if(ids!=null) {
 			String[] idlist = ids.split(",");
-			List<ProjectProduct> pflist = new ArrayList<>();
+			List<ProjectConsu> pflist = new ArrayList<>();
 			if(idlist!=null && idlist.length>0) {
-				Page<Product> selectedProductlist = productService.findMyProduct(projectId, getMaxPage());
+				Page<Consu> selectedConsulist = consuService.findMyConsu(projectId, getMaxPage());
 				for(int i=0; i<idlist.length; i++) {
-					if(!isExist(idlist[i], selectedProductlist.getContent())) {
-						ProjectProduct pp = new ProjectProduct();
+					if(!isExist(idlist[i], selectedConsulist.getContent())) {
+						ProjectConsu pp = new ProjectConsu();
 						pp.setProjectId(projectId);
-						pp.setProductId(idlist[i]);
+						pp.setConsuId(idlist[i]);
 						pp.setStatus(Constant.STATUS_ENABLE);
 						pflist.add(pp);
 					}
 				}
-				projectProductService.saveAll(pflist);
+				projectConsuService.saveAll(pflist);
 			}
 		}
 		return SUCCESS();
@@ -98,17 +98,17 @@ public class ProductController extends BaseController {
 	
 	@RequestMapping("start")
 	public Object start(String id) {
-		ProjectProduct pf = projectProductService.findByProjectIdAndProductId(getCurrentUser().getProjectId(), id);
+		ProjectConsu pf = projectConsuService.findByProjectIdAndConsuId(getCurrentUser().getProjectId(), id);
 		pf.setStatus(Constant.STATUS_ENABLE);
-		projectProductService.save(pf);
+		projectConsuService.save(pf);
 		return SUCCESS();
 	}
 	
 	@RequestMapping("stop")
 	public Object stop(String id) {
-		ProjectProduct pf = projectProductService.findByProjectIdAndProductId(getCurrentUser().getProjectId(), id);
+		ProjectConsu pf = projectConsuService.findByProjectIdAndConsuId(getCurrentUser().getProjectId(), id);
 		pf.setStatus(Constant.STATUS_DISABLE);
-		projectProductService.save(pf);
+		projectConsuService.save(pf);
 		return SUCCESS();
 	}
 }

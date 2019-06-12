@@ -33,13 +33,9 @@
 			<a href="/project/form" ><i class="fa fa-plus-square-o fa-lg"></i>创建项目</a>
 		</a>
 		</#if>
-       	<a href="#" class="pure-button" >
-       		<i class="fa fa-envelope-o"></i>
-			<span class="tip successbg">10</span>
-		</a>
-       	<a href="#" class="pure-button">
+       	<a href="/flowapp/list" class="pure-button" title="待处理任务">
        		<i class="fa fa-bell-o"></i>
-			<span class="tip errorbg">10</span>
+			<span class="tip errorbg" id="waitcount">0</span>
 		</a>
 	</div>
 </div>
@@ -58,6 +54,10 @@
 				$(".haschildmenu .dropdownmenu").hide();
 			})
 		}(this,this.document));
+		
+		$.get("/flowapp/waitapprove",function(data){
+			$("#waitcount").text(data.total)
+		})
 		
 	})
 	window._ = {

@@ -1,0 +1,158 @@
+<#import "../frame/frame.htm" as f/>
+<@f.main>
+	<ul id="breadcrumb">
+	  <li><a href="/"><span class="fa fa-home"> </span></a></li>
+	  <li><a href="#"><span class="fa fa-cog"> </span>流程设置</a></li>
+	</ul>
+	
+	<div class="maincontent" style="width:60%">
+		<p style="font-size: 12px;margin-bottom: 10px;color: red">**设计完成流程后，请点击右上角【保存】按钮**</p>
+		<div  class="easyui-panel" title="费用申请流程" style="width:100%;min-height:100px;padding:10px;" data-options="iconCls:'icon-ok',tools:'#tt'">
+			<div class="flow-container flow-fee">
+				<div class="flow-ele">
+					开始
+				</div>
+				
+				<div class="flow-line"><span>1</span></div>
+				
+				<div class="flow-ele flow-add" onclick="javascript:$('#dlg').dialog('open');$('#approverid').combobox('clear');flowconfig.mode='fee'" ><img alt="" src="/app/imgs/add.png" style="width:40px;height: 40px;vertical-align: middle;"></div>
+			</div>
+		</div>
+		<div id="tt">
+			<a href="#" class="icon-save" title="保存" onclick="javascript:flowconfig.save('fee')"></a>
+		</div>
+		<div style="margin:10px;"></div>
+		<div  class="easyui-panel" title="耗材申请流程" style="width:100%;min-height:100px;padding:10px;" data-options="iconCls:'icon-ok',tools:'#tt1'">
+			<div class="flow-container flow-consu">
+				<div class="flow-ele">
+					开始
+				</div>
+				
+				<div class="flow-line"><span>1</span></div>
+				
+				<div class="flow-ele flow-add" onclick="javascript:$('#dlg').dialog('open');$('#approverid').combobox('clear');flowconfig.mode='consu'" ><img alt="" src="/app/imgs/add.png" style="width:40px;height: 40px;vertical-align: middle;"></div>
+			</div>
+		</div>
+		<div id="tt1">
+			<a href="#" class="icon-save" title="保存" onclick="javascript:flowconfig.save('consu')"></a>
+		</div>
+		<div id="dlg" class="easyui-dialog" title="选择审批人员" style="width:400px;height:150px;padding:10px"
+			data-options="closed:true,
+				buttons: [{
+					text:'Ok',
+					iconCls:'icon-ok',
+					handler:function(){
+						flowconfig.selectUser();
+					}},{
+					text:'Cancel',
+					handler:function(){
+						$('#dlg').dialog('close')
+					}
+				}]
+			">
+		<input class="easyui-combobox" name="approverId" id="approverid" style="width:280px;" data-options="
+				label:'审批人:',
+				required:false,
+				url: '/user/comboxselect',
+				method: 'get',
+				valueField:'id',
+				textField:'nickName',
+				groupField:'role'
+			" />
+	</div>
+		
+	</div>
+	
+	<script type="text/javascript">
+	var flowconfig = {
+			mode:null,
+			selectUser:function(){
+				var approver = $("#approverid").combo("getValue");
+				var approvername = $("#approverid").combo("getText");
+				if(!approver){
+					$.messager.alert('Warning','申请人不能为空');
+					return;
+				}
+				$('#dlg').dialog('close')
+				this.createEle(approver,approvername);
+			},
+			getContext:function(){
+				var context = null;
+				if(this.mode == 'fee'){
+					context = ".flow-fee";
+				}
+				if(this.mode == 'consu'){
+					context = ".flow-consu"
+				}
+				return context;			
+			},
+			createEle:function(id,name){
+				var nums = 0;
+				var context = this.getContext();
+				nums = $(context+" .flow-del").length+1;
+				$('<div data-id="'+id+'" data-order='+nums+' class="flow-ele">'+name+'<img alt="" onclick="flowconfig.del(this,\''+this.mode+'\')" src="/app/imgs/del.png" class="flow-del" title="删除"/></div><div class="flow-line"><span>'+(nums+1)+'</span></div>').insertBefore($(context+" .flow-add"))
+			},
+			del:function(ele,mode){
+				this.mode = mode.trim();
+				$(ele).parent().next(".flow-line").remove();
+				$(ele).parent().remove()
+				this.order()
+			},
+			order:function(){
+				var context = this.getContext();
+				console.log(context)
+				$(context+" .flow-del").each(function(idx,ele){
+					$(ele).parent().attr("data-order",(idx+1))
+					$(ele).parent().next(".flow-line").children("span").html((idx+2))
+				})
+			},
+			save:function(mode){
+				this.mode = mode;
+				var context = this.getContext();
+				var flows = [];
+				$(context+" .flow-del").each(function(idx,ele){
+					var userid = $(ele).parent().attr("data-id");
+					var username = $(ele).parent().text();
+					flows.push({
+						idx:idx,
+						userid:userid,
+						username:username
+					})
+				})
+				$.ajax({
+					url:"/flowconfig/save?workflowtype="+this.mode,
+					method:"post",
+					contentType:"application/json",
+					data:JSON.stringify(flows),
+					success:function(data){
+						$.messager.alert('消息','流程保存成功','info');
+					}
+				})
+			},
+			init:function(workflowtype,cb){
+				this.mode = workflowtype;
+				var self = this;
+				$.ajax({
+					url:"/flowconfig/load?workflowtype="+workflowtype,
+					method:"get",
+					dataType:"json",
+					success:function(data){
+						if(data.result == "success" && data.data){
+							var result = JSON.parse(data.data);
+							result.sort(function(a,b){
+								return a-b;
+							})
+							for(var i=0; i<result.length; i++){
+								self.createEle(result[i].userid,result[i].username)
+							}
+						}
+						if(cb)cb()
+					}
+				})
+			}
+	}	
+	flowconfig.init("fee",function(){
+		flowconfig.init("consu")
+	})
+	</script>
+</@f.main>

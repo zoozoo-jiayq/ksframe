@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -61,6 +62,9 @@ public class RegisterController extends BaseController {
 	public Object submit(LoginUser user) {
 		String encryPwd = MD5.encrypt(user.getPassword());
 		user.setPassword(encryPwd);
+		if(StringUtils.isEmpty(user.getUsername())) {
+			user.setUsername(user.getPhone());
+		}
 		userService.save(user);
 		return SUCCESS();
 	}

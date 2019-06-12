@@ -1,0 +1,136 @@
+<!-- tab -->
+<table id="selectedConsuTable" class="easyui-datagrid" title="" style="min-height: 400px;width: 100%;"
+			data-options="rownumbers:true,singleSelect:true,url:'/consu/selectedlist',method:'get',toolbar:'#consudatagridtoolbar',loadMsg:'加载中...',
+			nowrap:true,pagination:true,onLoadSuccess:function(data){
+				if(data.rows.length == 0){
+					var body = $(this).data().datagrid.dc.body2;
+					var width = body.width();
+					body.find('table tbody').append('<h5 style=\'width:700px;text-align:center;color:#aeaeae;font-size:12px\'>暂无数据!</h5>');
+				}
+			}">
+	<thead>
+		<tr>
+			<th data-options="field:'name',width:100,align:'center'">耗材类型</th>
+			<th data-options="field:'unit',width:100,align:'center'">计量单位</th>
+			<th data-options="field:'status',width:100,align:'center',formatter:consu.formatState">状态</th>
+			<th data-options="field:'remark',align:'center',width:340">说明</th>
+			<th data-options="field:'id',align:'center',width:100,formatter:consu.formatOps">操作</th>
+		</tr>
+	</thead>
+</table>
+
+<div id="consudatagridtoolbar">
+	<a href="#" class="easyui-linkbutton" onclick="$('#selectConsuDialog').dialog('open')" data-options="iconCls:'icon-add'">添加</a>
+</div>
+
+<!-- 选择耗材库对话框 -->
+<div id="selectConsuDialog" class="easyui-dialog" title="选择耗材类型" style="padding:10px"
+			data-options="
+				closed:true,
+				iconCls: 'icon-filter',
+				buttons: '#selectConsuDialogButtons'
+			">
+	<table id="globalConsuTable" class="easyui-datagrid" title="公共产出类型" style="min-height: 400px;width: 600px"
+			data-options="rownumbers:true,singleSelect:true,url:'/consu/list',method:'get',toolbar:'#selectConsudialogtools',loadMsg:'加载中...',
+			nowrap:true,pagination:true,selectOnCheck:true,singleSelect:false,onLoadSuccess:function(data){
+				if(data.rows.length == 0){
+					var body = $(this).data().datagrid.dc.body2;
+					var width = body.width();
+					body.find('table tbody').append('<h5 >暂无数据!</h5>');
+				}
+			}">
+	<thead>
+		<tr>
+			<th data-options="field:'ck',checkbox:true"></th>
+			<th data-options="field:'name',width:150,align:'center'">耗材类型</th>
+			<th data-options="field:'unit',width:150,align:'center'">计量单位</th>
+			<th data-options="field:'remark',align:'center',width:230">说明</th>
+		</tr>
+	</thead>
+</table>
+</div>
+<div id="selectConsuDialogButtons">
+	<a href="#" class="easyui-linkbutton" onclick="consu.select()">确定</a>
+	<a href="#" class="easyui-linkbutton" onclick="$('#selectConsuDialog').dialog('close')">关闭</a>
+</div>
+<div id="selectConsudialogtools">
+	<a href="#" class="easyui-linkbutton" onclick="$('#createConsuDialog').dialog('open');$('#consuform').form('reset');" data-options="iconCls:'icon-add'">新增</a>
+</div>
+
+<!-- 创建费用类型 -->
+<div id="createConsuDialog" class="easyui-dialog" title="创建公共耗材类型" style="width: 400px;padding:10px"
+		data-options="closed:true,iconCls:'icon-add',buttons:'#createConsuDialogButtons'"
+	>
+	<form class="easyui-form" action="/consu/form" id="consuform"  method="post" >
+    	<div style="margin:20px 0">
+			<input class="easyui-textbox" name="name" style="width:100%" data-options="label:'耗材类型:',required:true,missingMessage:'耗材类型不能为空',invalidMessage:'耗材类型不能重复',validType:'remote[\'/consu/checkname\',\'name\']'" >
+		</div>
+		<div style="margin:20px 0">
+			<input class="easyui-textbox" name="unit" style="width:100%" data-options="label:'计量单位:',required:true,missingMessage:'计量单位不能为空'" >
+		</div>
+		<div style="margin:20px 0">
+			<input class="easyui-textbox" name="remark" style="width:100%;height: 100px" data-options="label:'说明:',multiline:true" >
+		</div>
+	</form>
+</div>
+<div id="createConsuDialogButtons">
+	<a href="#" class="easyui-linkbutton" onclick="consu.save()">保存</a>
+	<a href="#" class="easyui-linkbutton" onclick="$('#createConsuDialog').dialog('close')">关闭</a>
+</div>
+
+<script>
+var consu = {
+		save:function(){
+			$('#consuform').form('submit',{
+				onSubmit:function(){
+					return $(this).form('enableValidation').form('validate');
+				},
+				success:function(){
+					$('#createConsuDialog').dialog('close');
+					$("#globalConsuTable").datagrid("load");
+				}
+			});
+			
+		},
+		formatState:function(val,index){
+			console.log(val);
+			if(val && val == 1){
+				return "启用";
+			}
+			return "<span style='color:red'>停用</span>"
+		},
+		formatOps:function(val,index){
+			if(index.status && index.status == 1){
+				return '<a class="maincolor" style="cursor:pointer" onclick="consu.stop(\''+val+'\')">停用</a>'
+			}else{
+				return '<a class="maincolor" style="cursor:pointer" onclick="consu.start(\''+val+'\')">启用</a>'
+			}
+		},
+		start:function(id){
+			$.get("/consu/start?id="+id,function(){
+				$("#selectedConsuTable").datagrid("reload");
+			})
+		},
+		stop:function(id){
+			$.get("/consu/stop?id="+id,function(){
+				$("#selectedConsuTable").datagrid("reload");
+			})
+		},
+		select:function(){
+			var selectedrows = $("#globalConsuTable").datagrid("getSelections")
+			var ids = [];
+			for(var i=0; i<selectedrows.length; i++){
+				ids.push(selectedrows[i].id);
+			}
+			$.ajax({
+				url:'/consu/addToProject',
+				type:"post",
+				data:{ids:ids.join(",")},
+				success:function(){
+					$("#selectConsuDialog").dialog("close");
+					$("#selectedConsuTable").datagrid("load");
+				}
+			})
+		}
+}
+</script>

@@ -17,4 +17,6 @@ public interface WorkflowTaskDao extends BaseRepository<WorkflowTask> {
 	
 	public Page<WorkflowTask> findByProjectIdAndApplyerIdAndStatusIn(String projectId,String applyerId,Collection<Integer> status,Pageable page);
 	
+	public WorkflowTask findTop1ByWorkflowInstanceIdOrderByInserttimeDesc(String instanceId);
+	
 }

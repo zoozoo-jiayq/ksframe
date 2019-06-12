@@ -19,10 +19,10 @@
 			    
 			    	
 			    	<div style="margin:20px 0">
-						<input class="easyui-textbox" prompt="手机号码" id="phone" name="phone" validType="remote['/register/checkphone','phone']" style="width:100%"  data-options="label:'手机号码:',required:true,missingMessage:'手机号码不能为空',invalidMessage:'手机号码重复!'"  >
+						<input class="easyui-textbox" prompt="手机号码" id="phone"  name="phone"  validType="remote['/register/checkphone','phone']" style="width:100%"  data-options="label:'手机号码:',required:true,missingMessage:'手机号码不能为空',invalidMessage:'手机号码重复!'"  >
 					</div>
-			    	<div style="margin:20px 0">
-						<input class="easyui-textbox" prompt="账户名称" id="username" name="username" validType="remote['/register/checkusername','username']" style="width:100%" data-options="label:'账户名称:',required:true,missingMessage:'账户名不能为空'"  >
+			    	<div style="margin:20px 0;display: none" >
+						<input class="easyui-textbox" prompt="账户名称,默认使用手机号码" id="username" name="username" validType="remote['/register/checkusername','username']" style="width:100%" data-options="label:'账户名称:' ">
 					</div>
 					
 					<div style="margin:20px 0">
@@ -50,7 +50,9 @@
 			success:function(data){
 				var data = eval('(' + data + ')'); 
 				if(data.result == 'success'){
-					window.location.href="/";
+					$.messager.alert('消息','账号注册成功,请重新登录!','info',function(){
+						window.location.href="/";						
+					});
 				}
 			}
 		});

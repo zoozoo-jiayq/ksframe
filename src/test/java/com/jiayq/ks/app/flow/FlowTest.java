@@ -1,28 +1,12 @@
 package com.jiayq.ks.app.flow;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import com.jiayq.ks.KsApplication;
 import com.jiayq.ks.app.flowconfig.FlowAPI;
-import com.jiayq.ks.app.flowconfig.WorkFlowVersion;
-import com.jiayq.ks.app.flowconfig.Workflow;
-import com.jiayq.ks.app.flowconfig.WorkflowInstance;
 import com.jiayq.ks.app.flowconfig.WorkflowInstanceService;
-import com.jiayq.ks.app.flowconfig.WorkflowService;
-import com.jiayq.ks.app.flowconfig.WorkflowTask;
-import com.jiayq.ks.app.flowconfig.WorkflowVersionService;
 
-import junit.framework.Assert;
-
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = {KsApplication.class})
+//@RunWith(SpringRunner.class)
+//@SpringBootTest(classes = {KsApplication.class})
 public class FlowTest {
 
 	private String projectId = "4028be8168f6d2780168f6d2aebb0000";

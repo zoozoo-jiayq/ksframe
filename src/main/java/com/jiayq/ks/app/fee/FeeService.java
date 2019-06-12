@@ -1,5 +1,7 @@
 package com.jiayq.ks.app.fee;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
@@ -25,6 +27,10 @@ public class FeeService extends BaseServiceProxy<Fee> {
 	
 	public Page<Fee> findByName(String name,Pageable page){
 		return feeDao.findByNameLike(name, page);
+	}
+	
+	public List<Fee> findByName(String name){
+		return feeDao.findByName(name);
 	}
 
 	public Page<Fee> findMyFee(String projectId,Pageable page){

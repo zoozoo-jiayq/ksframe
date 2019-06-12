@@ -1,15 +1,149 @@
-2019-03-20 09:55:24,738 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2019-03-20 09:55:24,785 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet 524 - Initializing Servlet 'dispatcherServlet'
-2019-03-20 09:55:24,818 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet 546 - Completed initialization in 33 ms
-2019-03-20 09:55:31,060 [http-nio-8080-exec-8] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] 175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.ClassCastException: freemarker.template.SimpleScalar cannot be cast to java.lang.String] with root cause
-java.lang.ClassCastException: freemarker.template.SimpleScalar cannot be cast to java.lang.String
-	at com.jiayq.ks._frame.freemarker.AuthCtlDirective.execute(AuthCtlDirective.java:31)
-	at freemarker.core.Environment.visit(Environment.java:445)
-	at freemarker.core.UnifiedCall.accept(UnifiedCall.java:101)
-	at freemarker.core.Environment.visit(Environment.java:330)
-	at freemarker.core.Environment.visit(Environment.java:336)
-	at freemarker.core.Environment.include(Environment.java:2582)
-	at freemarker.core.Include.accept(Include.java:171)
+2019-06-12 10:40:17,645 [main] INFO  com.jiayq.ks.KsApplication 50 - Starting KsApplication on I142P6IZ9RBKIC5 with PID 13368 (E:\source\ks\ks-manager\target\classes started by Administrator in E:\source\ks\ks-manager)
+2019-06-12 10:40:17,651 [main] INFO  com.jiayq.ks.KsApplication 675 - No active profile set, falling back to default profiles: default
+2019-06-12 10:40:18,354 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-06-12 10:40:18,474 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 115ms. Found 17 repository interfaces.
+2019-06-12 10:40:18,780 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$44d766d0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-06-12 10:40:19,257 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 90 - Tomcat initialized with port(s): 8080 (http)
+2019-06-12 10:40:19,271 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-06-12 10:40:19,315 [main] INFO  o.a.catalina.core.StandardService 173 - Starting service [Tomcat]
+2019-06-12 10:40:19,315 [main] INFO  o.a.catalina.core.StandardEngine 173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-06-12 10:40:19,328 [main] INFO  o.a.c.core.AprLifecycleListener 173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:/Program Files/Java/jdk1.8.0_144/bin/../jre/bin/server;D:/Program Files/Java/jdk1.8.0_144/bin/../jre/bin;D:/Program Files/Java/jdk1.8.0_144/bin/../jre/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Users\Administrator\.windows-build-tools\python27\;C:\Users\Administrator\AppData\Roaming\npm\node_modules\cnpm\node_modules\npminstall\node-gyp-bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Users\Administrator\AppData\Roaming\npm\node_modules\cnpm\node_modules\npminstall\node-gyp-bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Administrator\AppData\Local\Programs\Python\Python36;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Java\jdk1.8.0_144\bin;D:\Program Files (x86)\maven\apache-maven-3.5.2\bin;C:\Users\Administrator\AppData\Roaming\npm;d:\Users\Administrator\AppData\Local\Programs\Fiddler;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin;D:\ant\apache-ant-1.10.5-bin\apache-ant-1.10.5\bin;C:\Users\Administrator\go\bin;"C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools;C:\Users\Administrator\AppData\Local\Android\Sdk\tools";C:\Users\Administrator\AppData\Local\Programs\Python\Python36\Scripts;D:\Program Files\Java\jdk1.8.0_144\bin;D:\Program Files\JetBrains\IntelliJ IDEA 2019.1\bin;D:\cmder;D:\ffmpeg-20190427-8019395-win64-static\bin;D:\Program Files\Microsoft VS Code\bin;D:\sts-4.2.1.RELEASE;;.]
+2019-06-12 10:40:19,487 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring embedded WebApplicationContext
+2019-06-12 10:40:19,487 [main] INFO  o.s.web.context.ContextLoader 296 - Root WebApplicationContext: initialization completed in 1794 ms
+2019-06-12 10:40:19,697 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-06-12 10:40:19,883 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-06-12 10:40:19,936 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-06-12 10:40:19,997 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-06-12 10:40:19,998 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-06-12 10:40:20,165 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-06-12 10:40:20,378 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-06-12 10:40:20,520 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-06-12 10:40:21,180 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-06-12 10:40:21,932 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-06-12 10:40:22,222 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-06-12 10:40:22,222 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-06-12 10:40:22,222 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-06-12 10:40:22,222 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/register/**'], []
+2019-06-12 10:40:22,254 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3c8fe8ad, org.springframework.security.web.context.SecurityContextPersistenceFilter@73ddb7ef, org.springframework.security.web.header.HeaderWriterFilter@39e7e040, org.springframework.security.web.authentication.logout.LogoutFilter@18463720, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@49cceb19, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@141b011a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@f237ae7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@43d6262c, org.springframework.security.web.session.SessionManagementFilter@6c1f15df, org.springframework.security.web.access.ExceptionTranslationFilter@5bf523e3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@c82ad22]
+2019-06-12 10:40:22,703 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-06-12 10:40:22,740 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-06-12 10:40:22,821 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-06-12 10:40:22,917 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-06-12 10:40:23,115 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-06-12 10:40:23,206 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 204 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-06-12 10:40:23,207 [main] INFO  com.jiayq.ks.KsApplication 59 - Started KsApplication in 6.031 seconds (JVM running for 7.387)
+2019-06-12 10:40:37,230 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-06-12 10:40:37,230 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet 524 - Initializing Servlet 'dispatcherServlet'
+2019-06-12 10:40:37,241 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet 546 - Completed initialization in 11 ms
+2019-06-12 11:18:37,687 [RMI TCP Connection(57)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin 164 - Application shutdown requested.
+2019-06-12 11:18:37,702 [RMI TCP Connection(57)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
+2019-06-12 11:18:37,702 [RMI TCP Connection(57)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-06-12 11:18:37,702 [RMI TCP Connection(57)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-06-12 11:18:37,709 [RMI TCP Connection(57)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
+2019-06-12 11:18:37,709 [RMI TCP Connection(57)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
+2019-06-12 11:23:01,999 [main] INFO  com.jiayq.ks.KsApplication 50 - Starting KsApplication on I142P6IZ9RBKIC5 with PID 5276 (E:\source\ks\ks-manager\target\classes started by Administrator in E:\source\ks\ks-manager)
+2019-06-12 11:23:02,002 [main] INFO  com.jiayq.ks.KsApplication 675 - No active profile set, falling back to default profiles: default
+2019-06-12 11:23:02,583 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-06-12 11:23:02,700 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 112ms. Found 17 repository interfaces.
+2019-06-12 11:23:02,984 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$90d4fac1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-06-12 11:23:03,352 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 90 - Tomcat initialized with port(s): 8080 (http)
+2019-06-12 11:23:03,363 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-06-12 11:23:03,371 [main] INFO  o.a.catalina.core.StandardService 173 - Starting service [Tomcat]
+2019-06-12 11:23:03,372 [main] INFO  o.a.catalina.core.StandardEngine 173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-06-12 11:23:03,378 [main] INFO  o.a.c.core.AprLifecycleListener 173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:/Program Files/Java/jdk1.8.0_144/bin/../jre/bin/server;D:/Program Files/Java/jdk1.8.0_144/bin/../jre/bin;D:/Program Files/Java/jdk1.8.0_144/bin/../jre/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Users\Administrator\.windows-build-tools\python27\;C:\Users\Administrator\AppData\Roaming\npm\node_modules\cnpm\node_modules\npminstall\node-gyp-bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Users\Administrator\AppData\Roaming\npm\node_modules\cnpm\node_modules\npminstall\node-gyp-bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Administrator\AppData\Local\Programs\Python\Python36;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Java\jdk1.8.0_144\bin;D:\Program Files (x86)\maven\apache-maven-3.5.2\bin;C:\Users\Administrator\AppData\Roaming\npm;d:\Users\Administrator\AppData\Local\Programs\Fiddler;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin;D:\ant\apache-ant-1.10.5-bin\apache-ant-1.10.5\bin;C:\Users\Administrator\go\bin;"C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools;C:\Users\Administrator\AppData\Local\Android\Sdk\tools";C:\Users\Administrator\AppData\Local\Programs\Python\Python36\Scripts;D:\Program Files\Java\jdk1.8.0_144\bin;D:\Program Files\JetBrains\IntelliJ IDEA 2019.1\bin;D:\cmder;D:\ffmpeg-20190427-8019395-win64-static\bin;D:\Program Files\Microsoft VS Code\bin;D:\sts-4.2.1.RELEASE;;.]
+2019-06-12 11:23:03,525 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring embedded WebApplicationContext
+2019-06-12 11:23:03,525 [main] INFO  o.s.web.context.ContextLoader 296 - Root WebApplicationContext: initialization completed in 1487 ms
+2019-06-12 11:23:03,722 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-06-12 11:23:03,803 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-06-12 11:23:03,849 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-06-12 11:23:03,893 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-06-12 11:23:03,895 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-06-12 11:23:04,016 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-06-12 11:23:04,203 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-06-12 11:23:04,329 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-06-12 11:23:04,845 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-06-12 11:23:05,494 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-06-12 11:23:05,763 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-06-12 11:23:05,763 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-06-12 11:23:05,764 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-06-12 11:23:05,764 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/register/**'], []
+2019-06-12 11:23:05,793 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3b56947a, org.springframework.security.web.context.SecurityContextPersistenceFilter@380e33c2, org.springframework.security.web.header.HeaderWriterFilter@2d230cff, org.springframework.security.web.authentication.logout.LogoutFilter@67f8f5a6, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@46591e98, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@445b85d7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@8d29719, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1926f962, org.springframework.security.web.session.SessionManagementFilter@3c87e851, org.springframework.security.web.access.ExceptionTranslationFilter@5a2f401a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@148b6f95]
+2019-06-12 11:23:06,172 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-06-12 11:23:06,204 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-06-12 11:23:06,284 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-06-12 11:23:06,370 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-06-12 11:23:06,483 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-06-12 11:23:06,503 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 204 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-06-12 11:23:06,505 [main] INFO  com.jiayq.ks.KsApplication 59 - Started KsApplication in 4.803 seconds (JVM running for 5.97)
+2019-06-12 11:23:10,587 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-06-12 11:23:10,588 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet 524 - Initializing Servlet 'dispatcherServlet'
+2019-06-12 11:23:10,596 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet 546 - Completed initialization in 8 ms
+2019-06-12 11:44:18,445 [RMI TCP Connection(48)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin 164 - Application shutdown requested.
+2019-06-12 11:44:18,448 [RMI TCP Connection(48)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
+2019-06-12 11:44:18,448 [RMI TCP Connection(48)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-06-12 11:44:18,452 [RMI TCP Connection(48)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-06-12 11:44:18,454 [RMI TCP Connection(48)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
+2019-06-12 11:44:18,456 [RMI TCP Connection(48)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
+2019-06-12 11:44:28,430 [main] INFO  com.jiayq.ks.KsApplication 50 - Starting KsApplication on I142P6IZ9RBKIC5 with PID 13588 (E:\source\ks\ks-manager\target\classes started by Administrator in E:\source\ks\ks-manager)
+2019-06-12 11:44:28,433 [main] INFO  com.jiayq.ks.KsApplication 675 - No active profile set, falling back to default profiles: default
+2019-06-12 11:44:29,023 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-06-12 11:44:29,137 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 108ms. Found 17 repository interfaces.
+2019-06-12 11:44:29,430 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ae8b236] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-06-12 11:44:29,789 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 90 - Tomcat initialized with port(s): 8080 (http)
+2019-06-12 11:44:29,801 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Initializing ProtocolHandler ["http-nio-8080"]
+2019-06-12 11:44:29,810 [main] INFO  o.a.catalina.core.StandardService 173 - Starting service [Tomcat]
+2019-06-12 11:44:29,810 [main] INFO  o.a.catalina.core.StandardEngine 173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-06-12 11:44:29,816 [main] INFO  o.a.c.core.AprLifecycleListener 173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:/Program Files/Java/jdk1.8.0_144/bin/../jre/bin/server;D:/Program Files/Java/jdk1.8.0_144/bin/../jre/bin;D:/Program Files/Java/jdk1.8.0_144/bin/../jre/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Users\Administrator\.windows-build-tools\python27\;C:\Users\Administrator\AppData\Roaming\npm\node_modules\cnpm\node_modules\npminstall\node-gyp-bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Users\Administrator\AppData\Roaming\npm\node_modules\cnpm\node_modules\npminstall\node-gyp-bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Administrator\AppData\Local\Programs\Python\Python36;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Java\jdk1.8.0_144\bin;D:\Program Files (x86)\maven\apache-maven-3.5.2\bin;C:\Users\Administrator\AppData\Roaming\npm;d:\Users\Administrator\AppData\Local\Programs\Fiddler;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin;D:\ant\apache-ant-1.10.5-bin\apache-ant-1.10.5\bin;C:\Users\Administrator\go\bin;"C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools;C:\Users\Administrator\AppData\Local\Android\Sdk\tools";C:\Users\Administrator\AppData\Local\Programs\Python\Python36\Scripts;D:\Program Files\Java\jdk1.8.0_144\bin;D:\Program Files\JetBrains\IntelliJ IDEA 2019.1\bin;D:\cmder;D:\ffmpeg-20190427-8019395-win64-static\bin;D:\Program Files\Microsoft VS Code\bin;D:\sts-4.2.1.RELEASE;;.]
+2019-06-12 11:44:29,972 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring embedded WebApplicationContext
+2019-06-12 11:44:29,972 [main] INFO  o.s.web.context.ContextLoader 296 - Root WebApplicationContext: initialization completed in 1509 ms
+2019-06-12 11:44:30,177 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
+2019-06-12 11:44:30,260 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
+2019-06-12 11:44:30,310 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-06-12 11:44:30,356 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
+2019-06-12 11:44:30,357 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
+2019-06-12 11:44:30,484 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-06-12 11:44:30,666 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-06-12 11:44:30,796 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-06-12 11:44:31,329 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-06-12 11:44:32,002 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
+2019-06-12 11:44:32,274 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
+2019-06-12 11:44:32,274 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
+2019-06-12 11:44:32,274 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
+2019-06-12 11:44:32,274 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/register/**'], []
+2019-06-12 11:44:32,320 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@43d6262c, org.springframework.security.web.context.SecurityContextPersistenceFilter@67f8f5a6, org.springframework.security.web.header.HeaderWriterFilter@2591d23a, org.springframework.security.web.authentication.logout.LogoutFilter@64eeddd8, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@197d5a87, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7976e536, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@42edde25, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5e2975ca, org.springframework.security.web.session.SessionManagementFilter@5e95b0ab, org.springframework.security.web.access.ExceptionTranslationFilter@8d29719, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3f80d8c]
+2019-06-12 11:44:32,747 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
+2019-06-12 11:44:32,791 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-06-12 11:44:32,892 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
+2019-06-12 11:44:32,990 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
+2019-06-12 11:44:33,125 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Starting ProtocolHandler ["http-nio-8080"]
+2019-06-12 11:44:33,151 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 204 - Tomcat started on port(s): 8080 (http) with context path ''
+2019-06-12 11:44:33,153 [main] INFO  com.jiayq.ks.KsApplication 59 - Started KsApplication in 5.034 seconds (JVM running for 6.128)
+2019-06-12 13:33:28,085 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-06-12 13:33:28,085 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet 524 - Initializing Servlet 'dispatcherServlet'
+2019-06-12 13:33:28,095 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet 546 - Completed initialization in 10 ms
+2019-06-12 13:42:07,883 [http-nio-8080-exec-7] ERROR freemarker.runtime 59 - Error executing FreeMarker template
+freemarker.core.NonMethodException: For "...(...)" callee: Expected a method, but this has evaluated to a string (wrapper: f.t.SimpleScalar):
+==> apply.applyerName?string  [in template "flowapp/detail.htm" at line 16, column 99]
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${apply.applyerName?string("yyyy-MM-d...  [in template "flowapp/detail.htm" at line 16, column 97]
+	~ Reached through: #nested  [in template "frame/frame.htm" in macro "main" at line 13, column 25]
+	~ Reached through: @f.main  [in template "flowapp/detail.htm" at line 2, column 1]
+----
+	at freemarker.core.MethodCall._eval(MethodCall.java:85)
+	at freemarker.core.Expression.eval(Expression.java:83)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:100)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:63)
+	at freemarker.core.Environment.visit(Environment.java:366)
+	at freemarker.core.Environment.invokeNestedContent(Environment.java:618)
+	at freemarker.core.BodyInstruction.accept(BodyInstruction.java:60)
 	at freemarker.core.Environment.visit(Environment.java:366)
 	at freemarker.core.Environment.invoke(Environment.java:775)
 	at freemarker.core.UnifiedCall.accept(UnifiedCall.java:83)
@@ -100,55 +234,133 @@ java.lang.ClassCastException: freemarker.template.SimpleScalar cannot be cast to
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
-2019-03-20 09:56:04,668 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin 164 - Application shutdown requested.
-2019-03-20 09:56:04,668 [RMI TCP Connection(3)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin 164 - Application shutdown requested.
-2019-03-20 09:56:04,670 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
-2019-03-20 09:56:04,671 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
-2019-03-20 09:56:04,675 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2019-03-20 09:56:04,679 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
-2019-03-20 09:56:04,682 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
-2019-03-20 09:56:24,608 [main] INFO  com.jiayq.ks.KsApplication 50 - Starting KsApplication on I142P6IZ9RBKIC5 with PID 5740 (E:\source\ks\ks-manager\target\classes started by Administrator in E:\source\ks\ks-manager)
-2019-03-20 09:56:24,612 [main] INFO  com.jiayq.ks.KsApplication 675 - No active profile set, falling back to default profiles: default
-2019-03-20 09:56:25,257 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 126 - Bootstrapping Spring Data repositories in DEFAULT mode.
-2019-03-20 09:56:25,373 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 182 - Finished Spring Data repository scanning in 108ms. Found 15 repository interfaces.
-2019-03-20 09:56:25,716 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker 330 - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$839863c8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-03-20 09:56:26,103 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 90 - Tomcat initialized with port(s): 8080 (http)
-2019-03-20 09:56:26,116 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Initializing ProtocolHandler ["http-nio-8080"]
-2019-03-20 09:56:26,124 [main] INFO  o.a.catalina.core.StandardService 173 - Starting service [Tomcat]
-2019-03-20 09:56:26,124 [main] INFO  o.a.catalina.core.StandardEngine 173 - Starting Servlet engine: [Apache Tomcat/9.0.14]
-2019-03-20 09:56:26,131 [main] INFO  o.a.c.core.AprLifecycleListener 173 - The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program Files\Java\jdk1.8.0_144\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:\Program Files\Java\jdk1.8.0_144\jre\bin;D:/Program Files (x86)/java/bin/server;D:/Program Files (x86)/java/bin;D:/Program Files (x86)/java/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\cnpm\node_modules\npminstall\node-gyp-bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\Administrator\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;d:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;D:\Go\bin;C:\Users\Administrator\AppData\Local\Programs\Python\Python36;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Java\jdk1.8.0_144\bin;D:\Program Files (x86)\maven\apache-maven-3.5.2\bin;C:\Users\Administrator\AppData\Roaming\npm;d:\Users\Administrator\AppData\Local\Programs\Fiddler;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\Program Files\mingw-w64\x86_64-8.1.0-win32-seh-rt_v6-rev0\mingw64\bin;D:\ant\apache-ant-1.10.5-bin\apache-ant-1.10.5\bin;C:\Users\Administrator\go\bin;"C:\Users\Administrator\AppData\Local\Android\Sdk\platform-tools;C:\Users\Administrator\AppData\Local\Android\Sdk\tools";C:\Users\Administrator\AppData\Local\Programs\Python\Python36\Scripts;;D:\sts-3.9.1.RELEASE;;.]
-2019-03-20 09:56:26,301 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring embedded WebApplicationContext
-2019-03-20 09:56:26,301 [main] INFO  o.s.web.context.ContextLoader 296 - Root WebApplicationContext: initialization completed in 1652 ms
-2019-03-20 09:56:26,519 [main] INFO  com.zaxxer.hikari.HikariDataSource 110 - HikariPool-1 - Starting...
-2019-03-20 09:56:26,617 [main] INFO  com.zaxxer.hikari.HikariDataSource 123 - HikariPool-1 - Start completed.
-2019-03-20 09:56:26,670 [main] INFO  o.h.jpa.internal.util.LogHelper 31 - HHH000204: Processing PersistenceUnitInfo [
-	name: default
-	...]
-2019-03-20 09:56:26,727 [main] INFO  org.hibernate.Version 46 - HHH000412: Hibernate Core {5.3.7.Final}
-2019-03-20 09:56:26,729 [main] INFO  org.hibernate.cfg.Environment 213 - HHH000206: hibernate.properties not found
-2019-03-20 09:56:26,865 [main] INFO  o.h.annotations.common.Version 49 - HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
-2019-03-20 09:56:27,063 [main] INFO  org.hibernate.dialect.Dialect 157 - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2019-03-20 09:56:27,211 [main] WARN  org.hibernate.id.UUIDHexGenerator 42 - HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
-2019-03-20 09:56:27,816 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 415 - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2019-03-20 09:56:28,490 [main] INFO  o.h.h.i.QueryTranslatorFactoryInitiator 47 - HHH000397: Using ASTQueryTranslatorFactory
-2019-03-20 09:56:28,888 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/frame/**'], []
-2019-03-20 09:56:28,888 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/app/**'], []
-2019-03-20 09:56:28,888 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/jquery-easyui-1.7.0/**'], []
-2019-03-20 09:56:28,888 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: Ant [pattern='/register/**'], []
-2019-03-20 09:56:28,922 [main] INFO  o.s.s.web.DefaultSecurityFilterChain 43 - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5923210, org.springframework.security.web.context.SecurityContextPersistenceFilter@5e643402, org.springframework.security.web.header.HeaderWriterFilter@5f7bd970, org.springframework.security.web.authentication.logout.LogoutFilter@1f6d3a81, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@73c6ae15, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@78141c58, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@612531a3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@70dd79f7, org.springframework.security.web.session.SessionManagementFilter@5274acd1, org.springframework.security.web.access.ExceptionTranslationFilter@4a65c40, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@22561412]
-2019-03-20 09:56:29,098 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 171 - Initializing ExecutorService 'applicationTaskExecutor'
-2019-03-20 09:56:29,359 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration 234 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2019-03-20 09:56:29,447 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping 61 - Adding welcome page template: index
-2019-03-20 09:56:29,552 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler 171 - Initializing ExecutorService 'taskScheduler'
-2019-03-20 09:56:29,689 [main] INFO  o.a.coyote.http11.Http11NioProtocol 173 - Starting ProtocolHandler ["http-nio-8080"]
-2019-03-20 09:56:29,718 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer 204 - Tomcat started on port(s): 8080 (http) with context path ''
-2019-03-20 09:56:29,721 [main] INFO  com.jiayq.ks.KsApplication 59 - Started KsApplication in 5.487 seconds (JVM running for 6.896)
-2019-03-20 09:57:31,569 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] 173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2019-03-20 09:57:31,569 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet 524 - Initializing Servlet 'dispatcherServlet'
-2019-03-20 09:57:31,581 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet 546 - Completed initialization in 12 ms
-2019-03-20 10:01:08,667 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin 164 - Application shutdown requested.
-2019-03-20 10:01:08,670 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
-2019-03-20 10:01:08,671 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
-2019-03-20 10:01:08,674 [RMI TCP Connection(2)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
-2019-03-20 10:01:08,676 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
-2019-03-20 10:01:08,679 [RMI TCP Connection(2)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.
+2019-06-12 13:42:07,888 [http-nio-8080-exec-7] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] 175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is freemarker.core.NonMethodException: For "...(...)" callee: Expected a method, but this has evaluated to a string (wrapper: f.t.SimpleScalar):
+==> apply.applyerName?string  [in template "flowapp/detail.htm" at line 16, column 99]
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${apply.applyerName?string("yyyy-MM-d...  [in template "flowapp/detail.htm" at line 16, column 97]
+	~ Reached through: #nested  [in template "frame/frame.htm" in macro "main" at line 13, column 25]
+	~ Reached through: @f.main  [in template "flowapp/detail.htm" at line 2, column 1]
+----] with root cause
+freemarker.core.NonMethodException: For "...(...)" callee: Expected a method, but this has evaluated to a string (wrapper: f.t.SimpleScalar):
+==> apply.applyerName?string  [in template "flowapp/detail.htm" at line 16, column 99]
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${apply.applyerName?string("yyyy-MM-d...  [in template "flowapp/detail.htm" at line 16, column 97]
+	~ Reached through: #nested  [in template "frame/frame.htm" in macro "main" at line 13, column 25]
+	~ Reached through: @f.main  [in template "flowapp/detail.htm" at line 2, column 1]
+----
+	at freemarker.core.MethodCall._eval(MethodCall.java:85)
+	at freemarker.core.Expression.eval(Expression.java:83)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:100)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:63)
+	at freemarker.core.Environment.visit(Environment.java:366)
+	at freemarker.core.Environment.invokeNestedContent(Environment.java:618)
+	at freemarker.core.BodyInstruction.accept(BodyInstruction.java:60)
+	at freemarker.core.Environment.visit(Environment.java:366)
+	at freemarker.core.Environment.invoke(Environment.java:775)
+	at freemarker.core.UnifiedCall.accept(UnifiedCall.java:83)
+	at freemarker.core.Environment.visit(Environment.java:330)
+	at freemarker.core.Environment.visit(Environment.java:336)
+	at freemarker.core.Environment.process(Environment.java:309)
+	at freemarker.template.Template.process(Template.java:384)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:389)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:302)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:253)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:178)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:316)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1370)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1116)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1055)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:897)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:200)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:74)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:357)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:270)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1417)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-06-12 13:42:07,906 [http-nio-8080-exec-7] ERROR o.s.b.a.w.s.e.ErrorMvcAutoConfiguration$StaticView 217 - Cannot render error page for request [/flowapp/todetail] and exception [For "...(...)" callee: Expected a method, but this has evaluated to a string (wrapper: f.t.SimpleScalar):
+==> apply.applyerName?string  [in template "flowapp/detail.htm" at line 16, column 99]
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${apply.applyerName?string("yyyy-MM-d...  [in template "flowapp/detail.htm" at line 16, column 97]
+	~ Reached through: #nested  [in template "frame/frame.htm" in macro "main" at line 13, column 25]
+	~ Reached through: @f.main  [in template "flowapp/detail.htm" at line 2, column 1]
+----] as the response has already been committed. As a result, the response may have the wrong status code.
+2019-06-12 15:27:42,067 [RMI TCP Connection(353)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin 164 - Application shutdown requested.
+2019-06-12 15:27:42,070 [RMI TCP Connection(353)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskScheduler 208 - Shutting down ExecutorService 'taskScheduler'
+2019-06-12 15:27:42,070 [RMI TCP Connection(353)-127.0.0.1] INFO  o.s.s.c.ThreadPoolTaskExecutor 208 - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-06-12 15:27:42,074 [RMI TCP Connection(353)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean 597 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-06-12 15:27:42,076 [RMI TCP Connection(353)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource 350 - HikariPool-1 - Shutdown initiated...
+2019-06-12 15:27:42,080 [RMI TCP Connection(353)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource 352 - HikariPool-1 - Shutdown completed.

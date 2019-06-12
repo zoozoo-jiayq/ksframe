@@ -1,5 +1,7 @@
 package com.jiayq.ks.app.fee;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -16,6 +18,8 @@ public interface FeeDao extends BaseRepository<Fee> {
 	
 	@Query("select f from Fee f where name like :name")
 	public Page<Fee> findByNameLike(@Param("name")String name,Pageable page);
+	
+	public List<Fee> findByName(String name);
 	
 	
 }

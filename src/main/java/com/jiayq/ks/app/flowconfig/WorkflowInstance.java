@@ -16,24 +16,22 @@ public class WorkflowInstance extends BaseModel {
 	
 	private String projectId;
 	
-	private String workflowId;
+	private String workflowType;
 	private String workflowName;
-	private int workflowType;
 	
 	private String workflowVersionId;
-	private String version;
+	private Integer version;
 	
 	@Column(name="config",length=5000)
 	private String config;
 	private int status;
 
-	
-	public int getWorkflowType() {
-		return workflowType;
+	public String getWorkflowName() {
+		return workflowName;
 	}
 
-	public void setWorkflowType(int workflowType) {
-		this.workflowType = workflowType;
+	public void setWorkflowName(String workflowName) {
+		this.workflowName = workflowName;
 	}
 
 	public String getProjectId() {
@@ -44,28 +42,20 @@ public class WorkflowInstance extends BaseModel {
 		this.projectId = projectId;
 	}
 
-	public String getWorkflowName() {
-		return workflowName;
+	public String getWorkflowType() {
+		return workflowType;
 	}
 
-	public void setWorkflowName(String workflowName) {
-		this.workflowName = workflowName;
+	public void setWorkflowType(String workflowType) {
+		this.workflowType = workflowType;
 	}
 
-	public String getVersion() {
+	public Integer getVersion() {
 		return version;
 	}
 
-	public void setVersion(String version) {
+	public void setVersion(Integer version) {
 		this.version = version;
-	}
-
-	public String getWorkflowId() {
-		return workflowId;
-	}
-
-	public void setWorkflowId(String workflowId) {
-		this.workflowId = workflowId;
 	}
 
 	public String getConfig() {

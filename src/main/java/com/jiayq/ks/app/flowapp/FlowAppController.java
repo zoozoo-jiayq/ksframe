@@ -12,7 +12,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,9 +20,12 @@ import com.jiayq.ks._frame.base.BaseController;
 import com.jiayq.ks._frame.security.LoginUser;
 import com.jiayq.ks._frame.security.LoginUserService;
 import com.jiayq.ks._frame.utils.StringUtils;
+import com.jiayq.ks.app.consuapply.ConsuApply;
+import com.jiayq.ks.app.consuapply.ConsuApplyService;
 import com.jiayq.ks.app.feeapply.FeeApply;
 import com.jiayq.ks.app.feeapply.FeeApplyService;
 import com.jiayq.ks.app.flowconfig.FlowAPI;
+import com.jiayq.ks.app.flowconfig.WorkFlowVersion;
 import com.jiayq.ks.app.flowconfig.WorkflowInstance;
 import com.jiayq.ks.app.flowconfig.WorkflowInstanceService;
 import com.jiayq.ks.app.flowconfig.WorkflowTask;
@@ -38,18 +40,33 @@ public class FlowAppController extends BaseController {
 	@Resource
 	private FeeApplyService applyService;
 	@Resource
+	private ConsuApplyService consuApplyService;
+	@Resource
 	private WorkflowTaskService taskService;
 	@Resource
 	private FlowAPI flowAPI;
 	@Resource
 	private LoginUserService userService;
 	
+	/**
+	 * @param model
+	 * @param instanceId
+	 * @param taskId
+	 * @return
+	 */
 	@RequestMapping("todetail")
 	public Object todetail(Model model,String instanceId,String taskId) {
 		WorkflowInstance instance = instanceService.findById(instanceId).get();
-		FeeApply apply = applyService.findByInstanceId(instanceId);
+		
+		if(instance.getWorkflowType().equals(WorkFlowVersion.TYPE_FEE)) {
+			FeeApply apply = applyService.findByInstanceId(instanceId);
+			model.addAttribute("apply", apply);
+		}else if(instance.getWorkflowType().equals(WorkFlowVersion.TYPE_CONSU)) {
+			ConsuApply apply = consuApplyService.findByInstanceId(instanceId);
+			model.addAttribute("apply", apply);
+		}
+		
 		List<WorkflowTask> tasks = taskService.findByInstanceId(instanceId, new Sort(Direction.ASC,DEFAULT_SORT_PROPERTY));
-		model.addAttribute("apply", apply);
 		model.addAttribute("instance", instance);
 		model.addAttribute("tasks", tasks);
 		model.addAttribute("taskId", taskId);
@@ -101,7 +118,12 @@ public class FlowAppController extends BaseController {
 		WorkflowInstance instance = instanceService.findById(task.getWorkflowInstanceId()).get();
 		LoginUser lu = userService.findById(instance.getInsertUserId()).get();
 		Map<String,String> r = new HashMap<>();
-		r.put("workflowName",instance.getWorkflowName());
+		if(instance.getWorkflowType().equals("fee")) {
+			r.put("workflowName","费用审批流程");
+		}
+		if(instance.getWorkflowType().equals("consu")) {
+			r.put("workflowName","耗材审批流程");
+		}
 		r.put("applyerName", lu.getNickName());
 		r.put("applyDate", StringUtils.formatDate(instance.getInserttime(), "yyyy-MM-dd"));
 		long h = (System.currentTimeMillis()-task.getInserttime().getTime())/(3600*1000);

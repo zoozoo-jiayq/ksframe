@@ -3,8 +3,6 @@ package com.jiayq.ks.app.flowconfig;
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.jiayq.ks._frame.base.BaseRepository;
@@ -23,12 +21,8 @@ public class WorkflowVersionService extends BaseServiceProxy<WorkFlowVersion> {
 		return workflowVersionDao;
 	}
 	
-	public Page<WorkFlowVersion> findByWorkflowId(String workflowId,Pageable page){
-		return workflowVersionDao.findByWorkflowId(workflowId,page);
-	}
-	
-	public WorkFlowVersion findActiveFlow(String workflowId) {
-		return workflowVersionDao.findOneByWorkflowIdAndStatus(workflowId, WorkFlowVersion.VERSION_STATUS_ENABLE);
+	public WorkFlowVersion findActiveFlow(String proectId,String workflowtype) {
+		return workflowVersionDao.findTop1ByProjectIdAndWorkflowtypeOrderByVersionDesc(proectId,workflowtype);
 	}
 
 }

@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -18,8 +17,7 @@ public class BaseModel {
     @GeneratedValue(generator = "uuid")
 	private String id;
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd") 
-	@JsonFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date inserttime;
 	
 	private String insertUserId;

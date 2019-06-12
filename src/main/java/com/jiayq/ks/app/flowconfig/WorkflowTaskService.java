@@ -49,5 +49,9 @@ public class WorkflowTaskService extends BaseServiceProxy<WorkflowTask> {
 		status.add(WorkflowTask.TASK_STATUS_ROLLBACK);
 		return workflowTaskDao.findByProjectIdAndApplyerIdAndStatusIn(projectId, userId, status,page);
 	}
+	
+	public WorkflowTask findLastTask(String instanceId) {
+		return  workflowTaskDao.findTop1ByWorkflowInstanceIdOrderByInserttimeDesc(instanceId);
+	}
 
 }

@@ -2,10 +2,12 @@ body{font-size: 12px;background-color: #F8F8F8;box-sizing: border-box;    font-f
 input:-webkit-autofill { box-shadow: 0 0 0px 1000px white inset !important;}
 ul{margin: 0;padding: 0;list-style: none;}  
 li{cursor: pointer;}
+/*
 input{margin: 0;width: 0;} 
+*/
 a{text-decoration: none;color:inherit;}
 h4{margin:0;paddding:0}
-.maincontent{width:800px;position: absolute;left:50%;transform:translateX(-50%);}
+.maincontent{width:800px;margin:0 auto;}
 .maincolor{color:#3498DB}
 .mainbg{background-color: #3498DB;}
 .successbg {background: rgb(28, 184, 65); /* this is a green */}
@@ -17,7 +19,7 @@ h4{margin:0;paddding:0}
 #head .right a{color:#fff;cursor: pointer;margin:0 10px;}
 #head .right a:hover{opacity: 0.8}
 #head .right a i{padding-right: 5px}
-#head .right a .tip{font-size: 10px;border-radius: 50%;color: #fff; padding: 0 2px;position: relative;top: -10px; left: -15px;}
+#head .right a .tip{font-size: 10px;border-radius: 50%;color: #fff; padding: 0 5px;position: relative;top: -10px; left: -15px;}
 .haschildmenu{position: relative;}
 .dropdownmenu{;position: absolute;color:#fff;top:30px;width: 160px;display: none}
 .dropdownmenu li{padding: 10px 0}
@@ -32,7 +34,7 @@ h4{margin:0;paddding:0}
 .haschildmenu .menugroup .menuitem{padding: 10px 0}
 .haschildmenu .menugroup .menuitem:hover{border-left: none}
 
-#container{padding: 20px 20px 0 70px;}
+#container{padding: 20px 20px 0 70px;height:calc(100vh - 50px);overflow: scroll;}
 #breadcrumb {list-style: none;display: inline-block;border-bottom: 1px solid #ccc; padding-bottom: 20px; margin-bottom: 20px; width: 100%;}
 #breadcrumb .icon { font-size: 14px;}
 #breadcrumb li {float: left;}
@@ -78,6 +80,19 @@ h4{margin:0;paddding:0}
 .detailtable tr>td:last-child{border-right: none}
 .detailrecord{border-left: 1px solid #aeaeae;padding: 10px;border-bottom: 1px solid #aeaeae;}
 .detailrecord h5{margin:0;padding: 5px 0}
-.detailinfo{display: inline-block;width: 150px}
+.detailinfo{display: inline-block;width: 200px}
 .detailcontainer{border-top: 1px solid #eee;font-size: 10px;line-height: 16px;padding: 10px 0}
 .detailremark{border-top:1px solid #eee;padding: 10px 0}
+
+/*设计流程*/
+.flow-container{display: flex;flex-wrap: wrap;}
+.flow-ele{border:1px solid #3498DB;border-radius: 20px;text-align: center;font-size: 14px;line-height: 40px;width: 100px;margin:10px ;position: relative;}
+.flow-line{border-bottom: 1px solid #3498DB;width: 60px;position: relative;top:-20px;margin:10px 5px;position: relative;}
+.flow-add{border: none;cursor: pointer;}
+.flow-add:hover{border: 1px dotted #3498DB;}
+.flow-line span{position: absolute;bottom: 0px;left:50%;text-align: center;border-radius: 50%;border: 1px solid #3498DB;width:12px;line-height: 12px;color: #3498DB;transform: translateX(-50%);}
+.flow-del{width: 15px;height: 15px;position: absolute;top:50%;right:5px;transform: translateY(-50%);cursor: pointer;display: none}
+.flow-ele:hover .flow-del {display: block;}
+
+/*修改框架样式*/
+.radiobutton{width: 14px !important;height: 14px !important;}

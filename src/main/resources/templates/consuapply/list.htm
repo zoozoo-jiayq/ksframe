@@ -2,13 +2,13 @@
 <@f.main>
 <ul id="breadcrumb">
   <li><a href="/"><span class="fa fa-home"> </span></a></li>
-  <li><a href="#"><span class="fa fa-cog"> </span>费用管理</a></li>
+  <li><a href="#"><span class="fa fa-cog"> </span>耗材管理</a></li>
   <li><a href="#"><span class="fa fa-list"></span>申请记录</a></li>
 </ul>
 
 <div class="maincontent">
 <table id="myapplylist" class="easyui-datagrid" title="" style="min-height: 400px;width: 100%;"
-			data-options="rownumbers:true,singleSelect:true,url:'/feeapply/myapply',method:'get',loadMsg:'加载中...',
+			data-options="rownumbers:true,singleSelect:true,url:'/consuapply/myapply',method:'get',loadMsg:'加载中...',
 			nowrap:true,pagination:true,onLoadSuccess:function(data){
 				if(data.rows.length == 0){
 					var body = $(this).data().datagrid.dc.body2;
@@ -19,18 +19,18 @@
 	<thead>
 		<tr>
 			<th data-options="field:'applyDate',width:110,align:'center'">申请日期</th>
-			<th data-options="field:'feeTypeName',align:'center',width:120">费用类型</th>
-			<th data-options="field:'money',align:'center',width:110">申请金额</th>
+			<th data-options="field:'consuTypeName',align:'center',width:120">耗材类型</th>
+			<th data-options="field:'nums',align:'center',width:110">申请数量</th>
 			<th data-options="field:'remark',align:'center',width:220">备注</th>
-			<th data-options="field:'status',width:100,align:'center',formatter:fee.formatState">审批状态</th>
-			<th data-options="field:'workflowInstanceId',width:100,align:'center',formatter:fee.ops">操作</th>
+			<th data-options="field:'status',width:100,align:'center',formatter:consu.formatState">审批状态</th>
+			<th data-options="field:'workflowInstanceId',width:100,align:'center',formatter:consu.ops">操作</th>
 		</tr>
 	</thead>
 </table>
 </div>
 
 <script>
-var fee = {
+var consu = {
 		formatState:function(val,index){
 			if(val == 100){
 				return "审批中";
@@ -43,7 +43,7 @@ var fee = {
 			}
 		},
 		ops:function(val,ele){
-			return "<a class='maincolor' style='cursor:pointer' onclick='fee.view(\""+val+"\")'>查看进度</a>"
+			return "<a class='maincolor' style='cursor:pointer' onclick='consu.view(\""+val+"\")'>查看进度</a>"
 		},
 		view:function(val,ele){
 			window.location.href = "/flowapp/todetail?instanceId="+val;

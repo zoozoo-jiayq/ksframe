@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jiayq.ks._frame.base.BaseController;
 import com.jiayq.ks._frame.utils.Variant;
 import com.jiayq.ks.app.Constant;
-import com.jiayq.ks.app.product.Product;
 import com.jiayq.ks.app.projectfee.ProjectFee;
 import com.jiayq.ks.app.projectfee.ProjectFeeService;
 
@@ -39,6 +38,15 @@ public class FeeController extends BaseController {
 	public Object doform(Fee fee) {
 		feeService.save(fee);
 		return SUCCESS();
+	}
+	
+	@RequestMapping("checkname")
+	public Object checkname(String name) {
+		List<Fee> feelist = feeService.findByName(name);
+		if(feelist!=null && feelist.size()>0) {
+			return false;
+		}
+		return true;
 	}
 	
 	

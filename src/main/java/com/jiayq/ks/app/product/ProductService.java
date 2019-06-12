@@ -1,5 +1,8 @@
 package com.jiayq.ks.app.product;
 
+
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
@@ -29,5 +32,9 @@ public class ProductService extends BaseServiceProxy<Product> {
 	
 	public Page<Product> findMyProduct(String projectId,Pageable page){
 		return productDao.findMyProduct(projectId, page);
+	}
+	
+	public List<Product> findByName(String name){
+		return productDao.findByName(name);
 	}
 }
