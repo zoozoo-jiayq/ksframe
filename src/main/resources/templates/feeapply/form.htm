@@ -1,0 +1,62 @@
+<#import "../frame/frame.htm" as f/>
+<@f.main>
+<ul id="breadcrumb">
+  <li><a href="/"><span class="fa fa-home"> </span></a></li>
+  <li><a href="#"><span class="fa fa-cog"> </span>费用管理</a></li>
+  <li><a href="#"><span class="fa fa-file"></span>费用申请</a></li>
+</ul>
+<div class="maincontent">
+<div class="easyui-panel " title="费用申请单" style="padding: 10px">
+<form class="easyui-form" action="form" id="ff"  method="post" data-options="novalidate:true">
+			<input type="hidden" name="applyerId" value="${fa.applyerId}">
+			<input type="hidden" name="applyerName" value="${fa.applyerName}">
+			<input type="hidden" name="projectId" value="${fa.projectId}"/>
+		<div style="margin:20px 0">
+			<input class="easyui-textbox" disabled="disabled" style="width:100%" data-options="label:'申请人:',required:false" value="${fa.applyerName!''}">
+		</div>
+		<div style="margin:20px 0">
+			<input class="easyui-datebox" name="applyDate" style="width:100%"  data-options="label:'申请日期:',required:true,formatter:fee.formatDate" >
+		</div>
+    	
+    	<div style="margin:20px 0">
+			<select class="easyui-combobox" name="feeTypeId" style="width:100%" data-options="label:'费用类型:',required:true,missingMessage:'请选择费用类型'" >
+				<#list fees as f>
+					<option value="${f.id}">${f.name}</option>
+				</#list>
+			</select>
+		</div>
+		<div style="margin:20px 0">
+			<input class="easyui-textbox" name="money" style="width:100%"  data-options="label:'费用金额:',required:true,missingMessage:'请输入费用金额'" >
+		</div>
+		<div style="margin:20px 0">
+			<input class="easyui-textbox" name="remark" style="width:100%;height:100px" data-options="label:'备注:',multiline:true" >
+		</div>
+		
+</form>
+<div style="text-align:center;padding:5px 0"><a href="javascript:void(0)" class="easyui-linkbutton" onclick="fee.submitForm()" style="width:80px">确定</a></div>
+</div>
+</div>
+</@f.main>
+<script>
+var fee = {
+		formatDate:function(date){
+			var y = date.getFullYear();
+			var m = date.getMonth()+1;
+			var d = date.getDate();
+			return y+"-"+m+"-"+d;
+		},
+		submitForm:function(){
+			$('#ff').form('submit',{
+				onSubmit:function(){
+					return $(this).form('enableValidation').form('validate');
+				},
+				success:function(){
+					$.messager.alert('消息','费用申请成功!','info',function(){
+						window.location.reload()
+					});
+				}
+			});
+		}
+}
+</script>
+
